@@ -1,4 +1,10 @@
-{{ this.beginPage() }}
+<?php
+
+use yii\helpers\Url;
+
+?>
+
+<?= $this->beginPage() ?>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -13,29 +19,32 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="shortcut icon" href="{{ Url.base() }}/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="{{ Url.base() }}/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="<?= Url::base() ?>/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="<?= Url::base() ?>/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="{{ Url.base }}/css/normalize.css">
+	<link rel="stylesheet" href="<?= Url::base() ?>/css/normalize.css">
+	<link rel="stylesheet" href="<?= Url::base() ?>/css/reinex.css">
 
-	{{ this.head() }}
+	<?= $this->head() ?>
 </head>
 <body>
 
-	{{ this.beginBody() }}
+	<?= $this->beginBody() ?>
 
 	<!--[if lt IE 7]>
 	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 	<![endif]-->
 
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script>window.jQuery || document.write('<script src="{{ Url.base() }}/vendor/jquery-2.1.1.min.js"><\/script>')</script>
+	<script>window.jQuery || document.write('<script src="<?= Url::base() ?>/vendor/jquery-2.1.1.min.js"><\/script>')</script>
 
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-	<script src="{{ Url.base() }}/vendor/modernizr-2.6.2.min.js"></script>
+	<script src="<?= Url::base() ?>/vendor/modernizr-2.6.2.min.js"></script>
+
+	<?= include "_menu.php" ?>
 
 	<div id="body-content">
-		{{ content }}
+		<?= $content ?>
 	</div>
 
 	<footer id="footer">
@@ -48,8 +57,8 @@
 		</div>
 	</footer>
 
-	{{ this.endBody() }}
+	<?= $this->endBody() ?>
 
 </body>
 </html>
-{{ this.endPage() }}
+<?= $this->endPage() ?>

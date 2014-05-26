@@ -11,8 +11,6 @@ use app\models\ContactForm;
 
 class SiteController extends Controller
 {
-	public $layout = 'main.twig';
-
     public function behaviors()
     {
         return [
@@ -51,7 +49,7 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index.twig');
+        return $this->render('index');
     }
 
     public function actionLogin()

@@ -3,10 +3,18 @@
 $params = require(__DIR__ . '/params.php');
 $db = require(__DIR__ . '/db.php');
 
+use yii\web\Response;
+
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => [
+//    	['log'],
+    	[
+    		'class' => 'yii\filters\ContentNegotiator',
+			'languages' => ['en', 'de'],
+		],
+    ],
     'extensions' => require(__DIR__ . '/../vendor/yiisoft/extensions.php'),
     'components' => [
         'cache' => [
@@ -33,17 +41,10 @@ $config = [
             ],
         ],
         'db' => $db,
-
-		'view' => [
-			'renderers' => [
-				'twig' => [
-					'class' => 'yii\twig\ViewRenderer',
-					'options' => [
-						'cache' => false,
-					],
-					'globals' => [
-						'Url' => 'yii\helpers\Url',
-					],
+        'i18n' => [
+			'translations' => [
+				'*' => [
+					'class' => 'yii\i18n\PhpMessageSource'
 				],
 			],
 		],
@@ -51,7 +52,7 @@ $config = [
     'params' => $params,
 ];
 
-if (YII_ENV_DEV) {
+if (false && YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = 'yii\debug\Module';
