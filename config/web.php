@@ -41,6 +41,9 @@ $config = [
 					'options' => [
 						'cache' => false,
 					],
+					'globals' => [
+						'Url' => 'yii\helpers\Url',
+					],
 				],
 			],
 		],
