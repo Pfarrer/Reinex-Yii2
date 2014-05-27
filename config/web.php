@@ -11,8 +11,8 @@ $config = [
     'bootstrap' => [
 //    	['log'],
     	[
-    		'class' => 'yii\filters\ContentNegotiator',
-			'languages' => ['en', 'de'],
+    		'class' => 'app\filters\LanguageNegotiator',
+			'languageParam' => 'lang',
 		],
     ],
     'extensions' => require(__DIR__ . '/../vendor/yiisoft/extensions.php'),
@@ -44,7 +44,8 @@ $config = [
         'i18n' => [
 			'translations' => [
 				'*' => [
-					'class' => 'yii\i18n\PhpMessageSource'
+					'class' => 'yii\i18n\PhpMessageSource',
+					'forceTranslation' => true,
 				],
 			],
 		],

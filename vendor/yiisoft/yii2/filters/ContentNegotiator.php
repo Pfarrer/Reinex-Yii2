@@ -237,9 +237,6 @@ class ContentNegotiator extends ActionFilter implements BootstrapInterface
                 }
             }
         }
-
-var_dump($this->languages); die;
-
         return reset($this->languages);
     }
 

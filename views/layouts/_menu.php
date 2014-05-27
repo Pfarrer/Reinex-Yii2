@@ -30,15 +30,18 @@ use yii\helpers\Url;
 			
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img id="language_flag" src="<%= url_for "img/flags/#{I18n.locale}.png" %>" /> <b class="caret"></b></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<img id="language_flag" src="<?= Url::base() ?>/img/flags/<?= \Yii::$app->language ?>.png" /> <b class="caret"></b>
+					</a>
+
 					<ul class="dropdown-menu">
-						<% langs.each do |lang| %>
+						<?php foreach (\Yii::$app->params['languages'] as $lang): ?>
 						<li>
-							<a href="<%= translated_url(lang) %>">
-								<img src="<%= url_for "img/flags/#{lang}.png" %>" /> <%= t(lang) %>
+							<a href="?lang=<?= $lang ?>">
+								<img src="<?= Url::base() ?>/img/flags/<?= $lang ?>.png" /> <?= \Yii::t('language', $lang) ?>
 							</a>
 						</li>
-						<% end %>
+						<?php endforeach; ?>
 					</ul>
 				</li>
 			</ul>
