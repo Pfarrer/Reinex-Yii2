@@ -8,4 +8,6 @@ return [
 	'Contact' => 'Kontakt',
 	'Legal Notice' => 'Impressum',
 
+	'Categories' => 'Kategorien',
+
 ];

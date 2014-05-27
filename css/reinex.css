@@ -47,6 +47,10 @@ ul.navbar-right #language_flag {
 	height: 20px;
 }
 
+.centered {
+	text-align: center;
+}
+
 #fullpage #products .product{
 	float: left;
 	padding: 0 10px;
