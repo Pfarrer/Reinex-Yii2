@@ -31,6 +31,9 @@ $config = [
             'class' => 'yii\swiftmailer\Mailer',
             'useFileTransport' => true,
         ],
+		'markdown' => [
+			'class' => 'kartik\markdown\Module',
+		],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

@@ -2,6 +2,8 @@
 
 use yii\helpers\Url;
 
+$textile = new \Netcarver\Textile\Parser();
+
 ?>
 
 <?= $this->beginPage() ?>
@@ -22,7 +24,7 @@ use yii\helpers\Url;
 	<link rel="shortcut icon" href="<?= Url::base() ?>/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="<?= Url::base() ?>/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="<?= Url::base() ?>/css/normalize.css">
+	<link rel="stylesheet" href="<?= Url::base() ?>/vendor/normalize.css">
 	<link rel="stylesheet" href="<?= Url::base() ?>/css/reinex.css">
 
 	<?= $this->head() ?>
@@ -50,9 +52,9 @@ use yii\helpers\Url;
 	<footer id="footer">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-4"><%= parse_textile data.footer[I18n.locale].contact %></div>
-				<div class="col-md-4"><%= parse_textile data.footer[I18n.locale].legal1 %></div>
-				<div class="col-md-4"><%= parse_textile data.footer[I18n.locale].legal2 %></div>
+				<div class="col-md-4"><?= $textile->textileThis(\Yii::t('footer', 'col1')) ?></div>
+				<div class="col-md-4"><?= $textile->textileThis(\Yii::t('footer', 'col2')) ?></div>
+				<div class="col-md-4"><?= $textile->textileThis(\Yii::t('footer', 'col3')) ?></div>
 			</div>
 		</div>
 	</footer>
