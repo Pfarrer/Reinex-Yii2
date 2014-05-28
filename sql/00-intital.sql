@@ -1,0 +1,7 @@
+CREATE TABLE user (
+  id INT NOT NULL AUTO_INCREMENT,
+  login CHAR(10) NOT NULL,
+  passwd CHAR(32) NOT NULL,
+
+  PRIMARY KEY (id)
+);
