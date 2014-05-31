@@ -10,9 +10,7 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\Controller;
-use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use app\models\LoginForm;
 
 class AdminController extends Controller {
 
@@ -23,22 +21,19 @@ class AdminController extends Controller {
 	public function actionLogin() {
 
 		if (!\Yii::$app->user->isGuest) {
-			return $this->goHome();
+			return $this->redirect(['admin']);
 		}
 
-		$model = new LoginForm();
+		$model = new \app\models\LoginForm();
 		if ($model->load(Yii::$app->request->post()) && $model->login()) {
 			return $this->goBack();
 		} else {
-			return $this->render('login', [
-				'model' => $model,
-			]);
+			return $this->render('login', ['model' => $model]);
 		}
 
 	}
 
-	public function behaviors()
-	{
+	public function behaviors() {
 		return [
 			'access' => [
 				'class' => AccessControl::className(),
