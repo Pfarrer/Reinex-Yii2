@@ -1,4 +1,4 @@
-body {
+html, body, #header + #body-content, #footer {
 	background-color: #454545;
 }
 
@@ -26,6 +26,7 @@ body {
 	}
 	#body-content {
 		padding-top: 50px;
+		padding-bottom: 2em;
 		margin-bottom: 17em;
 	}
 	#footer {
@@ -50,6 +51,10 @@ ul.navbar-right #language_flag {
 
 .centered {
 	text-align: center;
+}
+
+#fullpage hr {
+	border-color: darkgray;
 }
 
 #fullpage #products .product{

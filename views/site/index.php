@@ -2,9 +2,11 @@
 
 app\assets\FullpageAsset::register($this);
 $textile = new \Netcarver\Textile\Parser();
-$textile->setRelativeImagePrefix(\yii\helpers\Url::base().'/img/')
+$textile->setRelativeImagePrefix(\yii\helpers\Url::base().'/img/');
 
 ?>
+
+<?php include "_menu.php" ?>
 
 <div id="fullpage" class="container">
 	
@@ -26,12 +28,16 @@ $textile->setRelativeImagePrefix(\yii\helpers\Url::base().'/img/')
 		</div>
 	</div>
 	
+	<hr />
+	
 	<div class="section row" data-anchor="company">
 		<div class="col-md-10 col-md-offset-1">
 			<h1><?= \Yii::t('menu', 'Company') ?></h1>
 			<a href="legal_notice"><?= \Yii::t('menu', 'Legal Notice') ?></a>
 		</div>
 	</div>
+	
+	<hr />
 
 	<div class="section row" data-anchor="partners">
 		<div class="col-md-10 col-md-offset-1">
@@ -73,6 +79,8 @@ $textile->setRelativeImagePrefix(\yii\helpers\Url::base().'/img/')
 
 		</div>
 	</div>
+	
+	<hr />
 	
 	<div class="section row" data-anchor="contact">
 		<div class="col-md-10 col-md-offset-1">

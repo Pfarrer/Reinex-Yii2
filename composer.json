@@ -17,7 +17,10 @@
 		"yiisoft/yii2-bootstrap": "*",
 		"yiisoft/yii2-swiftmailer": "*",
 		"yiisoft/yii2-twig": "*",
-		"netcarver/textile": "v3.5.5"
+		"netcarver/textile": "v3.5.5",
+		"kartik-v/dependent-dropdown": "dev-master",
+		"kartik-v/yii2-field-range": "dev-master",
+		"kartik-v/yii2-widgets": "dev-master"
 	},
 	"require-dev": {
 		"yiisoft/yii2-codeception": "*",

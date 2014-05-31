@@ -43,8 +43,6 @@ $textile = new \Netcarver\Textile\Parser();
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	<script src="<?= Url::base() ?>/vendor/modernizr-2.6.2.min.js"></script>
 
-	<?= include "_menu.php" ?>
-
 	<div id="body-content">
 		<?= $content ?>
 	</div>

@@ -15,8 +15,17 @@ class ProductController extends Controller {
 			->with('i18n')
 			->orderBy('sort')
 			->all();
+
 		return $this->render('index', [
 			'products' => $products,
+		]);
+	}
+	
+	public function actionEdit($id) {
+		$product = Metaproduct::findOne($id);
+		
+		return $this->render('form', [
+			'model' => $product,
 		]);
 	}
 	

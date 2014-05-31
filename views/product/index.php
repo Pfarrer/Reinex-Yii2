@@ -1,4 +1,5 @@
 <?php
+use \Yii;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
@@ -12,10 +13,13 @@ use yii\helpers\Url;
 
     <div class="row">
         <div class="col-md-12">
+        
+        	<h1><?= Yii::t('product', 'Products') ?></h1>
             
             <div>
             	<a href="<?= Url::to(['product/create']) ?>">
-            		<i class="glyphicon glyphicon-plus"></i> Produkt erstellen
+            		<i class="glyphicon glyphicon-plus"></i>
+            		<?= Yii::t('product', 'Create a product') ?>
             	</a>
             </div>
             
@@ -23,7 +27,11 @@ use yii\helpers\Url;
             	<? foreach ($products as $product): ?>
             	<li>
             		<a href="<?= Url::to(['product/edit', 'id'=>$product->id]) ?>">
-            			<?= $product->i18n->title ?>
+            			<?php if ($product->i18n): ?>
+            				<?= $product->i18n->title ?>
+            			<?php else: ?>
+            				<i><?= Yii::t('common', 'Translation missing!') ?></i>
+            			<?php endif; ?>
             		</a>
             	</li>
             	<? endforeach; ?>
