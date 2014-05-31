@@ -8,10 +8,17 @@
 
 namespace app\controllers;
 
-
+use Yii;
 use yii\web\Controller;
+use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
+use app\models\LoginForm;
 
 class AdminController extends Controller {
+
+	public function actionIndex() {
+		return $this->render('index');
+	}
 
 	public function actionLogin() {
 
@@ -35,19 +42,12 @@ class AdminController extends Controller {
 		return [
 			'access' => [
 				'class' => AccessControl::className(),
-				'only' => ['logout'],
+				'only' => ['index', 'logout'],
 				'rules' => [
 					[
-						'actions' => ['logout'],
-						'allow' => true,
 						'roles' => ['@'],
+						'allow' => true,
 					],
-				],
-			],
-			'verbs' => [
-				'class' => VerbFilter::className(),
-				'actions' => [
-					'logout' => ['post'],
 				],
 			],
 		];

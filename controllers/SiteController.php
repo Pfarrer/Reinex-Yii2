@@ -16,14 +16,11 @@ class SiteController extends Controller {
 	}
 
 	public function actions() {
-		return [
-			'verbs' => [
-				'class' => VerbFilter::className(),
-				'actions' => [
-					'logout' => ['post'],
-				],
-			],
-		];
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ],
+        ];
 	}
 
 }
