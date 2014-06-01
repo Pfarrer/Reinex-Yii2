@@ -7,7 +7,6 @@ $textile = new \Netcarver\Textile\Parser();
 ?>
 
 <?= $this->beginPage() ?>
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -16,7 +15,10 @@ $textile = new \Netcarver\Textile\Parser();
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>TODO</title>
+	<title>
+		<? if (isset($title)): ?><?= $title.' | ' ?><? endif; ?>
+		<?= \Yii::t('common', 'Reinex high pressure systems') ?>
+	</title>
 
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
