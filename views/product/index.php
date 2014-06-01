@@ -23,10 +23,11 @@ use yii\helpers\Url;
             	</a>
             </div>
             
-            <ul>
+            <ul class="list-group">
             	<? foreach ($products as $product): ?>
-            	<li>
+            	<li class="list-group-item">
             		<a href="<?= Url::to(['product/edit', 'id'=>$product->id]) ?>">
+            			<i class="glyphicon glyphicon-pencil"></i>
             			<?php if ($product->i18n): ?>
             				<?= $product->i18n->title ?>
             			<?php else: ?>

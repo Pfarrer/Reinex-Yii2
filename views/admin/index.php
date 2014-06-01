@@ -21,6 +21,15 @@ use yii\helpers\Url;
             		</a>
             	</div>
             </div>
+
+			<ul class="list-group">
+				<li class="list-group-item">
+					<a href="<?= Url::to(['/product']) ?>">
+						<?= \Yii::t('product', 'Products') ?>
+					</a>
+					<span class="badge">0</span>
+				</li>
+			</ul>
             
         </div>
     </div>
