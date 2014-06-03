@@ -1,5 +1,7 @@
 <?php
 
+use \yii\helpers\Url;
+
 app\assets\FullpageAsset::register($this);
 
 ?>
@@ -14,6 +16,22 @@ app\assets\FullpageAsset::register($this);
 
 				<div class="col-md-9">
 					<h1><?= \Yii::t('menu', 'Products') ?></h1>
+
+					<div class="row">
+						<? foreach ($products as $product): ?>
+						<div class="col-sm-6 col-md-4">
+							<a href="<?= Url::to(['product/edit', 'id'=>$product->id]) ?>">
+								<div class="thumbnail">
+
+									
+									<img data-src="holder.js/300x200" alt="...">
+									<div class="caption"><h3><?= $product->i18n->title ?></h3></div>
+									
+								</div>
+							</a>
+						</div>
+						<? endforeach; ?>
+					</div>
 
 				</div>
 
