@@ -20,10 +20,10 @@ use yii\helpers\Url;
 		
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav" id="mainmenu-items">
-				<li class="active" data-menuanchor="products"><a href="#products"><?= \Yii::t('menu', 'Products') ?></a></li>
-				<li data-menuanchor="company"><a href="#company"><?= \Yii::t('menu', 'Company') ?></a></li>
-				<li data-menuanchor="partners"><a href="#partners"><?= \Yii::t('menu', 'Partners') ?></a></li>
-				<li data-menuanchor="contact"><a href="#contact"><?= \Yii::t('menu', 'Contact') ?></a></li>
+				<li data-menuanchor="products"><a href="<?= Url::home() ?>#products"><?= \Yii::t('menu', 'Products') ?></a></li>
+				<li data-menuanchor="company"><a href="<?= Url::home() ?>#company"><?= \Yii::t('menu', 'Company') ?></a></li>
+				<li data-menuanchor="partners"><a href="<?= Url::home() ?>#partners"><?= \Yii::t('menu', 'Partners') ?></a></li>
+				<li data-menuanchor="contact"><a href="<?= Url::home() ?>#contact"><?= \Yii::t('menu', 'Contact') ?></a></li>
 			</ul>
 			
 			<ul class="nav navbar-nav navbar-right">

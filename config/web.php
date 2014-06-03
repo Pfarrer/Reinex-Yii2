@@ -58,6 +58,9 @@ $config = [
 				],
 			],
 		],
+		'view' => [
+			'class' => 'app\components\View',
+		],
     ],
     'params' => $params,
 ];

@@ -4,28 +4,25 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 /**
- * @var yii\web\View $this
+ * @var app\components\View $this
  */
 
 ?>
 
+<?= $this->render("/site/_menu.php") ?>
+
 <div class="container">
 
     <div class="row">
-        <div class="col-md-6">
-        
-        	<pre>
-        		<?= var_dump($meta->attributes) ?>
-            </pre>
-            
+    
+        <div class="col-md-10 col-md-offset-1">
+        	<h1><?= $meta->i18n->title ?></h1>
+
+			<div class="well">
+				<?= $this->textile($meta->i18n->body) ?>
+			</div>
+
         </div>
-        
-        <div class="col-md-6">
-        
-        	<pre>
-        		<?= var_dump($meta->i18ns) ?>
-            </pre>
-            
-        </div>
+
     </div>
 </div>

@@ -945,18 +945,18 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kartik-v/yii2-field-range.git",
-            "reference": "b882af4fcb7c0393705117bc0e801b91c8cbdcb0"
+            "reference": "a857dde298315e92bf1ba81d8f32e2bbe7609936"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kartik-v/yii2-field-range/zipball/b882af4fcb7c0393705117bc0e801b91c8cbdcb0",
-            "reference": "b882af4fcb7c0393705117bc0e801b91c8cbdcb0",
+            "url": "https://api.github.com/repos/kartik-v/yii2-field-range/zipball/a857dde298315e92bf1ba81d8f32e2bbe7609936",
+            "reference": "a857dde298315e92bf1ba81d8f32e2bbe7609936",
             "shasum": ""
         },
         "require": {
             "kartik-v/yii2-widgets": "*"
         },
-        "time": "2014-05-28 03:52:11",
+        "time": "2014-06-01 20:09:56",
         "type": "yii2-extension",
         "installation-source": "source",
         "autoload": {
@@ -998,12 +998,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kartik-v/yii2-widgets.git",
-            "reference": "c104a81e13531651e12f6fbe126a5a9b01b53c93"
+            "reference": "9e547d4acfe20334234a177035310df835687331"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kartik-v/yii2-widgets/zipball/c104a81e13531651e12f6fbe126a5a9b01b53c93",
-            "reference": "c104a81e13531651e12f6fbe126a5a9b01b53c93",
+            "url": "https://api.github.com/repos/kartik-v/yii2-widgets/zipball/9e547d4acfe20334234a177035310df835687331",
+            "reference": "9e547d4acfe20334234a177035310df835687331",
             "shasum": ""
         },
         "require": {
@@ -1013,7 +1013,7 @@
             "kartik-v/yii2-field-range": "*",
             "yiisoft/yii2-bootstrap": "*"
         },
-        "time": "2014-05-29 05:25:39",
+        "time": "2014-06-01 05:19:07",
         "type": "yii2-extension",
         "installation-source": "source",
         "autoload": {

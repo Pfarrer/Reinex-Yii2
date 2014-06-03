@@ -1,8 +1,6 @@
 <?php
 
 app\assets\FullpageAsset::register($this);
-$textile = new \Netcarver\Textile\Parser();
-$textile->setRelativeImagePrefix(\yii\helpers\Url::base().'/img/');
 
 ?>
 
@@ -98,5 +96,9 @@ $(function() {
 		menu: "#mainmenu-items",
 		autoScrolling: false
 	});
+	
+	if ($("#mainmenu-items li.active").length === 0) {
+		$("#mainmenu-items li:first").addClass("active");
+	}
 });
 </script>
