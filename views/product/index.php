@@ -2,6 +2,7 @@
 use \Yii;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use app\widgets\Menu;
 
 /**
  * @var app\components\View $this
@@ -9,6 +10,10 @@ use yii\helpers\Url;
  */
 
 ?>
+
+<?= Menu::widget([
+	'items' => Menu::admin()
+]) ?>
 
 <div class="container">
 

@@ -17,10 +17,10 @@ use yii\helpers\Url;
 			</button>
 			<a class="navbar-brand" href="<?= Url::home() ?>"><img id="powermann" src="<?= Url::base() ?>/img/powermann.gif" /></a>
 		</div>
-
+		
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav" id="mainmenu-items">
-				<?php foreach ($this->items as $item): ?>
+				<?php foreach ($items as $item): ?>
 				<li data-menuanchor="<?= strtolower($item['label']) ?>">
 					<a href="<?= $item['url'] ?>">
 						<?= \Yii::t('menu', $item['label']) ?>

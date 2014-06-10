@@ -1,12 +1,14 @@
 <?php
-
 use \yii\helpers\Url;
+use app\widgets\Menu;
 
 app\assets\FullpageAsset::register($this);
 
 ?>
 
-<?php include "_menu.php" ?>
+<?= Menu::widget([
+	'items' => Menu::frontpage()
+]) ?>
 
 <div id="fullpage" class="container">
 

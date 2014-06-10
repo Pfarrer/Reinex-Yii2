@@ -1,12 +1,17 @@
 <?php
 use yii\helpers\Html;
 use yii\helpers\Url;
+use app\widgets\Menu;
 
 /**
  * @var yii\web\View $this
  */
 
 ?>
+
+<?= Menu::widget([
+	'items' => Menu::admin()
+]) ?>
 
 <div class="container">
 
