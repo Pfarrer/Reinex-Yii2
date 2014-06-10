@@ -28,12 +28,19 @@ use app\widgets\Menu;
             </div>
 
 			<ul class="list-group">
+				
 				<li class="list-group-item">
 					<a href="<?= Url::to(['/product']) ?>">
 						<?= \Yii::t('product', 'Products') ?>
 					</a>
 					<span class="badge">0</span>
 				</li>
+				
+				<li class="list-group-item">
+					<a href="<?= Url::to(['/tag']) ?>">Tags</a>
+					<span class="badge">0</span>
+				</li>
+				
 			</ul>
             
         </div>

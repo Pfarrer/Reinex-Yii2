@@ -25,3 +25,16 @@ CREATE TABLE product_i18n (
 
   PRIMARY KEY (id, lang)
 );
+
+CREATE TABLE tag_meta (
+  id INT NOT NULL AUTO_INCREMENT,
+  
+  PRIMARY KEY (id)
+);
+CREATE TABLE tag_i18n (
+  id INT NOT NULL AUTO_INCREMENT,
+  lang CHAR(2) NOT NULL,
+  name VARCHAR(200) NOT NULL,
+
+  PRIMARY KEY (id, lang)
+);

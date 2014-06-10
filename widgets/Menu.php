@@ -20,6 +20,7 @@ class Menu extends \yii\base\Widget {
 		return [
 			['label'=>'Dashboard', 'url'=>Url::to(['/admin'])],
 			['label'=>'Products', 'url'=>Url::to(['/product'])],
+			['label'=>'Tags', 'url'=>Url::to(['/tag'])],
 		];
 	}
 
