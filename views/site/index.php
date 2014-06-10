@@ -9,7 +9,7 @@ app\assets\FullpageAsset::register($this);
 <?php include "_menu.php" ?>
 
 <div id="fullpage" class="container">
-	
+
 	<div class="section row" data-anchor="products">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="row">
@@ -112,9 +112,10 @@ $(function() {
 		fixedElements: ".navbar-fixed-top",
 		paddingTop: "51px",
 		menu: "#mainmenu-items",
-		autoScrolling: false
+		autoScrolling: false,
+		keyboardScrolling: false
 	});
-	
+
 	if ($("#mainmenu-items li.active").length === 0) {
 		$("#mainmenu-items li:first").addClass("active");
 	}

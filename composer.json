@@ -20,7 +20,8 @@
 		"netcarver/textile": "v3.5.5",
 		"kartik-v/dependent-dropdown": "dev-master",
 		"kartik-v/yii2-field-range": "dev-master",
-		"kartik-v/yii2-widgets": "dev-master"
+		"kartik-v/yii2-widgets": "dev-master",
+		"metalguardian/yii2-fotorama-widget": "dev-master"
 	},
 	"require-dev": {
 		"yiisoft/yii2-codeception": "*",

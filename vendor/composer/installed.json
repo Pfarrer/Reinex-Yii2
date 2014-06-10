@@ -992,18 +992,62 @@
         ]
     },
     {
+        "name": "metalguardian/yii2-fotorama-widget",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/MetalGuardian/yii2-fotorama-widget.git",
+            "reference": "7ab6ca60534f91e803ab6a7c8e146ff2156aa3e9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/MetalGuardian/yii2-fotorama-widget/zipball/7ab6ca60534f91e803ab6a7c8e146ff2156aa3e9",
+            "reference": "7ab6ca60534f91e803ab6a7c8e146ff2156aa3e9",
+            "shasum": ""
+        },
+        "require": {
+            "yiisoft/yii2": "*"
+        },
+        "time": "2014-06-01 21:17:58",
+        "type": "yii2-extension",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "metalguardian\\fotorama\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Ivan Pushkin"
+            }
+        ],
+        "description": "fotorama image gallery yii2 widget",
+        "homepage": "https://github.com/MetalGuardian/yii2-fotorama-widget",
+        "keywords": [
+            "extension",
+            "fotorama",
+            "widget",
+            "yii2"
+        ]
+    },
+    {
         "name": "kartik-v/yii2-widgets",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/kartik-v/yii2-widgets.git",
-            "reference": "9e547d4acfe20334234a177035310df835687331"
+            "reference": "a21d020224892d2b3605b475d3126ceb43821820"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kartik-v/yii2-widgets/zipball/9e547d4acfe20334234a177035310df835687331",
-            "reference": "9e547d4acfe20334234a177035310df835687331",
+            "url": "https://api.github.com/repos/kartik-v/yii2-widgets/zipball/a21d020224892d2b3605b475d3126ceb43821820",
+            "reference": "a21d020224892d2b3605b475d3126ceb43821820",
             "shasum": ""
         },
         "require": {
@@ -1013,7 +1057,7 @@
             "kartik-v/yii2-field-range": "*",
             "yiisoft/yii2-bootstrap": "*"
         },
-        "time": "2014-06-01 05:19:07",
+        "time": "2014-06-04 12:53:24",
         "type": "yii2-extension",
         "installation-source": "source",
         "autoload": {

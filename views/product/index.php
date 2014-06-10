@@ -4,7 +4,8 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 /**
- * @var yii\web\View $this
+ * @var app\components\View $this
+ * @var app\models\Metaproduct[] $products
  */
 
 ?>
@@ -22,9 +23,9 @@ use yii\helpers\Url;
             		<?= Yii::t('product', 'Create a product') ?>
             	</a>
             </div>
-            
+
             <ul class="list-group">
-            	<? foreach ($products as $product): ?>
+				<? foreach ($products as $id=>$product): ?>
             	<li class="list-group-item">
             		<a href="<?= Url::to(['product/edit', 'id'=>$product->id]) ?>">
             			<i class="glyphicon glyphicon-pencil"></i>
