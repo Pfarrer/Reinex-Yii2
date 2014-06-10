@@ -28,8 +28,6 @@ $textile = new \Netcarver\Textile\Parser();
 	<link rel="stylesheet" href="<?= Url::base() ?>/vendor/normalize.css">
 	<link rel="stylesheet" href="<?= Url::base() ?>/css/reinex.css">
 
-	<link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.5.1/fotorama.css" rel="stylesheet">
-
 	<?= $this->head() ?>
 </head>
 <body>
@@ -45,18 +43,6 @@ $textile = new \Netcarver\Textile\Parser();
 
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	<script src="<?= Url::base() ?>/vendor/modernizr-2.6.2.min.js"></script>
-
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.5.1/fotorama.js"></script>
-	<script src="<?= Url::base() ?>/vendor/jquery.stellar.min.js"></script>
-
-	<div id="header">
-
-		<div class="fotorama" data-width="100%">
-			<img src="http://s.fotorama.io/1.jpg">
-			<img src="http://s.fotorama.io/2.jpg">
-		</div>
-
-	</div>
 
 	<div id="body-content">
 		<?= $content ?>

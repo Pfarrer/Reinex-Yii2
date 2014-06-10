@@ -992,46 +992,47 @@
         ]
     },
     {
-        "name": "metalguardian/yii2-fotorama-widget",
+        "name": "yurkinx/yii2-image",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
-            "url": "https://github.com/MetalGuardian/yii2-fotorama-widget.git",
-            "reference": "7ab6ca60534f91e803ab6a7c8e146ff2156aa3e9"
+            "url": "https://github.com/yurkinx/yii2-image.git",
+            "reference": "4c16aecf897e6052c6e060425b829d955f70a1a2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/MetalGuardian/yii2-fotorama-widget/zipball/7ab6ca60534f91e803ab6a7c8e146ff2156aa3e9",
-            "reference": "7ab6ca60534f91e803ab6a7c8e146ff2156aa3e9",
+            "url": "https://api.github.com/repos/yurkinx/yii2-image/zipball/4c16aecf897e6052c6e060425b829d955f70a1a2",
+            "reference": "4c16aecf897e6052c6e060425b829d955f70a1a2",
             "shasum": ""
         },
         "require": {
+            "php": ">=5.4.0",
             "yiisoft/yii2": "*"
         },
-        "time": "2014-06-01 21:17:58",
+        "time": "2013-10-19 02:00:53",
         "type": "yii2-extension",
         "installation-source": "source",
         "autoload": {
-            "psr-4": {
-                "metalguardian\\fotorama\\": ""
+            "psr-0": {
+                "yii\\image\\": ""
             }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "MIT"
+            "BSD-3-Clause"
         ],
         "authors": [
             {
-                "name": "Ivan Pushkin"
+                "name": "Yuri Kileev",
+                "email": "kileev@gmail.com"
             }
         ],
-        "description": "fotorama image gallery yii2 widget",
-        "homepage": "https://github.com/MetalGuardian/yii2-fotorama-widget",
+        "description": "Yii2 extension for image manipulating using Kohana Image Library.",
+        "homepage": "https://github.com/yurkinx/yii2-image",
         "keywords": [
             "extension",
-            "fotorama",
-            "widget",
+            "image",
             "yii2"
         ]
     },
@@ -1042,12 +1043,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/kartik-v/yii2-widgets.git",
-            "reference": "a21d020224892d2b3605b475d3126ceb43821820"
+            "reference": "c6166520d618dd591851a995dccd3983176c3023"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/kartik-v/yii2-widgets/zipball/a21d020224892d2b3605b475d3126ceb43821820",
-            "reference": "a21d020224892d2b3605b475d3126ceb43821820",
+            "url": "https://api.github.com/repos/kartik-v/yii2-widgets/zipball/c6166520d618dd591851a995dccd3983176c3023",
+            "reference": "c6166520d618dd591851a995dccd3983176c3023",
             "shasum": ""
         },
         "require": {
@@ -1057,7 +1058,7 @@
             "kartik-v/yii2-field-range": "*",
             "yiisoft/yii2-bootstrap": "*"
         },
-        "time": "2014-06-04 12:53:24",
+        "time": "2014-06-09 10:47:33",
         "type": "yii2-extension",
         "installation-source": "source",
         "autoload": {

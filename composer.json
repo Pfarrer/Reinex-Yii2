@@ -21,7 +21,7 @@
 		"kartik-v/dependent-dropdown": "dev-master",
 		"kartik-v/yii2-field-range": "dev-master",
 		"kartik-v/yii2-widgets": "dev-master",
-		"metalguardian/yii2-fotorama-widget": "dev-master"
+		"yurkinx/yii2-image": "dev-master"
 	},
 	"require-dev": {
 		"yiisoft/yii2-codeception": "*",

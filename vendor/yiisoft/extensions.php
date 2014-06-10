@@ -66,13 +66,13 @@ return array (
       '@kartik' => $vendorDir . '/kartik-v/yii2-field-range',
     ),
   ),
-  'metalguardian/yii2-fotorama-widget' => 
+  'yurkinx/yii2-image' => 
   array (
-    'name' => 'metalguardian/yii2-fotorama-widget',
+    'name' => 'yurkinx/yii2-image',
     'version' => '9999999-dev',
     'alias' => 
     array (
-      '@metalguardian/fotorama' => $vendorDir . '/metalguardian/yii2-fotorama-widget',
+      '@yii/image' => $vendorDir . '/yurkinx/yii2-image/yii/image',
     ),
   ),
   'kartik-v/yii2-widgets' => 

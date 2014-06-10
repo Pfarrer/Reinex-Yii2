@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'yii\\image\\' => array($vendorDir . '/yurkinx/yii2-image'),
     'Twig_' => array($vendorDir . '/twig/twig/lib'),
     'Netcarver\\Textile' => array($vendorDir . '/netcarver/textile/src'),
     'HTMLPurifier' => array($vendorDir . '/ezyang/htmlpurifier/library'),
