@@ -1,6 +1,6 @@
 <?php
 
-use yii\helpers\Url;
+use app\helpers\Url;
 
 ?>
 
@@ -38,7 +38,7 @@ use yii\helpers\Url;
 					<ul class="dropdown-menu">
 						<?php foreach (\Yii::$app->params['languages'] as $lang): ?>
 						<li>
-							<a href="?lang=<?= $lang ?>">
+							<a href="<?= Url::switchLanguageUrl($lang) ?>">
 								<img src="<?= Url::base() ?>/img/flags/<?= $lang ?>.png" /> <?= \Yii::t('language', $lang) ?>
 							</a>
 						</li>

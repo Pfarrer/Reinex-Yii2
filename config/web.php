@@ -66,6 +66,7 @@ $config = [
 					'cachePath' => FALSE,
 					'globals' => [
 						'Menu' => '\app\widgets\Menu',
+						'Url' => '\app\helpers\Url',
 					],
 					'functions' => [
 						't' => '\Yii::t',
