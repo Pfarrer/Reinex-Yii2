@@ -18,7 +18,7 @@ class ProductController extends Controller {
 			->orderBy('sort')
 			->all();
 
-		return $this->render('index', [
+		return $this->render('index.twig', [
 			'products' => $products,
 		]);
 	}

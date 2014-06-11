@@ -60,6 +60,18 @@ $config = [
 		],
 		'view' => [
 			'class' => 'app\components\View',
+			'renderers' => [
+				'twig' => [
+					'class' => 'yii\twig\ViewRenderer',
+					'cachePath' => FALSE,
+					'globals' => [
+						'Menu' => '\app\widgets\Menu',
+					],
+					'functions' => [
+						't' => '\Yii::t',
+					],
+				],
+			],
 		],
     ],
     'params' => $params,
