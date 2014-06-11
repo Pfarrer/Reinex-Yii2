@@ -51,10 +51,11 @@ class ProductController extends Controller {
 	}
 	
 	private function updateOrRender(MetaProduct $meta, I18nProduct $i18n) {
+
 		// Set new POST values if there are some
 		$loaded = $meta->load(Yii::$app->request->post());
 		$loaded = $i18n->load(Yii::$app->request->post()) || $loaded;
-		
+
 		if (!$loaded) {
 			// No values changed -> render form
 			return $this->render('form', ['meta'=>$meta, 'i18n'=>$i18n]);

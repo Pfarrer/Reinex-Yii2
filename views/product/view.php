@@ -1,7 +1,6 @@
 <?php
 use \Yii;
-use yii\helpers\Html;
-use yii\helpers\Url;
+use app\widgets\Menu;
 
 /**
  * @var app\components\View $this
@@ -9,7 +8,9 @@ use yii\helpers\Url;
 
 ?>
 
-<?= $this->render("/site/_menu.php") ?>
+<?= Menu::widget([
+	'items' => Menu::frontpage()
+]) ?>
 
 <div class="container">
 

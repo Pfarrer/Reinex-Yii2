@@ -38,3 +38,14 @@ CREATE TABLE tag_i18n (
 
   PRIMARY KEY (id, lang)
 );
+
+CREATE TABLE image (
+  id INT NOT NULL AUTO_INCREMENT,
+  fid INT NOT NULL,
+  type CHAR(20) NOT NULL,
+  path VARCHAR(200) NOT NULL,
+  md5 CHAR(32) NOT NULL,
+
+  PRIMARY KEY (id),
+  KEY (fid, type)
+);

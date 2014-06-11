@@ -16,6 +16,11 @@ class MetaProduct extends \yii\db\ActiveRecord {
         return $this->_i18n = $this->hasOne(I18nProduct::className(), ['id'=>'id'])
         	->where('lang=:lang', [':lang'=>\Yii::$app->language]);
     }
+
+	public function getImages() {
+		return $this->hasMany(Image::className(), ['fid'=>'id'])
+			->where('type="product"');
+	}
 	
 	public static function tableName() {
 		return 'product_meta';
