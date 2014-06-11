@@ -7,7 +7,7 @@ class Menu extends \yii\base\Widget {
 
 	public $items;
 
-	public function frontpage() {
+	public static function frontpage() {
 		return [
 			['label'=>'Products', 'url'=>Url::home().'#products'],
 			['label'=>'Company', 'url'=>Url::home().'#company'],
@@ -16,7 +16,7 @@ class Menu extends \yii\base\Widget {
 		];
 	}
 	
-	public function admin() {
+	public static function admin() {
 		return [
 			['label'=>'Dashboard', 'url'=>Url::to(['/admin'])],
 			['label'=>'Products', 'url'=>Url::to(['/product'])],
