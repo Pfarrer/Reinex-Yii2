@@ -6,9 +6,11 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
 
 use app\models\MetaProduct;
 use app\models\I18nProduct;
+use app\models\MetaImage;
 
 class ProductController extends Controller {
 
@@ -68,6 +70,18 @@ class ProductController extends Controller {
 		if (!$valid) {
 			// Errors in the data -> render form
 			return $this->render('form', ['meta'=>$meta, 'i18n'=>$i18n]);
+		}
+		
+		// Images vorbereiten
+		if ($_FILES && isset($_FILES['images'])) {
+			$upImages = UploadedFile::getInstancesByName('images');
+			dd($upImages);
+			
+			foreach ($_FILES['images'] as $img) {
+				
+				
+				
+			}
 		}
 		
 		// All right -> start transaction and save data

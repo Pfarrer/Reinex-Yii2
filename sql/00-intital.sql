@@ -39,10 +39,10 @@ CREATE TABLE tag_i18n (
   PRIMARY KEY (id, lang)
 );
 
-CREATE TABLE image (
+CREATE TABLE image_meta (
   id INT NOT NULL AUTO_INCREMENT,
   fid INT NOT NULL,
-  type CHAR(20) NOT NULL,
+  ftype CHAR(20) NOT NULL,
   path VARCHAR(200) NOT NULL,
   md5 CHAR(32) NOT NULL,
 

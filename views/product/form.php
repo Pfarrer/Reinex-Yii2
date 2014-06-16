@@ -23,36 +23,40 @@ use kartik\widgets\FileInput;
         
             <?php $form = ActiveForm::begin([
             	'id' => 'login-form',
+            	'options' => [
+            		'enctype' => 'multipart/form-data',
+            	],
             	'type' => ActiveForm::TYPE_HORIZONTAL,
             ]) ?>
             
                 <?= $form->field($i18n, 'title') ?>
                 <?= $form->field($i18n, 'body')->textarea() ?>
 
+				<div class="form-group">
+					<label class="col-md-2 control-label" for="metaproduct-images">Bilder hinzufügen</label>
+		            <div class="col-md-10">
+						<?= FileInput::widget([
+							'name' => 'images[]',
+							'options' => [
+								'id' => 'metaproduct-images',
+								'accept' => 'image/*',
+								'multiple' => true,
+							],
+							'pluginOptions' => [
+								'browseLabel' => 'Durchsuchen',
+								'showUpload' => false,
+								'showRemove' => false,
+							]
+						]) ?>
+					</div>
+				</div>
+				
 				<div class="form-group pull-right">
 					<?= Html::submitButton(Yii::t('common', 'Save'), ['class' => 'btn btn-primary']) ?>
                 </div>
-
-				<?= $form->field($meta, 'images')->widget(FileInput::classname(), [
-					'options' => [
-						'accept' => 'image/*',
-						'multiple' => true,
-					],
-				]) ?>
                 
             <?php ActiveForm::end(); ?>
         </div>
-
-		<div class="col-md-8">
-
-			<div class="well well-small">
-				<?= FileInput::widget([
-					'name' => 'attachments',
-					'options' => ['multiple' => true],
-				]) ?>
-			</div>
-
-		</div>
 
     </div>
 </div>
