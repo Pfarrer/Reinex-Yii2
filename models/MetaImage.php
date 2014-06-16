@@ -13,6 +13,8 @@ class MetaImage extends \yii\db\ActiveRecord {
 		$img->md5 = md5_file($file->tempName);
 		$img->extension = $file->getExtension();
 		
+		if (MetaImage::findOne(['md5'=>$img->md5])) return null;
+		
 		if ($file->saveAs('img/uploaded/'.$img->md5.'.'.$img->extension) && $img->save())
 			return $img;
 		

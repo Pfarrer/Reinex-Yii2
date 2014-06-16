@@ -85,19 +85,13 @@ class ProductController extends Controller {
 		if ($_FILES && isset($_FILES['images'])) {
 			$upImages = UploadedFile::getInstancesByName('images');
 			foreach ($upImages as $img) {
-				
-				$metaimg = MetaImage::create($meta, $img);
-				d($metaimg);
-				
+				MetaImage::create($meta, $img);
 			}
 		}
-		
-		dd("pre save");
-		
+
 		// Fertig
 		$transaction->commit();
 		return $this->redirect(['view', 'id'=>$meta->id]);
-			
 		
 	}
 	
