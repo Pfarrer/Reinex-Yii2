@@ -6,6 +6,7 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\BadRequestHttpException;
 use yii\web\UploadedFile;
 
 use app\models\MetaProduct;
@@ -72,33 +73,31 @@ class ProductController extends Controller {
 			return $this->render('form', ['meta'=>$meta, 'i18n'=>$i18n]);
 		}
 		
-		// Images vorbereiten
-		if ($_FILES && isset($_FILES['images'])) {
-			$upImages = UploadedFile::getInstancesByName('images');
-			dd($upImages);
-			
-			foreach ($_FILES['images'] as $img) {
-				
-				
-				
-			}
-		}
-		
 		// All right -> start transaction and save data
 		$transaction = MetaProduct::getDb()->beginTransaction();
 		
-		if ($meta->save()) {
-			$i18n->id = $meta->id;
-			if ($i18n->save()) {
-				$transaction->commit();
-				return $this->redirect(['view', 'id'=>$meta->id]);
+		// Produkt speichern
+		if (!$meta->save()) throw new BadRequestHttpException('meta');
+		$i18n->id = $meta->id;
+		if (!$i18n->save())  throw new BadRequestHttpException('i18n');
+		
+		// Images verarbeiten
+		if ($_FILES && isset($_FILES['images'])) {
+			$upImages = UploadedFile::getInstancesByName('images');
+			foreach ($upImages as $img) {
+				
+				$metaimg = MetaImage::create($meta, $img);
+				d($metaimg);
+				
 			}
-			else {
-				return $this->render('form', ['meta'=>$meta, 'i18n'=>$i18n]);
-			}
-		} else {
-			$transaction->rollback();
 		}
+		
+		dd("pre save");
+		
+		// Fertig
+		$transaction->commit();
+		return $this->redirect(['view', 'id'=>$meta->id]);
+			
 		
 	}
 	

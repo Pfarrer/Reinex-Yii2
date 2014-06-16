@@ -42,10 +42,10 @@ CREATE TABLE tag_i18n (
 CREATE TABLE image_meta (
   id INT NOT NULL AUTO_INCREMENT,
   fid INT NOT NULL,
-  ftype CHAR(20) NOT NULL,
-  path VARCHAR(200) NOT NULL,
+  fmodel CHAR(20) NOT NULL,
   md5 CHAR(32) NOT NULL,
+  extension CHAR(5) NOT NULL,
 
   PRIMARY KEY (id),
-  KEY (fid, type)
+  KEY (fid, fmodel)
 );
