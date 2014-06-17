@@ -18,8 +18,8 @@ class MetaProduct extends \yii\db\ActiveRecord {
     }
 
 	public function getImages() {
-		return $this->hasMany(Image::className(), ['fid'=>'id'])
-			->where('type="product"');
+		return $this->hasMany(MetaImage::className(), ['fid'=>'id'])
+			->where('fmodel=:model', [':model' => $this::className()]);
 	}
 	
 	public static function tableName() {

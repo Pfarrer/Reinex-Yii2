@@ -66,6 +66,7 @@ $config = [
 					'cachePath' => FALSE,
 					'globals' => [
 						'Menu' => '\app\widgets\Menu',
+						'ImageWidget' => '\app\widgets\ImageWidget',
 						'Url' => '\app\helpers\Url',
 					],
 					'functions' => [
@@ -73,6 +74,10 @@ $config = [
 					],
 				],
 			],
+		],
+		'image' => [
+			'class' => 'yii\image\ImageDriver',
+			'driver' => 'GD',  //GD or Imagick
 		],
     ],
     'params' => $params,

@@ -43,10 +43,11 @@ CREATE TABLE image_meta (
   id INT NOT NULL AUTO_INCREMENT,
   fid INT NOT NULL,
   fmodel CHAR(30) NOT NULL,
-  md5 CHAR(32) NOT NULL,
+  hash CHAR(32) NOT NULL,
+  filename VARCHAR(250) NOT NULL,
   extension CHAR(5) NOT NULL,
 
   PRIMARY KEY (id),
   KEY (fid, fmodel),
-  KEY (md5)
+  KEY (hash)
 );

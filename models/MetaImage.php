@@ -10,15 +10,18 @@ class MetaImage extends \yii\db\ActiveRecord {
 		$img = new MetaImage();
 		$img->fid = $model->id;
 		$img->fmodel = $model::className();
-		$img->md5 = md5_file($file->tempName);
+		$img->hash = md5_file($file->tempName);
+		$img->filename = $file->getBaseName();
 		$img->extension = $file->getExtension();
 		
-		if (MetaImage::findOne(['md5'=>$img->md5])) return null;
-		
-		if ($file->saveAs('img/uploaded/'.$img->md5.'.'.$img->extension) && $img->save())
+		if ($file->saveAs('img/uploaded/'.$img->hash.'.'.$img->extension) && $img->save())
 			return $img;
 		
 		return null;
+	}
+	
+	public function fullPath() {
+		return 'img/uploaded/'.$this->hash.'.'.$this->extension;
 	}
 	
 	public function getI18n() {
@@ -28,12 +31,8 @@ class MetaImage extends \yii\db\ActiveRecord {
     
     public function rules() {
         return [
-            [['fid', 'fmodel', 'md5', 'extension'], 'required'],
+            [['fid', 'fmodel', 'hash', 'extension'], 'required'],
         ];
-    }
-    
-    public function attributeLabels() {
-    	return [];
     }
 
 	public static function tableName() {

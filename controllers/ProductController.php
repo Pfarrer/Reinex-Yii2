@@ -28,7 +28,7 @@ class ProductController extends Controller {
 	
 	public function actionView($id) {
 		$meta = MetaProduct::findOne(['id'=>$id]);
-		return $this->render('view', ['meta'=>$meta]);
+		return $this->render('view.twig', ['meta'=>$meta]);
 	}
 	
 	public function actionCreate() {
