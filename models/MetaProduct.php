@@ -17,6 +17,11 @@ class MetaProduct extends \yii\db\ActiveRecord {
         	->where('lang=:lang', [':lang'=>\Yii::$app->language]);
     }
 
+	public function getFrontimage() {
+		return $this->hasOne(MetaImage::className(), ['fid'=>'id'])
+			->where('fmodel=:model', [':model' => $this::className()]);
+	}
+
 	public function getImages() {
 		return $this->hasMany(MetaImage::className(), ['fid'=>'id'])
 			->where('fmodel=:model', [':model' => $this::className()]);

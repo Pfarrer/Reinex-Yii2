@@ -25,8 +25,9 @@ app\assets\FullpageAsset::register($this);
 							<a href="<?= Url::to(['product/edit', 'id'=>$product->id]) ?>">
 								<div class="thumbnail">
 
-									
-									<img data-src="holder.js/300x200" alt="...">
+									<?php if ($product->frontimage): ?>
+									<img src="<?= app\widgets\ImageWidget::thumbnail($product->frontimage) ?>" />
+									<?php endif; ?>
 									<div class="caption"><h3><?= $product->i18n->title ?></h3></div>
 									
 								</div>
