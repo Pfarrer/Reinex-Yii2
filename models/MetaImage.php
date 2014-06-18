@@ -2,19 +2,16 @@
 namespace app\models;
 
 use yii\web\UploadedFile;
-use yii\base\Model;
 
 class MetaImage extends \yii\db\ActiveRecord {
 
-	public static function create(Model $model, UploadedFile $file) {
+	public static function create(UploadedFile $file) {
 		$img = new MetaImage();
-		$img->fid = $model->id;
-		$img->fmodel = $model::className();
 		$img->hash = md5_file($file->tempName);
 		$img->filename = $file->getBaseName();
 		$img->extension = $file->getExtension();
 		
-		if ($file->saveAs('img/uploaded/'.$img->hash.'.'.$img->extension) && $img->save())
+		if ($file->saveAs('img/uploaded/'.$img->hash.'.'.$img->extension))
 			return $img;
 		
 		return null;
