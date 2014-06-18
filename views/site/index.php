@@ -20,7 +20,7 @@ app\assets\FullpageAsset::register($this);
 					<h1><?= \Yii::t('menu', 'Products') ?></h1>
 
 					<div class="row">
-						<? foreach ($products as $product): ?>
+						<?php foreach ($products as $product): ?>
 						<div class="col-sm-6 col-md-4">
 							<a href="<?= Url::to(['product/edit', 'id'=>$product->id]) ?>">
 								<div class="thumbnail">
@@ -33,7 +33,7 @@ app\assets\FullpageAsset::register($this);
 								</div>
 							</a>
 						</div>
-						<? endforeach; ?>
+						<?php endforeach; ?>
 					</div>
 
 				</div>
