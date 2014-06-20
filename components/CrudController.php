@@ -27,6 +27,7 @@ abstract class CrudController extends Controller {
 	}
 
 	public function actionView($id) {
+		// Call static function: $metaClassName::findOne
 		$meta = call_user_func([$this->metaClassName, 'findOne'], [$id]);
 		if (!$meta) throw new NotFoundHttpException();
 

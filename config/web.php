@@ -60,20 +60,6 @@ $config = [
 		],
 		'view' => [
 			'class' => 'app\components\View',
-			'renderers' => [
-				'twig' => [
-					'class' => 'yii\twig\ViewRenderer',
-					'cachePath' => FALSE,
-					'globals' => [
-						'Menu' => '\app\widgets\Menu',
-						'ImageWidget' => '\app\widgets\ImageWidget',
-						'Url' => '\app\helpers\Url',
-					],
-					'functions' => [
-						't' => '\Yii::t',
-					],
-				],
-			],
 		],
 		'image' => [
 			'class' => 'yii\image\ImageDriver',

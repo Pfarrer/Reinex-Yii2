@@ -52,6 +52,7 @@ app\assets\FullpageAsset::register($this);
 	<div class="section row" data-anchor="company">
 		<div class="col-md-10 col-md-offset-1">
 			<h1><?= \Yii::t('menu', 'Company') ?></h1>
+			<p><?= $this->textile(file_get_contents('views/site/company_profile.'.Yii::$app->language.'.textile')) ?></p>
 			<a href="legal_notice"><?= \Yii::t('menu', 'Legal Notice') ?></a>
 		</div>
 	</div>

@@ -1,19 +1,21 @@
 <?php
-
 namespace app\controllers;
 
 use Yii;
-use yii\filters\AccessControl;
-use yii\web\Controller;
-use yii\web\NotFoundHttpException;
 use yii\web\BadRequestHttpException;
 use yii\web\UploadedFile;
 
+use app\components\CrudController;
 use app\models\MetaProduct;
 use app\models\I18nProduct;
 use app\models\MetaImage;
 
-class ProductController extends Controller {
+class ProductController extends CrudController {
+
+	public function init() {
+		$this->metaClassName = MetaProduct::className();
+		$this->i18nClassName = I18nProduct::className();
+	}
 
 	public function actionIndex() {
 		$products = MetaProduct::find()
@@ -21,40 +23,11 @@ class ProductController extends Controller {
 			->where('parent IS NULL')
 			->orderBy('sort')
 			->all();
-
-		return $this->render('index.twig', [
-			'products' => $products,
-		]);
+		
+		return $this->render('index', ['products' => $products]);
 	}
 	
-	public function actionView($id) {
-		$meta = MetaProduct::findOne(['id'=>$id]);
-		return $this->render('view.twig', ['meta'=>$meta]);
-	}
-	
-	public function actionCreate() {
-		$meta = new MetaProduct();
-		
-		$i18n = new I18nProduct();
-		$i18n->lang = Yii::$app->language;
-		
-		return $this->updateOrRender($meta, $i18n);
-	}
-	
-	public function actionEdit($id) {
-		$meta = MetaProduct::findOne($id);
-		if (!$meta) throw new NotFoundHttpException();
-		
-		$i18n = $meta->i18n;
-		if (!$i18n) {
-			$i18n = new I18nProduct();
-			$i18n->lang = Yii::$app->language;	
-		}
-		
-		return $this->updateOrRender($meta, $i18n);
-	}
-	
-	private function updateOrRender(MetaProduct $meta, I18nProduct $i18n) {
+	protected function updateOrRender(MetaProduct $meta, I18nProduct $i18n) {
 
 		// Set new POST values if there are some
 		$loaded = $meta->load(Yii::$app->request->post());
@@ -84,7 +57,7 @@ class ProductController extends Controller {
 		
 		// Alte Images sortieren/entfernen
 		$sorted_image_ids = Yii::$app->request->post('image_sort');
-		if ($$sorted_image_ids) {
+		if ($sorted_image_ids) {
 			$old_image_ids = array_map(function ($a) {
 				return $a->id;
 			}, $meta->images);
@@ -111,7 +84,7 @@ class ProductController extends Controller {
 				if ($img->getHasError()) continue;
 				
 				$metaImage = MetaImage::create($img);
-				$metaImage->fmodel = $model::className();
+				$metaImage->fmodel = $meta::className();
 				$meta->link('images', $metaImage);
 			}
 		}
@@ -120,21 +93,6 @@ class ProductController extends Controller {
 		$transaction->commit();
 		return $this->redirect(['view', 'id'=>$meta->id]);
 		
-	}
-	
-	public function behaviors() {
-		return [
-			'access' => [
-				'class' => AccessControl::className(),
-				'except' => ['show'],
-				'rules' => [
-					[
-						'roles' => ['@'],
-						'allow' => true,
-					],
-				],
-			],
-		];
 	}
 
 }

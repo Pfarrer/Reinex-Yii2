@@ -28,5 +28,4 @@ return [
 		UST-ID: DE 150532670<br />
 		Steuernummer.: 161/117/02644
 	',
-
 ];

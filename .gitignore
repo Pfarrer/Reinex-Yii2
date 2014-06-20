@@ -5,3 +5,7 @@ protected/runtime/*
 protected/data/*.db
 themes/classic/views/
 composer.lock
+/img/cache
+/img/uploaded
+/vendor
+

@@ -38,7 +38,7 @@ $textile = new \Netcarver\Textile\Parser();
 	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 	<![endif]-->
 
-	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="http://code.jquery.com/jquery-2.1.1.js"></script>
 	<script>window.jQuery || document.write('<script src="<?= Url::base() ?>/vendor/jquery-2.1.1.min.js"><\/script>')</script>
 
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>

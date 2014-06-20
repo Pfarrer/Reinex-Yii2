@@ -5,7 +5,7 @@ use app\widgets\Menu;
 use kartik\widgets\FileInput;
 
 /**
- * @var yii\web\View $this
+ * @var app\components\View $this
  */
 
 ?>
@@ -61,6 +61,8 @@ use kartik\widgets\FileInput;
 		            </div>
 	
 				</div>
+				
+				<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 				
 				<div class="form-group pull-right">

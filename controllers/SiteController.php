@@ -11,7 +11,7 @@ class SiteController extends Controller {
 	public function actionIndex() {
 		// Produkte mit dieser Sprache finden
 		$products = MetaProduct::find()
-			->with('i18n')
+			->joinWith('i18n')
 			->where('parent IS NULL')
 			->orderBy('sort')
 			->all();
