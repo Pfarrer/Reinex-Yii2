@@ -18,6 +18,7 @@ class ProductController extends Controller {
 	public function actionIndex() {
 		$products = MetaProduct::find()
 			->with('i18n')
+			->where('parent IS NULL')
 			->orderBy('sort')
 			->all();
 
@@ -83,21 +84,23 @@ class ProductController extends Controller {
 		
 		// Alte Images sortieren/entfernen
 		$sorted_image_ids = Yii::$app->request->post('image_sort');
-		$old_image_ids = array_map(function ($a) {
-			return $a->id;
-		}, $meta->images);
-		$sort = 1;
-		foreach ($sorted_image_ids as $image_id) {
-			// Check if that image id is really linked to this product
-			if (in_array($image_id, $old_image_ids)) {
-				$image = MetaImage::findOne($image_id);
-				if ($image->sort !== $sort) {
-					// Update sort
-					$image->sort = $sort;
-					$image->save();
+		if ($$sorted_image_ids) {
+			$old_image_ids = array_map(function ($a) {
+				return $a->id;
+			}, $meta->images);
+			$sort = 1;
+			foreach ($sorted_image_ids as $image_id) {
+				// Check if that image id is really linked to this product
+				if (in_array($image_id, $old_image_ids)) {
+					$image = MetaImage::findOne($image_id);
+					if ($image->sort !== $sort) {
+						// Update sort
+						$image->sort = $sort;
+						$image->save();
+					}
+
+					$sort++;
 				}
-				
-				$sort++;
 			}
 		}
 		

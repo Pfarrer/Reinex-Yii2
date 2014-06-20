@@ -1,20 +1,14 @@
 <?php
 namespace app\models;
 
-/**
- * 
- **/
-class MetaTag extends \yii\db\ActiveRecord {
+use app\components\MetaModel;
 
-	public function getI18ns() {
-        return $this->hasMany(I18nTag::className(), ['id' => 'id']);
-    }
-    
-    public function getI18n() {
-        return $this->hasOne(I18nTag::className(), ['id'=>'id'])
-        	->where('lang=:lang', [':lang'=>\Yii::$app->language]);
-    }
-	
+class MetaTag extends MetaModel {
+
+	protected function getI18nClassname() {
+		return I18nTag::className();
+	}
+
 	public static function tableName() {
 		return 'tag_meta';
 	}

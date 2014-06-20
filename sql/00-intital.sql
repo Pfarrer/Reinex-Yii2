@@ -14,6 +14,7 @@ INSERT INTO user (username, password, accessToken)
 CREATE TABLE product_meta (
   id INT NOT NULL AUTO_INCREMENT,
   sort INT NOT NULL DEFAULT 1000000,
+  parent INT NULL,
 
   PRIMARY KEY (id)
 );
@@ -35,6 +36,7 @@ CREATE TABLE tag_i18n (
   id INT NOT NULL AUTO_INCREMENT,
   lang CHAR(2) NOT NULL,
   name VARCHAR(200) NOT NULL,
+  text TEXT NOT NULL,
 
   PRIMARY KEY (id, lang)
 );

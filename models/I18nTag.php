@@ -1,20 +1,14 @@
 <?php
 namespace app\models;
 
-use \app\models\MetaProduct;
+use app\components\I18nModel;
 
-/**
- * 
- **/
-class I18nTag extends \yii\db\ActiveRecord {
-
-	public function getMeta() {
-        return $this->hasOne(MetaTag::className(), ['id' => 'id']);
-    }
+class I18nTag extends I18nModel {
     
     public function rules() {
         return [
             [['name'], 'required'],
+			[['text'], 'safe'],
         ];
     }
     
@@ -24,7 +18,12 @@ class I18nTag extends \yii\db\ActiveRecord {
 		];
     }
 
+	protected function getMetaClassname() {
+		return MetaTag::className();
+	}
+
 	public static function tableName() {
 		return 'tag_i18n';
 	}
+
 }

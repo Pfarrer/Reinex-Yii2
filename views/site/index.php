@@ -22,7 +22,7 @@ app\assets\FullpageAsset::register($this);
 					<div class="row">
 						<?php foreach ($products as $product): ?>
 						<div class="col-sm-6 col-md-4">
-							<a href="<?= Url::to(['product/edit', 'id'=>$product->id]) ?>">
+							<a href="<?= Url::to(['product/view', 'id'=>$product->id]) ?>">
 								<div class="thumbnail">
 
 									<?php if ($product->frontimage): ?>

@@ -30,7 +30,7 @@ use app\widgets\Menu;
             </div>
 
             <ul class="list-group">
-				<? foreach ($tags as $id=>$tag): ?>
+				<?php foreach ($metas as $id=>$tag): ?>
             	<li class="list-group-item">
             		<a href="<?= Url::to(['tag/edit', 'id'=>$tag->id]) ?>">
             			<i class="glyphicon glyphicon-pencil"></i>
@@ -41,7 +41,7 @@ use app\widgets\Menu;
             			<?php endif; ?>
             		</a>
             	</li>
-            	<? endforeach; ?>
+            	<?php endforeach; ?>
             </ul>
             
         </div>
