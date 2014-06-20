@@ -81,14 +81,38 @@ class ProductController extends Controller {
 		$i18n->id = $meta->id;
 		if (!$i18n->save())  throw new BadRequestHttpException('i18n');
 		
-		// Images verarbeiten
+		// Alte Images sortieren/entfernen
+		$sorted_image_ids = Yii::$app->request->post('image_sort');
+		$old_image_ids = array_map(function ($a) {
+			return $a->id;
+		}, $meta->images);
+		$sort = 1;
+		foreach ($sorted_image_ids as $image_id) {
+			// Check if that image id is really linked to this product
+			if (in_array($image_id, $old_image_ids)) {
+				$image = MetaImage::findOne($image_id);
+				if ($image->sort !== $sort) {
+					// Update sort
+					$image->sort = $sort;
+					$image->save();
+				}
+				
+				$sort++;
+			}
+		}
+		
+		// Neue Images verarbeiten
 		if ($_FILES && isset($_FILES['images'])) {
 			$upImages = UploadedFile::getInstancesByName('images');
 			foreach ($upImages as $img) {
-				MetaImage::create($meta, $img);
+				if ($img->getHasError()) continue;
+				
+				$metaImage = MetaImage::create($img);
+				$metaImage->fmodel = $model::className();
+				$meta->link('images', $metaImage);
 			}
 		}
-
+		
 		// Fertig
 		$transaction->commit();
 		return $this->redirect(['view', 'id'=>$meta->id]);

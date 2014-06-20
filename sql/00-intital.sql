@@ -46,6 +46,7 @@ CREATE TABLE image_meta (
   hash CHAR(32) NOT NULL,
   filename VARCHAR(250) NOT NULL,
   extension CHAR(5) NOT NULL,
+  sort INT NOT NULL DEFAULT 1000000,
 
   PRIMARY KEY (id),
   KEY (fid, fmodel),

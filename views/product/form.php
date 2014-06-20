@@ -14,7 +14,7 @@ use kartik\widgets\FileInput;
 	'items' => Menu::admin()
 ]) ?>
 
-<div class="container">
+<div id="product-form" class="container">
 
     <div class="row">
 
@@ -30,11 +30,12 @@ use kartik\widgets\FileInput;
             ]) ?>
             
                 <?= $form->field($i18n, 'title') ?>
-                <?= $form->field($i18n, 'body')->textarea() ?>
+                <?= $form->field($i18n, 'body')->textarea(['rows'=>20]) ?>
 
-				<div class="form-group">
-					<label class="col-md-2 control-label" for="metaproduct-images">Bilder hinzufügen</label>
-		            <div class="col-md-10">
+				<div class="col-md-offset-2 col-md-10">
+					<h3>Bilder</h3>
+		            
+		            <div>
 						<?= FileInput::widget([
 							'name' => 'images[]',
 							'options' => [
@@ -49,7 +50,18 @@ use kartik\widgets\FileInput;
 							]
 						]) ?>
 					</div>
+					
+					<div id="images" class="row sortable">
+		            	<?php foreach ($meta->images as $img): ?>
+		            	<div class="image col-md-3">
+		            		<img src="<?= app\widgets\ImageWidget::thumbnail($img) ?>" />
+		            		<input type="hidden" name="image_sort[]" value="<?= $img->id ?>" />
+		            	</div>
+		            	<?php endforeach; ?>
+		            </div>
+	
 				</div>
+
 				
 				<div class="form-group pull-right">
 					<?= Html::submitButton(Yii::t('common', 'Save'), ['class' => 'btn btn-primary']) ?>
