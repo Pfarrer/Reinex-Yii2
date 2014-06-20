@@ -1,17 +1,10 @@
 <?php
 namespace app\models;
 
-use \app\models\MetaProduct;
+use app\components\I18nModel;
 
-/**
- * 
- **/
-class I18nProduct extends \yii\db\ActiveRecord {
+class I18nProduct extends I18nModel {
 
-	public function getMeta() {
-        return $this->hasOne(MetaProduct::className(), ['id' => 'id']);
-    }
-    
     public function rules() {
         return [
             [['title', 'body'], 'required'],
@@ -24,8 +17,13 @@ class I18nProduct extends \yii\db\ActiveRecord {
     		'body' => 'Text',
     	];
     }
+    
+    protected function getMetaClassname() {
+    	return MetaProduct::className();
+    }
 
 	public static function tableName() {
 		return 'product_i18n';
 	}
+	
 }

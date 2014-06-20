@@ -27,33 +27,7 @@ class ProductController extends CrudController {
 		return $this->render('index', ['products' => $products]);
 	}
 	
-	protected function updateOrRender(MetaProduct $meta, I18nProduct $i18n) {
-
-		// Set new POST values if there are some
-		$loaded = $meta->load(Yii::$app->request->post());
-		$loaded = $i18n->load(Yii::$app->request->post()) || $loaded;
-
-		if (!$loaded) {
-			// No values changed -> render form
-			return $this->render('form', ['meta'=>$meta, 'i18n'=>$i18n]);
-		}
-		
-		// Something changed -> validate
-		$valid = $meta->validate();
-		$valid = $i18n->validate() && $valid;
-		
-		if (!$valid) {
-			// Errors in the data -> render form
-			return $this->render('form', ['meta'=>$meta, 'i18n'=>$i18n]);
-		}
-		
-		// All right -> start transaction and save data
-		$transaction = MetaProduct::getDb()->beginTransaction();
-		
-		// Produkt speichern
-		if (!$meta->save()) throw new BadRequestHttpException('meta');
-		$i18n->id = $meta->id;
-		if (!$i18n->save())  throw new BadRequestHttpException('i18n');
+	protected function afterSave(MetaProduct &$meta, I18nProduct &$i18n) {
 		
 		// Alte Images sortieren/entfernen
 		$sorted_image_ids = Yii::$app->request->post('image_sort');
@@ -88,10 +62,6 @@ class ProductController extends CrudController {
 				$meta->link('images', $metaImage);
 			}
 		}
-		
-		// Fertig
-		$transaction->commit();
-		return $this->redirect(['view', 'id'=>$meta->id]);
 		
 	}
 

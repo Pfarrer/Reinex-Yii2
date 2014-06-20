@@ -12,6 +12,7 @@ use \Yii;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
+use yii\web\HttpException;
 
 abstract class CrudController extends Controller {
 
@@ -78,20 +79,18 @@ abstract class CrudController extends Controller {
 		// All right -> start transaction and save data
 		$transaction = call_user_func([$this->metaClassName, 'getDb'])->beginTransaction();
 
-		if ($meta->save()) {
-			$i18n->id = $meta->id;
-			if ($i18n->save()) {
-				$transaction->commit();
-				return $this->redirect(['view', 'id'=>$meta->id]);
-			}
-			else {
-				return $this->render('form', ['meta'=>$meta, 'i18n'=>$i18n]);
-			}
-		} else {
-			$transaction->rollback();
-		}
+		if (!$meta->save()) throw new HttpException(500, 'Save failed: meta');
+		if (!$i18n->save()) throw new HttpException(500, 'Save failed: i18n');
+
+		// After-save callback
+		$this->afterSave($meta, $i18n);
+		
+		$transaction->commit();
+		return $this->redirect(['view', 'id'=>$meta->id]);
 
 	}
+	
+	protected function afterSave(MetaProduct &$meta, I18nProduct &$i18n) {}
 
 	public function behaviors() {
 		return [

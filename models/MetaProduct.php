@@ -1,19 +1,9 @@
 <?php
 namespace app\models;
 
-/**
- * 
- **/
-class MetaProduct extends \yii\db\ActiveRecord {
+use app\components\MetaModel;
 
-	public function getI18ns() {
-        return $this->hasMany(I18nProduct::className(), ['id' => 'id']);
-    }
-    
-    public function getI18n() {
-        return $this->hasOne(I18nProduct::className(), ['id'=>'id'])
-        	->where('lang=:lang', [':lang'=>\Yii::$app->language]);
-    }
+class MetaProduct extends MetaModel {
 
 	public function getFrontimage() {
 		return $this->hasOne(MetaImage::className(), ['fid'=>'id'])
@@ -25,6 +15,10 @@ class MetaProduct extends \yii\db\ActiveRecord {
 		return $this->hasMany(MetaImage::className(), ['fid'=>'id'])
 			->where('fmodel=:model', [':model' => $this::className()])
 			->orderby('sort');
+	}
+	
+	protected function getI18nClassname() {
+		return I18nProduct::className();
 	}
 	
 	public static function tableName() {
