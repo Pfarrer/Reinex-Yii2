@@ -74,6 +74,13 @@ ul.navbar-right #language_flag {
 }
 
 /** Product **/
+ul.products-list > li > ul.products-list {
+	margin-bottom: 0;
+}
+
+.product-images {
+	margin-bottom: 2em;
+}
 .product-images .image {
 	padding-left: 0;
 	padding-right: 4px;

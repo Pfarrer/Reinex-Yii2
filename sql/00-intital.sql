@@ -14,7 +14,7 @@ INSERT INTO user (username, password, accessToken)
 CREATE TABLE product_meta (
   id INT NOT NULL AUTO_INCREMENT,
   sort INT NOT NULL DEFAULT 1000000,
-  parent INT NULL,
+  parent_id INT NULL,
 
   PRIMARY KEY (id)
 );

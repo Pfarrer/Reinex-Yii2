@@ -31,6 +31,10 @@ use kartik\widgets\FileInput;
             
                 <?= $form->field($i18n, 'title') ?>
                 <?= $form->field($i18n, 'body')->textarea(['rows'=>20]) ?>
+                
+                <?php if ($meta->parent): ?>
+                <input type="hidden" name="parent_id" value="<?= $meta->parent_id ?>" />
+                <?php endif; ?>
 
 				<div class="col-md-offset-2 col-md-10">
 					<h3>Bilder</h3>

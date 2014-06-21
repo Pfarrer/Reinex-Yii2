@@ -57,7 +57,7 @@ abstract class CrudController extends Controller {
 		return $this->updateOrRender($meta, $i18n);
 	}
 
-	private function updateOrRender(MetaModel $meta, I18nModel $i18n) {
+	protected function updateOrRender(MetaModel $meta, I18nModel $i18n) {
 		// Set new POST values if there are some
 		$loaded = $meta->load(Yii::$app->request->post());
 		$loaded = $i18n->load(Yii::$app->request->post()) || $loaded;

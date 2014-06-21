@@ -12,7 +12,7 @@ class SiteController extends Controller {
 		// Produkte mit dieser Sprache finden
 		$products = MetaProduct::find()
 			->joinWith('i18n')
-			->where('parent IS NULL')
+			->where('parent_id IS NULL')
 			->orderBy('sort')
 			->all();
 		

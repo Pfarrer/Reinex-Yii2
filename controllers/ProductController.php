@@ -3,6 +3,7 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\BadRequestHttpException;
+use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
 
 use app\components\CrudController;
@@ -19,12 +20,27 @@ class ProductController extends CrudController {
 
 	public function actionIndex() {
 		$products = MetaProduct::find()
-			->with('i18n')
-			->where('parent IS NULL')
+			->with('i18n', 'children')
+			->where('parent_id IS NULL')
 			->orderBy('sort')
 			->all();
 		
 		return $this->render('index', ['products' => $products]);
+	}
+	
+	public function actionCreate($parent=NULL) {
+		if (!$parent) return parent::actionCreate();
+		
+		$parentMeta = MetaProduct::findOne($parent);
+		if (!$parentMeta) throw new NotFoundHttpException();
+		
+		$meta = new MetaProduct();
+		$meta->parent_id = $parentMeta->id;
+		
+		$i18n = new $this->i18nClassName();
+		$i18n->lang = Yii::$app->language;
+		
+		return parent::updateOrRender($meta, $i18n);
 	}
 	
 	protected function afterSave(MetaProduct &$meta, I18nProduct &$i18n) {

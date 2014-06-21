@@ -28,20 +28,7 @@ use app\widgets\Menu;
             	</a>
             </div>
 
-            <ul class="list-group">
-				<?php foreach ($products as $product): ?>
-            	<li class="list-group-item">
-            		<a href="<?= Url::to(['product/edit', 'id'=>$product->id]) ?>">
-            			<i class="glyphicon glyphicon-pencil"></i>
-            			<?php if ($product['i18n']): ?>
-            				<?= $product->i18n->title ?>
-            			<?php else: ?>
-            				<i><?= Yii::t('common', 'Translation missing!') ?></i>
-            			<?php endif; ?>
-            		</a>
-            	</li>
-            	<?php endforeach; ?>
-            </ul>
+			<?= $this->renderFile('@app/views/product/_products_list.php', ['products'=>$products]) ?>
             
         </div>
     </div>
