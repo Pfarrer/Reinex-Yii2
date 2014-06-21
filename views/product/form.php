@@ -51,20 +51,17 @@ use kartik\widgets\FileInput;
 						]) ?>
 					</div>
 					
-					<div id="images" class="row sortable">
+					<div class="product-images sortable">
 		            	<?php foreach ($meta->images as $img): ?>
-		            	<div class="image col-md-3">
+		            	<div class="image col-md-2">
 		            		<img src="<?= app\widgets\ImageWidget::thumbnail($img) ?>" />
 		            		<input type="hidden" name="image_sort[]" value="<?= $img->id ?>" />
 		            	</div>
 		            	<?php endforeach; ?>
 		            </div>
 	
-				</div>
-				
-				<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+				</div>				
 
-				
 				<div class="form-group pull-right">
 					<?= Html::submitButton(Yii::t('common', 'Save'), ['class' => 'btn btn-primary']) ?>
                 </div>

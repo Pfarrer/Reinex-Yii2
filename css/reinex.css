@@ -74,6 +74,10 @@ ul.navbar-right #language_flag {
 }
 
 /** Product **/
-#product-form #images .image > img {
+.product-images .image {
+	padding-left: 0;
+	padding-right: 4px;
+}
+.product-images .image > img {
 	width: 100%;
 }

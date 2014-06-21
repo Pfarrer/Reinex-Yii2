@@ -25,14 +25,16 @@ use app\widgets\ImageWidget;
 			<div class="well">
 				<?= $this->textile($meta->i18n->body) ?>
 			</div>
+			
+			<div class="product-images">
+				<?php foreach ($meta->images as $img): ?>
+					<div class="col-md-2 image">
+						<img style="width: 100%" src="<?= ImageWidget::thumbnail($img) ?>" />
+					</div>
+				<?php endforeach; ?>
+			</div>
 
         </div>
-
-		<div class="col-md-10 col-md-offset-1">
-			<?php foreach ($meta->images as $img): ?>
-				<img src="<?= ImageWidget::thumbnail($img) ?>" />
-			<?php endforeach; ?>
-		</div>
 
     </div>
 </div>
