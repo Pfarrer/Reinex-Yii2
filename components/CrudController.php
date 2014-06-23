@@ -91,7 +91,7 @@ abstract class CrudController extends Controller {
 
 	}
 	
-	protected function afterSave(MetaProduct &$meta, I18nProduct &$i18n) {}
+	protected function afterSave(MetaModel &$meta, I18nModel &$i18n) {}
 
 	public function behaviors() {
 		return [

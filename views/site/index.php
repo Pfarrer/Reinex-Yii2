@@ -38,9 +38,16 @@ app\assets\FullpageAsset::register($this);
 
 				</div>
 
-				<div class="col-md-3">
-					<h2><?= \Yii::t('menu', 'Categories') ?></h2>
+				<div class="col-md-3 well">
+					<h2><?= \Yii::t('tag', 'Categories') ?></h2>
 
+					<div class="list-group">
+						<?php foreach ($tags as $tag): ?>
+						<a href="<?= Url::to(['tag/view', 'id'=>$tag->id]) ?>" class="list-group-item">
+							<?= $tag->i18n->name ?></li>
+						</a>
+						<?php endforeach; ?>
+					</div>
 				</div>
 
 			</div>
