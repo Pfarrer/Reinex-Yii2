@@ -18,7 +18,7 @@ use app\widgets\ImageWidget;
 <div class="container">
     <div class="row">
     	<div class="col-md-10 col-md-offset-1">
-        	<h1><?= $meta->i18n->title ?></h1>
+        	<h1><?= $meta->i18n->name ?></h1>
 
 			<div class="well">
 				<?= $this->textile($meta->i18n->body) ?>
@@ -35,7 +35,7 @@ use app\widgets\ImageWidget;
 			<?php foreach ($meta->children as $child): ?>
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title"><?= $child->i18n->title ?></h3>
+					<h3 class="panel-title"><?= $child->i18n->name ?></h3>
 				</div>
 				<div class="panel-body">
 					<?= $this->textile($child->i18n->body) ?>

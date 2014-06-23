@@ -29,7 +29,7 @@ use kartik\widgets\FileInput;
             	'type' => ActiveForm::TYPE_HORIZONTAL,
             ]) ?>
             
-                <?= $form->field($i18n, 'title') ?>
+                <?= $form->field($i18n, 'name') ?>
                 <?= $form->field($i18n, 'body')->textarea(['rows'=>20]) ?>
                 
                 <?php if ($meta->parent): ?>

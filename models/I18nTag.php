@@ -8,13 +8,13 @@ class I18nTag extends I18nModel {
     public function rules() {
         return [
             [['name'], 'required'],
-			[['text'], 'safe'],
+			[['body'], 'safe'],
         ];
     }
     
     public function attributeLabels() {
     	return [
-    		'name' => 'Name',
+    		'body' => 'Text',
 		];
     }
 

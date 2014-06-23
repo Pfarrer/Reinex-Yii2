@@ -21,7 +21,7 @@ CREATE TABLE product_meta (
 CREATE TABLE product_i18n (
   id INT NOT NULL AUTO_INCREMENT,
   lang CHAR(2) NOT NULL,
-  title VARCHAR(200) NOT NULL,
+  name VARCHAR(200) NOT NULL,
   body TEXT NOT NULL,
 
   PRIMARY KEY (id, lang)
@@ -36,7 +36,7 @@ CREATE TABLE tag_i18n (
   id INT NOT NULL AUTO_INCREMENT,
   lang CHAR(2) NOT NULL,
   name VARCHAR(200) NOT NULL,
-  text TEXT NOT NULL,
+  body TEXT NOT NULL,
 
   PRIMARY KEY (id, lang)
 );

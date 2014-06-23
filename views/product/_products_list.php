@@ -14,7 +14,7 @@ use yii\helpers\Url;
 		<a href="<?= Url::to(['product/edit', 'id'=>$product->id]) ?>">
 			<i class="glyphicon glyphicon-pencil"></i>
 			<?php if ($product->i18n): ?>
-				<?= $product->i18n->title ?>
+				<?= $product->i18n->name ?>
 			<?php else: ?>
 				<i><?= Yii::t('common', 'Translation missing!') ?></i>
 			<?php endif; ?>

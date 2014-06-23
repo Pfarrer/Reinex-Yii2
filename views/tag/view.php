@@ -16,11 +16,12 @@ use app\widgets\Menu;
     <div class="row">
     
         <div class="col-md-10 col-md-offset-1">
+        
         	<h1><?= Yii::t('tag', 'Category') ?> <i><?= $i18n->name ?></i></h1>
 
-			<?php if (!empty($i18n->text)): ?>
+			<?php if (!empty($i18n->body)): ?>
 			<div class="well">
-				<?= $this->textile($i18n->text) ?>
+				<?= $this->textile($i18n->body) ?>
 			</div>
 			<?php endif; ?>
 			

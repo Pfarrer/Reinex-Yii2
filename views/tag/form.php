@@ -25,7 +25,7 @@ use app\widgets\Menu;
             ]) ?>
             
                 <?= $form->field($i18n, 'name') ?>
-				<?= $form->field($i18n, 'text')->textarea(['rows'=>20]) ?>
+				<?= $form->field($i18n, 'body')->textarea(['rows'=>20]) ?>
                 
 				<div class="form-group pull-right">
 					<?= Html::submitButton(Yii::t('common', 'Save'), ['class' => 'btn btn-primary']) ?>

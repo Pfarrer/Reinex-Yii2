@@ -28,7 +28,7 @@ app\assets\FullpageAsset::register($this);
 									<?php if ($product->frontimage): ?>
 									<img src="<?= app\widgets\ImageWidget::thumbnail($product->frontimage) ?>" />
 									<?php endif; ?>
-									<div class="caption"><h3><?= $product->i18n->title ?></h3></div>
+									<div class="caption"><h3><?= $product->i18n->name ?></h3></div>
 									
 								</div>
 							</a>

@@ -7,13 +7,12 @@ class I18nProduct extends I18nModel {
 
     public function rules() {
         return [
-            [['title', 'body'], 'required'],
+            [['name', 'body'], 'required'],
         ];
     }
     
     public function attributeLabels() {
     	return [
-    		'title' => 'Name',
     		'body' => 'Text',
     	];
     }
