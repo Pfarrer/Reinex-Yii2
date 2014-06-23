@@ -31,6 +31,7 @@ abstract class CrudController extends Controller {
 		// Call static function: $metaClassName::findOne
 		$meta = call_user_func([$this->metaClassName, 'findOne'], [$id]);
 		if (!$meta) throw new NotFoundHttpException();
+		if (!$meta->i18n) throw new NotFoundHttpException('This content is not available in your current language.');
 
 		return $this->render('view', ['meta' => $meta, 'i18n' => $meta->i18n]);
 	}
