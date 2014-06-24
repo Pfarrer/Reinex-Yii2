@@ -1,6 +1,8 @@
 <?php
 use \Yii;
+
 use app\widgets\Menu;
+use app\widgets\ProductList;
 
 /**
  * @var app\components\View $this
@@ -24,6 +26,13 @@ use app\widgets\Menu;
 				<?= $this->textile($i18n->body) ?>
 			</div>
 			<?php endif; ?>
+			
+			<div class="row">
+				<?= ProductList::widget([
+					'products' => $meta->products,
+					'cols' => 4,
+				]) ?>
+			</div>
 			
         </div>
 

@@ -1,9 +1,14 @@
 <?php
 use \yii\helpers\Url;
+
 use app\widgets\Menu;
+use app\widgets\ProductList;
 
 app\assets\FullpageAsset::register($this);
 
+/**
+ * @var app\components\View $this
+ */
 ?>
 
 <?= Menu::widget([
@@ -20,20 +25,10 @@ app\assets\FullpageAsset::register($this);
 					<h1><?= \Yii::t('menu', 'Products') ?></h1>
 
 					<div class="row">
-						<?php foreach ($products as $product): ?>
-						<div class="col-sm-6 col-md-4">
-							<a href="<?= Url::to(['product/view', 'id'=>$product->id]) ?>">
-								<div class="thumbnail">
-
-									<?php if ($product->frontimage): ?>
-									<img src="<?= app\widgets\ImageWidget::thumbnail($product->frontimage) ?>" />
-									<?php endif; ?>
-									<div class="caption"><h3><?= $product->i18n->name ?></h3></div>
-									
-								</div>
-							</a>
-						</div>
-						<?php endforeach; ?>
+						<?= ProductList::widget([
+							'products' => $products,
+							'cols' => 3,
+						]) ?>
 					</div>
 
 				</div>
@@ -44,7 +39,8 @@ app\assets\FullpageAsset::register($this);
 					<div class="list-group">
 						<?php foreach ($tags as $tag): ?>
 						<a href="<?= Url::to(['tag/view', 'id'=>$tag->id]) ?>" class="list-group-item">
-							<?= $tag->i18n->name ?></li>
+							<?= $tag->i18n->name ?>
+							<span class="badge"><?= $tag->count ?></span>
 						</a>
 						<?php endforeach; ?>
 					</div>

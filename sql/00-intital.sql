@@ -41,6 +41,13 @@ CREATE TABLE tag_i18n (
   PRIMARY KEY (id, lang)
 );
 
+CREATE TABLE product_tag (
+  product_id INT NOT NULL,
+  tag_id INT NOT NULL,
+  
+  PRIMARY KEY (product_id, tag_id)
+);
+
 CREATE TABLE image_meta (
   id INT NOT NULL AUTO_INCREMENT,
   fid INT NOT NULL,
