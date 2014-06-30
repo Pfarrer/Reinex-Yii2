@@ -17,10 +17,7 @@ class LanguageNegotiator extends ContentNegotiator {
 	/**
 	 * @inheritdoc
 	 */
-	public function bootstrap($app)
-	{
-
-
+	public function bootstrap($app) {
 		// Session starten um zu prüfen ob eine Sprache eingesellt wurde
 		$session = new Session();
 		$session->open();

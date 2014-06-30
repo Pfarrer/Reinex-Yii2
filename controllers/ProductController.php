@@ -2,11 +2,12 @@
 namespace app\controllers;
 
 use Yii;
-use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
 
 use app\components\CrudController;
+use app\components\MetaModel;
+use app\components\I18nModel;
 use app\models\MetaProduct;
 use app\models\I18nProduct;
 use app\models\MetaImage;
@@ -43,7 +44,7 @@ class ProductController extends CrudController {
 		return parent::updateOrRender($meta, $i18n);
 	}
 	
-	protected function afterSave(MetaProduct &$meta, I18nProduct &$i18n) {
+	protected function afterSave(MetaModel &$meta, I18nModel &$i18n) {
 		
 		// Alte Images sortieren/entfernen
 		$sorted_image_ids = Yii::$app->request->post('image_sort');
