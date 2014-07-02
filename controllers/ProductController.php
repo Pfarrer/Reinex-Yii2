@@ -44,7 +44,7 @@ class ProductController extends CrudController {
 	}
 	
 	protected function afterSave(MetaProduct &$meta, I18nProduct &$i18n) {
-		
+		dd(Yii::$app->request->post());
 		// Alte Images sortieren/entfernen
 		$sorted_image_ids = Yii::$app->request->post('image_sort');
 		if ($sorted_image_ids) {

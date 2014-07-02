@@ -1,12 +1,22 @@
 <?php
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
+
 use kartik\widgets\ActiveForm;
-use app\widgets\Menu;
 use kartik\widgets\FileInput;
+use kartik\widgets\Select2;
+
+use app\widgets\Menu;
+use app\models\MetaTag;
 
 /**
  * @var app\components\View $this
  */
+
+$tags = MetaTag::find()
+	->with('i18n')
+	->all();
+$tags = ArrayHelper::map($tags, 'id', 'i18n.name');
 
 ?>
 
@@ -31,6 +41,22 @@ use kartik\widgets\FileInput;
             
                 <?= $form->field($i18n, 'name') ?>
                 <?= $form->field($i18n, 'body')->textarea(['rows'=>20]) ?>
+                
+                <div class="form-group">
+		            <label class="col-md-2 control-label">Kategorien</label>
+		            <div class="col-md-10">
+				        <?= Select2::widget([
+				        	'name' => 'tags',
+							'data' => $tags,
+							'options' => [
+								'placeholder' => 'Kategorien auswählen...',
+								'class' => 'form-control', 
+								'multiple' => true,
+							],
+							'pluginOptions' => ['allowClear' => true],
+						]) ?>
+					</div>
+				</div>
                 
                 <?php if ($meta->parent): ?>
                 <input type="hidden" name="parent_id" value="<?= $meta->parent_id ?>" />
