@@ -9,6 +9,7 @@ use yii\web\UploadedFile;
 use app\components\CrudController;
 use app\models\MetaProduct;
 use app\models\I18nProduct;
+use app\models\ProductTag;
 use app\models\MetaImage;
 
 class ProductController extends CrudController {
@@ -43,8 +44,20 @@ class ProductController extends CrudController {
 		return parent::updateOrRender($meta, $i18n);
 	}
 	
-	protected function afterSave(MetaProduct &$meta, I18nProduct &$i18n) {
-		dd(Yii::$app->request->post());
+	protected function afterSave(MetaProduct &$meta, I18nProduct &$i18) {
+		
+		// Tags speichern
+		ProductTag::deleteAll('product_id=:pid', [':pid' => $meta->id]);
+		$post = Yii::$app->request->post('MetaProduct');
+		if (isset($post['tags']) && is_array($post['tags'])) {
+			foreach ($post['tags'] as $tag_id) {
+				$t = new ProductTag();
+				$t->product_id = $meta->id;
+				$t->tag_id = $tag_id;
+				$t->save();
+			}
+		}
+		
 		// Alte Images sortieren/entfernen
 		$sorted_image_ids = Yii::$app->request->post('image_sort');
 		if ($sorted_image_ids) {

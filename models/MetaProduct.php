@@ -25,9 +25,8 @@ class MetaProduct extends MetaModel {
 	}
 	
 	public function getTags() {
-		return $this->hasMany(MetaTag::className(), ['product_id' => 'id'])
-			->viaTable('product_tag', ['tag_id'=>'id'])
-			->orderby('sort');
+		return $this->hasMany(MetaTag::className(), ['id' => 'product_id'])
+			->viaTable('product_tag', ['tag_id'=>'id']);
 	}
 	
 	public function rules() {

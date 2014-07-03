@@ -9,7 +9,6 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => [
-//    	['log'],
     	[
     		'class' => 'app\filters\LanguageNegotiator',
 			'languageParam' => 'lang',
@@ -40,15 +39,6 @@ $config = [
 		'markdown' => [
 			'class' => 'kartik\markdown\Module',
 		],
-        'log' => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
-            'targets' => [
-                [
-                    'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
-                ],
-            ],
-        ],
         'db' => $db,
         'i18n' => [
 			'translations' => [
