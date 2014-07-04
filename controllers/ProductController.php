@@ -2,11 +2,12 @@
 namespace app\controllers;
 
 use Yii;
-use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
 
 use app\components\CrudController;
+use app\components\MetaModel;
+use app\components\I18nModel;
 use app\models\MetaProduct;
 use app\models\I18nProduct;
 use app\models\ProductTag;
@@ -43,8 +44,8 @@ class ProductController extends CrudController {
 		
 		return parent::updateOrRender($meta, $i18n);
 	}
-	
-	protected function afterSave(MetaProduct &$meta, I18nProduct &$i18) {
+
+	protected function afterSave(MetaModel &$meta, I18nModel &$i18n) {
 		
 		// Tags speichern
 		ProductTag::deleteAll('product_id=:pid', [':pid' => $meta->id]);

@@ -81,6 +81,7 @@ abstract class CrudController extends Controller {
 		$transaction = call_user_func([$this->metaClassName, 'getDb'])->beginTransaction();
 
 		if (!$meta->save()) throw new HttpException(500, 'Save failed: meta');
+		$i18n->id = $meta->id;
 		if (!$i18n->save()) throw new HttpException(500, 'Save failed: i18n');
 
 		// After-save callback
