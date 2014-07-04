@@ -42,10 +42,12 @@ CREATE TABLE tag_i18n (
 );
 
 CREATE TABLE product_tag (
+  id INT NOT NULL AUTO_INCREMENT,
   product_id INT NOT NULL,
   tag_id INT NOT NULL,
   
-  PRIMARY KEY (product_id, tag_id)
+  PRIMARY KEY (id),
+  KEY (product_id, tag_id)
 );
 
 CREATE TABLE image_meta (

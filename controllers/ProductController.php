@@ -2,14 +2,14 @@
 namespace app\controllers;
 
 use Yii;
+use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
 
 use app\components\CrudController;
-use app\components\MetaModel;
-use app\components\I18nModel;
 use app\models\MetaProduct;
 use app\models\I18nProduct;
+use app\models\ProductTag;
 use app\models\MetaImage;
 
 class ProductController extends CrudController {
@@ -44,7 +44,19 @@ class ProductController extends CrudController {
 		return parent::updateOrRender($meta, $i18n);
 	}
 	
-	protected function afterSave(MetaModel &$meta, I18nModel &$i18n) {
+	protected function afterSave(MetaProduct &$meta, I18nProduct &$i18) {
+		
+		// Tags speichern
+		ProductTag::deleteAll('product_id=:pid', [':pid' => $meta->id]);
+		$post = Yii::$app->request->post('MetaProduct');
+		if (isset($post['tags']) && is_array($post['tags'])) {
+			foreach ($post['tags'] as $tag_id) {
+				$t = new ProductTag();
+				$t->product_id = $meta->id;
+				$t->tag_id = $tag_id;
+				$t->save();
+			}
+		}
 		
 		// Alte Images sortieren/entfernen
 		$sorted_image_ids = Yii::$app->request->post('image_sort');

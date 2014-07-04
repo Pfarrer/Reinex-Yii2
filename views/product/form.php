@@ -1,13 +1,22 @@
 <?php
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
+
 use kartik\widgets\ActiveForm;
-use app\widgets\Menu;
 use kartik\widgets\FileInput;
+
+use app\widgets\Menu;
+use app\models\MetaTag;
 
 /**
  * @var app\components\View $this
  */
 
+$tags = MetaTag::find()
+	->asArray()
+	->with('i18n')
+	->all();
+$tags = ArrayHelper::map($tags, 'id', 'i18n.name');
 ?>
 
 <?= Menu::widget([
@@ -31,6 +40,8 @@ use kartik\widgets\FileInput;
             
                 <?= $form->field($i18n, 'name') ?>
                 <?= $form->field($i18n, 'body')->textarea(['rows'=>20]) ?>
+                
+                <?= $form->field($meta, 'tags')->checkboxList($tags) ?>
                 
                 <?php if ($meta->parent): ?>
                 <input type="hidden" name="parent_id" value="<?= $meta->parent_id ?>" />
