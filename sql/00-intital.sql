@@ -46,8 +46,7 @@ CREATE TABLE product_tag (
   product_id INT NOT NULL,
   tag_id INT NOT NULL,
   
-  PRIMARY KEY (id),
-  KEY (product_id, tag_id)
+  PRIMARY KEY (product_id, tag_id)
 );
 
 CREATE TABLE image_meta (
