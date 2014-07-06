@@ -12,6 +12,8 @@ use app\models\MetaTag;
  * @var app\components\View $this
  */
 
+//app\assets\SortableAsset::register($this);
+
 $tags = MetaTag::find()
 	->asArray()
 	->with('i18n')
@@ -66,14 +68,20 @@ $tags = ArrayHelper::map($tags, 'id', 'i18n.name');
 						]) ?>
 					</div>
 					
-					<div class="product-images sortable">
+					<ol class="product-images sortable">
 		            	<?php foreach ($meta->images as $img): ?>
-		            	<div class="image col-md-2">
+		            	<li class="image col-md-2">
 		            		<img src="<?= app\widgets\ImageWidget::thumbnail($img) ?>" />
 		            		<input type="hidden" name="image_sort[]" value="<?= $img->id ?>" />
-		            	</div>
+		            	</li>
 		            	<?php endforeach; ?>
-		            </div>
+		            </ol>
+		            
+		            <script>
+						$(function () {
+							$('.sortable').sortable();
+						});
+					</script>
 	
 				</div>				
 

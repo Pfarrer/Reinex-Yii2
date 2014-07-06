@@ -24,9 +24,17 @@ $textile = new \Netcarver\Textile\Parser();
 
 	<link rel="shortcut icon" href="<?= Url::base() ?>/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="<?= Url::base() ?>/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="<?= Url::base() ?>/vendor/normalize.css">
+	
+	<link rel="stylesheet" href="<?= Url::base() ?>/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?= Url::base() ?>/css/normalize.css">
 	<link rel="stylesheet" href="<?= Url::base() ?>/css/reinex.css">
+	
+	<script src="<?= Url::base() ?>/js/jquery-1.11.1.min.js"></script>
+	<script src="<?= Url::base() ?>/js/jquery-migrate-1.2.1.min.js"></script>
+	<script src="<?= Url::base() ?>/js/bootstrap.min.js"></script>
+	<script src="<?= Url::base() ?>/js/modernizr-2.6.2.min.js"></script>
+	
+	<script src="<?= Url::base() ?>/js/jquery.sortable.min.js"></script>
 
 	<?= $this->head() ?>
 </head>
@@ -37,12 +45,6 @@ $textile = new \Netcarver\Textile\Parser();
 	<!--[if lt IE 7]>
 	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 	<![endif]-->
-
-	<script src="http://code.jquery.com/jquery-2.1.1.js"></script>
-	<script>window.jQuery || document.write('<script src="<?= Url::base() ?>/vendor/jquery-2.1.1.min.js"><\/script>')</script>
-
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-	<script src="<?= Url::base() ?>/vendor/modernizr-2.6.2.min.js"></script>
 
 	<div id="body-content">
 		<?= $content ?>

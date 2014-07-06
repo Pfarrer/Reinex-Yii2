@@ -24,13 +24,25 @@ use app\widgets\ImageWidget;
 				<?= $this->textile($meta->i18n->body) ?>
 			</div>
 
-			<div class="product-images clearfix">
+			<div class="camera_wrap">
 				<?php foreach ($meta->images as $img): ?>
-					<div class="col-md-2 image">
-						<img src="<?= ImageWidget::thumbnail($img) ?>" />
+					<div data-src="<?= ImageWidget::thumbnail($img) ?>"
+						data-thumb="<?= ImageWidget::thumbnail($img) ?>">
 					</div>
 				<?php endforeach; ?>
 			</div>
+			
+			<script src="<?= Url::base() ?>/vendor/jquery.camera.min.js"></script>
+			<script>
+				$(function () {
+					$(".camera_wrap").camera({
+						thumbnails: true,
+						playPause: false,
+						pauseOnClick: false,
+						fx: 'simpleFade'
+					});
+				});
+			</script>
 
 			<?php foreach ($meta->children as $child): ?>
 			<div class="panel panel-default">
