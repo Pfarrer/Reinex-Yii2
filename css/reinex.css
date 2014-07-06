@@ -59,6 +59,9 @@ ul.navbar-right #language_flag {
 .centered {
 	text-align: center;
 }
+.well {
+	background-color: white;
+}
 
 #fullpage hr {
 	border-color: darkgray;

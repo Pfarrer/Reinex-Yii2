@@ -12,6 +12,7 @@ use app\models\MetaProduct;
 use app\models\I18nProduct;
 use app\models\ProductTag;
 use app\models\MetaImage;
+use app\models\MetaTag;
 
 class ProductController extends CrudController {
 
@@ -44,18 +45,16 @@ class ProductController extends CrudController {
 		
 		return parent::updateOrRender($meta, $i18n);
 	}
-
+	
 	protected function afterSave(MetaModel &$meta, I18nModel &$i18n) {
 		
 		// Tags speichern
 		ProductTag::deleteAll('product_id=:pid', [':pid' => $meta->id]);
 		$post = Yii::$app->request->post('MetaProduct');
 		if (isset($post['tags']) && is_array($post['tags'])) {
-			foreach ($post['tags'] as $tag_id) {
-				$t = new ProductTag();
-				$t->product_id = $meta->id;
-				$t->tag_id = $tag_id;
-				$t->save();
+			$tags = MetaTag::findAll($post['tags']);
+			foreach ($tags as $tag) {
+				$a = $meta->link('tags', $tag);
 			}
 		}
 		
