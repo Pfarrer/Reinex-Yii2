@@ -33,8 +33,6 @@ $textile = new \Netcarver\Textile\Parser();
 	<script src="<?= Url::base() ?>/js/jquery-migrate-1.2.1.min.js"></script>
 	<script src="<?= Url::base() ?>/js/bootstrap.min.js"></script>
 	<script src="<?= Url::base() ?>/js/modernizr-2.6.2.min.js"></script>
-	
-	<script src="<?= Url::base() ?>/js/jquery.sortable.min.js"></script>
 
 	<?= $this->head() ?>
 </head>

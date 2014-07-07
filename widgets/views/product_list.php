@@ -12,7 +12,7 @@ use \yii\helpers\Url;
 		<div class="thumbnail">
 
 			<?php if ($product->frontimage): ?>
-			<img src="<?= app\widgets\ImageWidget::thumbnail($product->frontimage) ?>" />
+			<img src="<?= app\widgets\ImageWidget::medium($product->frontimage) ?>" />
 			<?php endif; ?>
 			<div class="caption"><h3><?= $product->i18n->name ?></h3></div>
 			

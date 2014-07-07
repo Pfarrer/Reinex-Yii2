@@ -9,6 +9,8 @@ use app\widgets\ImageWidget;
  * @var app\components\View $this
  */
 
+\app\assets\FancyboxAsset::register($this);
+
 ?>
 
 <?= Menu::widget([
@@ -28,22 +30,23 @@ use app\widgets\ImageWidget;
 				<?= $this->textile($meta->i18n->body) ?>
 			</div>
 
-			<div class="camera_wrap">
+			<div class="images">
 				<?php foreach ($meta->images as $img): ?>
-				<div data-src="<?= ImageWidget::thumbnail($img) ?>"
-					data-thumb="<?= ImageWidget::thumbnail($img) ?>">
-				</div>
+				<a class="fancybox" rel="group" href="<?= ImageWidget::full($img) ?>"><img src="<?= ImageWidget::thumbnail($img) ?>" alt="" /></a>
 				<?php endforeach; ?>
 			</div>
-			
-			<script src="<?= Url::base() ?>/js/jquery.camera.min.js"></script>
+
 			<script>
 				$(function () {
-					$(".camera_wrap").camera({
-						thumbnails: true,
-						playPause: false,
-						pauseOnClick: false,
-						fx: 'simpleFade'
+					$(".fancybox").fancybox({
+						padding: 2,
+
+						beforeShow: function () {
+							/* Disable right click */
+							$.fancybox.wrap.bind("contextmenu", function (e) {
+								return false;
+							});
+						}
 					});
 				});
 			</script>
