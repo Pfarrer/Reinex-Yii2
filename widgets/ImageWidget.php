@@ -10,7 +10,7 @@ use yii\image\drivers\Image;
 
 class ImageWidget extends Widget {
 
-	private static $ROOT_DIR = 'img/cache';
+	private static $ROOT_DIR = 'runtime/imgcache';
 
 	public static function thumbnail(MetaImage $img) {
 		return self::getImage($img, 120, 120, false);
@@ -45,7 +45,7 @@ class ImageWidget extends Widget {
 
 		if ($overlay) {
 			$upperWatermark = Image::factory('img/watermark/top-left.png');
-			$image->watermark($upperWatermark, NULL, NULL, 90);
+			$image->watermark($upperWatermark, 0, 0, 90);
 
 			$lowerWatermark = Image::factory('img/watermark/bottom-right.png');
 			$image->watermark($lowerWatermark, TRUE, TRUE, 90);
