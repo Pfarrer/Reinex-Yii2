@@ -6,7 +6,7 @@ use app\models\MetaImage;
 use \Yii;
 use yii\base\Widget;
 use yii\helpers\Url;
-use yii\image\drivers\Image;
+use WideImage\WideImage;
 
 class ImageWidget extends Widget {
 
@@ -21,7 +21,7 @@ class ImageWidget extends Widget {
 	}
 
 	public static function full(MetaImage $img) {
-		return self::getImage($img, 1280, 1024, true);
+		return self::getImage($img, 1024, 768, true);
 	}
 
 	private static function getImage(MetaImage $img, $x, $y, $overlay) {
@@ -40,18 +40,18 @@ class ImageWidget extends Widget {
 	
 	private static function createImage(MetaImage $img, $targetpath, $x, $y, $overlay) {
 
-		$image = Yii::$app->image->load($img->fullPath());
-		$image->resize($x, $y, Image::AUTO);
+		$image = WideImage::load($img->fullPath());
+		$image = $image->resize($x, $y);
 
 		if ($overlay) {
-			$upperWatermark = Image::factory('img/watermark/top-left.png');
-			$image->watermark($upperWatermark, 0, 0, 90);
+			$upperWatermark = WideImage::load('img/watermark/top-left.png');
+			$image = $image->merge($upperWatermark, 'left', 'top', 100);
 
-			$lowerWatermark = Image::factory('img/watermark/bottom-right.png');
-			$image->watermark($lowerWatermark, TRUE, TRUE, 90);
+			$lowerWatermark = WideImage::load('img/watermark/bottom-right.png');
+			$image = $image->merge($lowerWatermark, 'right', 'bottom', 100);
 		}
 		
-		$image->save($targetpath, 98);
+		$image->saveToFile($targetpath, 95);
 	
 	}
 
