@@ -21,11 +21,13 @@ use app\helpers\Url;
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav" id="mainmenu-items">
 				<?php foreach ($items as $item): ?>
-				<li data-menuanchor="<?= strtolower($item['label']) ?>">
+				<?php if (!isset($item['if']) || $item['if']): ?>
+				<li data-menuanchor="<?= str_replace(' ', '_', strtolower($item['label'])) ?>">
 					<a href="<?= $item['url'] ?>">
 						<?= \Yii::t('menu', $item['label']) ?>
 					</a>
 				</li>
+				<?php endif; ?>
 				<?php endforeach; ?>
 			</ul>
 			

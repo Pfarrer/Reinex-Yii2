@@ -58,7 +58,6 @@ app\assets\FullpageAsset::register($this);
 		<div class="col-md-10 col-md-offset-1">
 			<h1><?= \Yii::t('menu', 'Company') ?></h1>
 			<p><?= $this->textile(file_get_contents('views/site/company_profile.'.Yii::$app->language.'.textile')) ?></p>
-			<a href="legal_notice"><?= \Yii::t('menu', 'Legal Notice') ?></a>
 		</div>
 	</div>
 	
@@ -112,6 +111,15 @@ app\assets\FullpageAsset::register($this);
 			<h1><?= \Yii::t('menu', 'Contact') ?></h1>
 		</div>
 	</div>
+
+	<?php if (Yii::$app->language==='de'): ?>
+	<div class="section row" data-anchor="legal_notice">
+		<div class="col-md-10 col-md-offset-1">
+			<h1><?= \Yii::t('menu', 'Legal Notice') ?></h1>
+			<p><?= $this->textile(file_get_contents('views/site/legal_notice.'.Yii::$app->language.'.textile')) ?></p>
+		</div>
+	</div>
+	<?php endif; ?>
 	
 </div>
 

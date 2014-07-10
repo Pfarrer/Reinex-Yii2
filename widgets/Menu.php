@@ -13,6 +13,7 @@ class Menu extends \yii\base\Widget {
 			['label'=>'Company', 'url'=>Url::home().'#company'],
 			['label'=>'Partners', 'url'=>Url::home().'#partners'],
 			['label'=>'Contact', 'url'=>Url::home().'#contact'],
+			['label'=>'Legal Notice', 'url'=>Url::home().'#legal_notice', 'if'=>\Yii::$app->language==='de'],
 		];
 	}
 	
