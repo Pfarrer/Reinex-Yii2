@@ -50,17 +50,6 @@ use app\widgets\ImageWidget;
 					});
 				});
 			</script>
-
-			<?php foreach ($meta->children as $child): ?>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title"><?= $child->i18n->name ?></h3>
-				</div>
-				<div class="panel-body">
-					<?= $this->textile($child->i18n->body) ?>
-				</div>
-			</div>
-			<?php endforeach; ?>
 		</div>
 		
 		<div class="col-md-2">
@@ -76,7 +65,20 @@ use app\widgets\ImageWidget;
 			<?php endif; ?>
 		</div>
     </div>
+    
+    <div class="row">
+    	<div class="col-md-10 col-md-offset-1">
+    		<?php foreach ($meta->children as $child): ?>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title"><?= $child->i18n->name ?></h3>
+				</div>
+				<div class="panel-body">
+					<?= $this->textile($child->i18n->body) ?>
+				</div>
+			</div>
+			<?php endforeach; ?>
+    	</div>
+    </div>
 </div>
 
-
-<!-- angelina heger -->

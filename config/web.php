@@ -17,7 +17,7 @@ $config = [
     'extensions' => require(__DIR__ . '/../vendor/yiisoft/extensions.php'),
     'components' => [
     	'urlManager' => [
-            'class' => 'yii\web\UrlManager',
+            'class' => 'app\components\UrlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => true,
         ],
