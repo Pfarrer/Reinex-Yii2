@@ -1,5 +1,6 @@
 <?php
 
+use \Yii;
 use app\helpers\Url;
 
 ?>
@@ -24,6 +25,10 @@ use app\helpers\Url;
 				<?php if (!isset($item['if']) || $item['if']): ?>
 				<li data-menuanchor="<?= str_replace(' ', '_', strtolower($item['label'])) ?>">
 					<a href="<?= $item['url'] ?>">
+						<?php if (isset($item['icon'])): ?>
+						<i class="glyphicon glyphicon-<?= $item['icon'] ?>"></i>
+						<?php endif; ?>
+						
 						<?= \Yii::t('menu', $item['label']) ?>
 					</a>
 				</li>
@@ -32,6 +37,14 @@ use app\helpers\Url;
 			</ul>
 			
 			<ul class="nav navbar-nav navbar-right">
+				<?php if (!Yii::$app->user->isGuest): ?>
+				<li>
+					<a href="<?= Url::to(['/admin']) ?>">
+						<i class="glyphicon glyphicon-wrench"></i>
+					</a>
+				</li>
+				<?php endif; ?>
+				
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<img id="language_flag" src="<?= Url::base() ?>/img/flags/<?= \Yii::$app->language ?>.png" /> <b class="caret"></b>

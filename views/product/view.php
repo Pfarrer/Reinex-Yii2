@@ -25,7 +25,7 @@ use app\widgets\ImageWidget;
     </div>
     
 	<div class="row">
-    	<div class="col-md-8 col-md-offset-1">
+    	<div class="col-md-<?= $meta->tags ? 8 : 10 ?> col-md-offset-1">
 			<div class="well">
 				<?= $this->textile($meta->i18n->body) ?>
 			</div>
@@ -52,8 +52,8 @@ use app\widgets\ImageWidget;
 			</script>
 		</div>
 		
+		<?php if ($meta->tags): ?>
 		<div class="col-md-2">
-			<?php if ($meta->tags && !empty($meta->tags)): ?>
 			<div class="list-group">
 				<?php foreach ($meta->tags as $tag): ?>
 				<a href="<?= Url::to(['tag/view', 'id'=>$tag->id]) ?>" class="list-group-item">
@@ -62,8 +62,9 @@ use app\widgets\ImageWidget;
 				</a>
 				<?php endforeach; ?>
 			</div>
-			<?php endif; ?>
 		</div>
+		<?php endif; ?>
+		
     </div>
     
     <div class="row">

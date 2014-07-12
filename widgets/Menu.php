@@ -22,6 +22,7 @@ class Menu extends \yii\base\Widget {
 			['label'=>'Dashboard', 'url'=>Url::to(['/admin'])],
 			['label'=>'Products', 'url'=>Url::to(['/product'])],
 			['label'=>'Tags', 'url'=>Url::to(['/tag'])],
+			['label'=>'Logout', 'url'=>Url::to(['admin/logout']), 'icon'=>'log-out'],
 		];
 	}
 

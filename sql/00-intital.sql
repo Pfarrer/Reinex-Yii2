@@ -66,8 +66,9 @@ CREATE TABLE image_meta (
 CREATE TABLE shortcut (
   shortcut VARCHAR(100),
   action CHAR(30) NOT NULL,
-  id INT NOT NULL,
+  fid INT NOT NULL,
+  fmodel CHAR(30) NOT NULL,
   
   PRIMARY KEY (shortcut),
-  KEY (id, action)
+  KEY (fid, fmodel)
 );
