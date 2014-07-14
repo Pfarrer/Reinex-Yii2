@@ -1,6 +1,6 @@
 <?php
 
-use yii\helpers\Url;
+use app\helpers\Url;
 
 $textile = new \Netcarver\Textile\Parser();
 
@@ -16,7 +16,7 @@ $textile = new \Netcarver\Textile\Parser();
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>
-		<?= \Yii::t('common', 'Reinex high pressure systems') ?>
+		<?= Yii::t('common', 'Reinex high pressure systems') ?>
 	</title>
 
 	<meta name="description" content="">
@@ -51,9 +51,9 @@ $textile = new \Netcarver\Textile\Parser();
 	<footer id="footer">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-4"><?= $textile->textileThis(\Yii::t('footer', 'col1')) ?></div>
-				<div class="col-md-4"><?= $textile->textileThis(\Yii::t('footer', 'col2')) ?></div>
-				<div class="col-md-4"><?= $textile->textileThis(\Yii::t('footer', 'col3')) ?></div>
+				<div class="col-md-4"><?= $textile->textileThis(Yii::t('footer', 'col1')) ?></div>
+				<div class="col-md-4"><?= $textile->textileThis(Yii::t('footer', 'col2')) ?></div>
+				<div class="col-md-4"><?= $textile->textileThis(Yii::t('footer', 'col3')) ?></div>
 			</div>
 		</div>
 	</footer>

@@ -1,5 +1,4 @@
 <?php
-use \yii\helpers\Url;
 
 use app\widgets\Menu;
 

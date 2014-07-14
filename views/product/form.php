@@ -27,38 +27,38 @@ $tags = ArrayHelper::map($tags, 'id', 'i18n.name');
 
 <div id="product-form" class="container">
 
-    <div class="row">
+	<div class="row">
 
-        <div class="col-md-12">
-        
-	    	<h1>
-	    		<?= \Yii::t('product', $meta->id ? 'Edit product' : 'Create a product') ?>
-	    		<button class="btn btn-default" data-toggle="modal" data-target="#shortcutsModal">
+		<div class="col-md-12">
+
+			<h1>
+				<?= \Yii::t('product', $meta->id ? 'Edit product' : 'Create a product') ?>
+				<button class="btn btn-default" data-toggle="modal" data-target="#shortcutsModal" data-backdrop="false">
 					Shortcuts
 				</button>
-	    	</h1>
-        
-            <?php $form = ActiveForm::begin([
-            	'id' => 'login-form',
-            	'options' => [
-            		'enctype' => 'multipart/form-data',
-            	],
-            	'type' => ActiveForm::TYPE_HORIZONTAL,
-            ]) ?>
-            
-                <?= $form->field($i18n, 'name') ?>
-                <?= $form->field($i18n, 'body')->textarea(['rows'=>20]) ?>
-                
-                <?= $form->field($meta, 'tags')->checkboxList($tags) ?>
-                
-                <?php if ($meta->parent): ?>
-                <input type="hidden" name="parent_id" value="<?= $meta->parent_id ?>" />
-                <?php endif; ?>
+			</h1>
+
+			<?php $form = ActiveForm::begin([
+				'id' => 'login-form',
+				'options' => [
+					'enctype' => 'multipart/form-data',
+				],
+				'type' => ActiveForm::TYPE_HORIZONTAL,
+			]) ?>
+
+				<?= $form->field($i18n, 'name') ?>
+				<?= $form->field($i18n, 'body')->textarea(['rows'=>20]) ?>
+
+				<?= $form->field($meta, 'tags')->checkboxList($tags) ?>
+
+				<?php if ($meta->parent): ?>
+				<input type="hidden" name="parent_id" value="<?= $meta->parent_id ?>" />
+				<?php endif; ?>
 
 				<div class="col-md-offset-2 col-md-10">
 					<h3>Bilder</h3>
-		            
-		            <div>
+
+					<div>
 						<?= FileInput::widget([
 							'name' => 'images[]',
 							'options' => [
@@ -75,35 +75,28 @@ $tags = ArrayHelper::map($tags, 'id', 'i18n.name');
 					</div>
 					
 					<ol class="product-images sortable">
-		            	<?php foreach ($meta->images as $img): ?>
-		            	<li class="image col-md-2">
-		            		<img src="<?= app\widgets\ImageWidget::thumbnail($img) ?>" />
-		            		<input type="hidden" name="image_sort[]" value="<?= $img->id ?>" />
-		            	</li>
-		            	<?php endforeach; ?>
-		            </ol>
-		            
-		            <script>
-						$(function () {
-							$('.sortable').sortable();
-						});
-					</script>
+						<?php foreach ($meta->images as $img): ?>
+						<li class="image col-md-2">
+							<img src="<?= app\widgets\ImageWidget::thumbnail($img) ?>" />
+							<input type="hidden" name="image_sort[]" value="<?= $img->id ?>" />
+						</li>
+						<?php endforeach; ?>
+					</ol>
 	
 				</div>				
 
 				<div class="form-group pull-right">
 					<?= Html::submitButton(Yii::t('common', 'Save'), ['class' => 'btn btn-primary']) ?>
-                </div>
-                
-            <?php ActiveForm::end(); ?>
-        </div>
+				</div>
 
-    </div>
-    
+			<?php ActiveForm::end(); ?>
+		</div>
+
+	</div>
+
 </div>
 
-
-<div class="modal fade" id="shortcutsModal" data-backdrop="false">
+<div class="modal fade" id="shortcutsModal">
 	<div class="modal-dialog">
 		<div class="modal-content">
 		

@@ -1,6 +1,6 @@
 <?php
-use \Yii;
-use yii\helpers\Url;
+
+use app\helpers\Url;
 
 /**
  * @var app\components\View $this

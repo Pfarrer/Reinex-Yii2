@@ -1,6 +1,4 @@
 <?php
-use \Yii;
-
 use app\widgets\Menu;
 use app\widgets\ProductList;
 
