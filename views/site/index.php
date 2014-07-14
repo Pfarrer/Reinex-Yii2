@@ -1,5 +1,6 @@
 <?php
-use \yii\helpers\Url;
+use \Yii;
+use app\helpers\Url;
 
 use app\widgets\Menu;
 use app\widgets\ProductList;
@@ -17,12 +18,19 @@ app\assets\FullpageAsset::register($this);
 
 <div id="fullpage" class="container">
 
+	<div class="section row">
+		<div id="backstretch_container" style="background-size: cover"></div>
+		<script>
+
+		</script>
+	</div>
+
 	<div class="section row" data-anchor="products">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="row">
 
 				<div class="col-md-9">
-					<h1><?= \Yii::t('menu', 'Products') ?></h1>
+					<h1><?= Yii::t('menu', 'Products') ?></h1>
 
 					<div class="row">
 						<?= ProductList::widget([
@@ -34,7 +42,7 @@ app\assets\FullpageAsset::register($this);
 				</div>
 
 				<div class="col-md-3 well">
-					<h2><?= \Yii::t('tag', 'Categories') ?></h2>
+					<h2><?= Yii::t('tag', 'Categories') ?></h2>
 
 					<div class="list-group">
 						<?php foreach ($tags as $tag): ?>
@@ -52,22 +60,18 @@ app\assets\FullpageAsset::register($this);
 		</div>
 	</div>
 	
-	<hr />
-	
 	<div class="section row" data-anchor="company">
 		<div class="col-md-10 col-md-offset-1">
-			<h1><?= \Yii::t('menu', 'Company') ?></h1>
+			<h1><?= Yii::t('menu', 'Company') ?></h1>
 			<p><?= $this->textile(file_get_contents('views/site/company_profile.'.Yii::$app->language.'.textile')) ?></p>
 		</div>
 	</div>
-	
-	<hr />
 
 	<div class="section row" data-anchor="partners">
 		<div class="col-md-10 col-md-offset-1">
 
 			<div class="centered" style="margin-bottom: 2em;">
-				<img src="<?= \yii\helpers\Url::base() ?>/img/leistikow.gif" />
+				<img src="<?= Url::base() ?>/img/leistikow.gif" />
 			</div>
 
 			<div class="row">
@@ -104,18 +108,16 @@ app\assets\FullpageAsset::register($this);
 		</div>
 	</div>
 	
-	<hr />
-	
 	<div class="section row" data-anchor="contact">
 		<div class="col-md-10 col-md-offset-1">
-			<h1><?= \Yii::t('menu', 'Contact') ?></h1>
+			<h1><?= Yii::t('menu', 'Contact') ?></h1>
 		</div>
 	</div>
 
 	<?php if (Yii::$app->language==='de'): ?>
 	<div class="section row" data-anchor="legal_notice">
 		<div class="col-md-10 col-md-offset-1">
-			<h1><?= \Yii::t('menu', 'Legal Notice') ?></h1>
+			<h1><?= Yii::t('menu', 'Legal Notice') ?></h1>
 			<p><?= $this->textile(file_get_contents('views/site/legal_notice.'.Yii::$app->language.'.textile')) ?></p>
 		</div>
 	</div>
