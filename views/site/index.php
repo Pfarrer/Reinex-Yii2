@@ -68,6 +68,7 @@ app\assets\FullpageAsset::register($this);
 
 	<div class="section row" data-anchor="partners">
 		<div class="col-md-10 col-md-offset-1">
+			<h1><?= Yii::t('menu', 'Partner') ?></h1>
 
 			<div class="centered" style="margin-bottom: 2em;">
 				<img src="<?= Url::base() ?>/img/leistikow.gif" />
