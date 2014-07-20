@@ -46,6 +46,10 @@ class ProductController extends CrudController {
 		return parent::updateOrRender($meta, $i18n);
 	}
 	
+	public function actionCreate_shortcut() {
+		echo "hi";
+	}
+	
 	protected function afterSave(MetaModel &$meta, I18nModel &$i18n) {
 		
 		// Tags speichern
