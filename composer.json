@@ -13,7 +13,7 @@
 	"minimum-stability": "beta",
 	"require": {
 		"php": ">=5.4.0",
-		"yiisoft/yii2": "*",
+		"yiisoft/yii2": "dev-master",
 		"yiisoft/yii2-bootstrap": "*",
 		"yiisoft/yii2-swiftmailer": "*",
 		"netcarver/textile": "v3.5.5",

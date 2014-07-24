@@ -21,6 +21,11 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => true,
         ],
+        'request' => [
+			'enableCookieValidation' => true,
+			'enableCsrfValidation' => true,
+			'cookieValidationKey' => ' ma23k3"_ lörm,2äop i90raSUdf oa kä3r-käsdFkpoa 0ipdfPq3',
+		],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
