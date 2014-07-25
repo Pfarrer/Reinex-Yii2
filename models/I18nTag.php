@@ -9,6 +9,9 @@ class I18nTag extends I18nModel {
         return [
             [['name'], 'required'],
 			[['body'], 'safe'],
+			['shortcut_active', 'filter', 'filter' => 'trim'],
+            ['shortcut_active', 'filter', 'filter' => 'strtolower'],
+            ['shortcut_active', 'string', 'max' => 30],
         ];
     }
     
@@ -17,6 +20,10 @@ class I18nTag extends I18nModel {
     		'body' => 'Text',
 		];
     }
+    
+    public function getShortcut() {
+		return $this->hasOne(Shortcut::className(), ['shortcut' => 'shortcut_active']);
+	}
 
 	protected function getMetaClassname() {
 		return MetaTag::className();

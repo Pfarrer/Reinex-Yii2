@@ -25,6 +25,7 @@ use app\widgets\Menu;
             ]) ?>
             
                 <?= $form->field($i18n, 'name') ?>
+                <?= $form->field($i18n, 'shortcut_active') ?>
 				<?= $form->field($i18n, 'body')->textarea(['rows'=>20]) ?>
                 
 				<div class="form-group pull-right">

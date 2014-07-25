@@ -38,6 +38,7 @@ CREATE TABLE tag_i18n (
   lang CHAR(2) NOT NULL,
   name VARCHAR(200) NOT NULL,
   body TEXT NOT NULL,
+  shortcut_active CHAR(30) DEFAULT NULL,
 
   PRIMARY KEY (id, lang)
 );
