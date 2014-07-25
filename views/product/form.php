@@ -31,17 +31,9 @@ $tags = ArrayHelper::map($tags, 'id', 'i18n.name');
 	<div class="row">
 
 		<div class="col-md-12">
-
-			<div class="clearfix">
-				<div class="pull-left">
-					<h1>
-						<?= \Yii::t('product', $meta->id ? 'Edit product' : 'Create a product') ?>
-					</h1>
-				</div>
-				<div class="pull-right">
-					<?= ShortcutsModal::widget(['target'=>$meta]) ?>
-				</div>
-			</div>
+			<h1>
+				<?= \Yii::t('product', $meta->id ? 'Edit product' : 'Create a product') ?>
+			</h1>
 
 			<?php $form = ActiveForm::begin([
 				'id' => 'login-form',
@@ -52,6 +44,7 @@ $tags = ArrayHelper::map($tags, 'id', 'i18n.name');
 			]) ?>
 
 				<?= $form->field($i18n, 'name') ?>
+				<?= $form->field($i18n, 'shortcut_active') ?>
 				<?= $form->field($i18n, 'body')->textarea(['rows'=>20]) ?>
 
 				<?= $form->field($meta, 'tags')->checkboxList($tags) ?>
