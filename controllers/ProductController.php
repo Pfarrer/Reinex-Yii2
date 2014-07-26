@@ -13,6 +13,7 @@ use app\models\I18nProduct;
 use app\models\ProductTag;
 use app\models\MetaImage;
 use app\models\MetaTag;
+use app\models\Shortcut;
 
 class ProductController extends CrudController {
 
@@ -46,12 +47,7 @@ class ProductController extends CrudController {
 		return parent::updateOrRender($meta, $i18n);
 	}
 	
-	public function actionCreate_shortcut() {
-		echo "hi";
-	}
-	
 	protected function afterSave(MetaModel &$meta, I18nModel &$i18n) {
-		
 		// Tags speichern
 		ProductTag::deleteAll('product_id=:pid', [':pid' => $meta->id]);
 		$post = Yii::$app->request->post('MetaProduct');
@@ -96,6 +92,15 @@ class ProductController extends CrudController {
 			}
 		}
 		
+		// Shortcut prüfen
+		if (!$i18n->shortcut && !empty($i18n->shortcut_active)) {
+			$shortcut = new Shortcut();
+			$shortcut->fid = $i18n->id;
+			$shortcut->fmodel = $i18n::className();
+			$shortcut->action = 'product/view';
+			$shortcut->shortcut = $i18n->shortcut_active;
+			$shortcut->save();
+		}
 	}
 
 }

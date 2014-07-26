@@ -27,23 +27,20 @@ app\assets\FullpageAsset::register($this);
 	<div class="section row" data-anchor="products">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="row">
-
 				<div class="col-md-9">
 					<h1><?= Yii::t('menu', 'Products') ?></h1>
-
 					<div class="row">
 						<?= ProductList::widget([
 							'products' => $products,
 							'cols' => 3,
 						]) ?>
 					</div>
-
 				</div>
 
-				<div class="col-md-3 well">
+				<div class="col-md-3">
 					<h2><?= Yii::t('tag', 'Categories') ?></h2>
 
-					<div class="list-group">
+					<div class="well list-group">
 						<?php foreach ($tags as $tag): ?>
 						<?php if ($tag->count > 0): ?>
 						<a href="<?= Url::to(['tag/view', 'id'=>$tag->id]) ?>" class="list-group-item">
@@ -68,7 +65,7 @@ app\assets\FullpageAsset::register($this);
 
 	<div class="section row" data-anchor="partners">
 		<div class="col-md-10 col-md-offset-1">
-			<h1><?= Yii::t('menu', 'Partner') ?></h1>
+			<h1 class="text-center" style="margin-bottom: 2em"><?= Yii::t('menu', 'Partner') ?></h1>
 
 			<div class="centered" style="margin-bottom: 2em;">
 				<img src="<?= Url::base() ?>/img/leistikow.gif" />

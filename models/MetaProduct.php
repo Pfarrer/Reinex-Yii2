@@ -21,6 +21,7 @@ class MetaProduct extends MetaModel {
 	}
 	public function getChildren() {
 		return $this->hasMany(MetaProduct::className(), ['parent_id'=>'id'])
+			->joinWith('i18n')
 			->orderby('sort');
 	}
 	
