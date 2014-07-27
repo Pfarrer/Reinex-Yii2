@@ -84,8 +84,10 @@ class ProductController extends CrudController {
 		if ($_FILES && isset($_FILES['images'])) {
 			$upImages = UploadedFile::getInstancesByName('images');
 			foreach ($upImages as $img) {
-				if ($img->getHasError()) continue;
-				
+				if ($img->getHasError()) {
+					Yii::$app->session->setFlash('warning', 'Bild-Upload wegen internem Fehler übersprungen.');
+					continue;
+				}
 				$metaImage = MetaImage::create($img);
 				$metaImage->fmodel = $meta::className();
 				$meta->link('images', $metaImage);

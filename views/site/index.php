@@ -15,14 +15,17 @@ app\assets\FullpageAsset::register($this);
 	'items' => Menu::frontpage()
 ]) ?>
 
-<div id="fullpage" class="container">
+<div id="fullimage_container">
+	
+</div>
 
-	<div class="section row">
-		<div id="backstretch_container" style="background-size: cover"></div>
-		<script>
+<script>
+	$(function () {
+		var container = $("#fullimage");
+	});
+</script>
 
-		</script>
-	</div>
+<div id="fullpage" class="container" style="background-color: red; margin-top: 100%">
 
 	<div class="section row" data-anchor="products">
 		<div class="col-md-10 col-md-offset-1">

@@ -45,6 +45,10 @@ $textile = new \Netcarver\Textile\Parser();
 	<![endif]-->
 
 	<div id="body-content">
+		<?php foreach (Yii::$app->session->allFlashes as $type=>$msg): ?>
+			<div class="alert alert-<?= $type ?> text-center" role="alert"><?= $msg ?></div>
+		<?php endforeach; ?>
+	
 		<?= $content ?>
 	</div>
 
