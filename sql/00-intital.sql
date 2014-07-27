@@ -19,7 +19,7 @@ CREATE TABLE product_meta (
   PRIMARY KEY (id)
 );
 CREATE TABLE product_i18n (
-  id INT NOT NULL AUTO_INCREMENT,
+  id INT NOT NULL,
   lang CHAR(2) NOT NULL,
   name VARCHAR(200) NOT NULL,
   body TEXT NOT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE tag_meta (
   PRIMARY KEY (id)
 );
 CREATE TABLE tag_i18n (
-  id INT NOT NULL AUTO_INCREMENT,
+  id INT NOT NULL,
   lang CHAR(2) NOT NULL,
   name VARCHAR(200) NOT NULL,
   body TEXT NOT NULL,
@@ -44,7 +44,6 @@ CREATE TABLE tag_i18n (
 );
 
 CREATE TABLE product_tag (
-  id INT NOT NULL AUTO_INCREMENT,
   product_id INT NOT NULL,
   tag_id INT NOT NULL,
   
@@ -73,4 +72,24 @@ CREATE TABLE shortcut (
   
   PRIMARY KEY (shortcut),
   KEY (fid, fmodel)
+);
+
+CREATE TABLE contact_meta (
+  id INT NOT NULL AUTO_INCREMENT,
+  sort INT NOT NULL DEFAULT 1000000,
+
+  PRIMARY KEY (id)
+);
+CREATE TABLE contact_i18n (
+  id INT NOT NULL,
+  lang CHAR(2) NOT NULL,
+  name VARCHAR(100) NOT NULL,
+  department VARCHAR(50) NOT NULL,
+  tel CHAR(20) NOT NULL,
+  mobile CHAR(20) DEFAULT NULL,
+  mail CHAR(30) DEFAULT NULL,
+  skype CHAR(20) DEFAULT NULL,
+  image_id INT DEFAULT NULL,
+
+  PRIMARY KEY (id, lang)
 );

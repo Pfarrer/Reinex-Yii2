@@ -6,6 +6,7 @@ use Yii;
 use yii\web\Controller;
 use app\models\MetaProduct;
 use app\models\MetaTag;
+use app\models\MetaContact;
 
 class SiteController extends Controller {
 
@@ -23,9 +24,16 @@ class SiteController extends Controller {
 			->orderBy('tag_i18n.name')
 			->all();
 		
+		// Contacts mit dieser Sprache finden
+		$contacts = MetaContact::find()
+			->joinWith('i18n')
+			->orderBy('sort')
+			->all();
+		
 		return $this->render('index', [
 			'products' => $products,
 			'tags' => $tags,
+			'contacts' => $contacts,
 		]);
 	}
 

@@ -120,6 +120,22 @@ app\assets\FullpageAsset::register($this);
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
 					<h1><?= Yii::t('menu', 'Contact') ?></h1>
+					
+					<div class="row" id="contacts">
+						<?php foreach ($contacts as $contact): ?>
+						<div class="contact col-md-6">
+							<div class="department"><?= $contact->i18n->department ?></div>
+							<div class="clearfix">
+								<div class="pull-left">
+									<div class="profileimage" style="background-image: url(<?= Url::to('img/profile-image.png') ?>)"></div>
+								</div>
+								<div class="pull-left">
+									<strong><?= $contact->i18n->name ?></strong>
+								</div>
+							</div>
+						</div>
+						<?php endforeach; ?>
+					</div>
 				</div>
 			</div>
 		</div>
