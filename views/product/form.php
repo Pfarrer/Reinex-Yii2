@@ -57,7 +57,9 @@ $sortableImageItems = array_map(function ($img) {
 				<?php endif; ?>
 				<?= $form->field($i18n, 'body')->textarea(['rows'=>20]) ?>
 
+				<?php if (!$meta->parent): // Unterprodukte haben keine Tags ?>
 				<?= $form->field($meta, 'tags')->checkboxList($tags) ?>
+				<?php endif; ?>
 
 				<?php if ($meta->parent): ?>
 				<input type="hidden" name="parent_id" value="<?= $meta->parent_id ?>" />
