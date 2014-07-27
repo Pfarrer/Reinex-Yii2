@@ -20,7 +20,8 @@
 		"kartik-v/dependent-dropdown": "dev-master",
 		"kartik-v/yii2-field-range": "dev-master",
 		"kartik-v/yii2-widgets": "dev-master",
-		"smottt/wideimage": "dev-master"
+		"smottt/wideimage": "dev-master",
+		"kartik-v/yii2-sortable": "dev-master"
 	},
 	"require-dev": {
 		"yiisoft/yii2-codeception": "*",

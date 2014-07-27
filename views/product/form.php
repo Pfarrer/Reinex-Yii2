@@ -4,6 +4,7 @@ use yii\helpers\ArrayHelper;
 
 use kartik\widgets\ActiveForm;
 use kartik\widgets\FileInput;
+use kartik\sortable\Sortable;
 
 use app\widgets\Menu;
 use app\models\MetaTag;
@@ -20,6 +21,13 @@ $tags = MetaTag::find()
 	->with('i18n')
 	->all();
 $tags = ArrayHelper::map($tags, 'id', 'i18n.name');
+
+$sortableImageItems = array_map(function ($img) {
+	return [
+		'content' => '<img src="'.app\widgets\ImageWidget::thumbnail($img).'" />'.
+			'<input type="hidden" name="image_sort[]" value="'.$img->id.'" />'
+	];
+}, $meta->images);
 ?>
 
 <?= Menu::widget([
@@ -53,10 +61,9 @@ $tags = ArrayHelper::map($tags, 'id', 'i18n.name');
 				<input type="hidden" name="parent_id" value="<?= $meta->parent_id ?>" />
 				<?php endif; ?>
 
-				<div class="col-md-offset-2 col-md-10">
-					<h3>Bilder</h3>
-
-					<div>
+				<div class="form-group field-images">
+					<label class="col-md-2 control-label" for="images">Bilder</label>
+					<div class="col-md-10">
 						<?= FileInput::widget([
 							'name' => 'images[]',
 							'options' => [
@@ -70,18 +77,14 @@ $tags = ArrayHelper::map($tags, 'id', 'i18n.name');
 								'showRemove' => false,
 							]
 						]) ?>
+						
+						<?= Sortable::widget([
+							'type' => Sortable::TYPE_GRID,
+							'items' => $sortableImageItems,
+						]) ?>
+						
 					</div>
-					
-					<ol class="product-images sortable">
-						<?php foreach ($meta->images as $img): ?>
-						<li class="image col-md-2">
-							<img src="<?= app\widgets\ImageWidget::thumbnail($img) ?>" />
-							<input type="hidden" name="image_sort[]" value="<?= $img->id ?>" />
-						</li>
-						<?php endforeach; ?>
-					</ol>
-	
-				</div>				
+				</div>
 
 				<div class="form-group pull-right">
 					<?= Html::submitButton(Yii::t('common', 'Save'), ['class' => 'btn btn-primary']) ?>
