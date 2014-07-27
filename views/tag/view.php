@@ -17,7 +17,16 @@ use app\widgets\ProductList;
     
         <div class="col-md-10 col-md-offset-1">
         
-        	<h1><?= Yii::t('tag', 'Category') ?> <i><?= $i18n->name ?></i></h1>
+        	<h1>
+        		<?= Yii::t('tag', 'Category') ?> <i><?= $i18n->name ?></i>
+        		<?php if (!Yii::$app->user->isGuest): ?>
+        		<small>
+		    		<a href="<?= Url::to(['tag/edit', 'id'=>$meta->id]) ?>">
+			    		<i class="glyphicon glyphicon-pencil"></i> Ändern
+		    		</a>
+        		</small>
+        		<?php endif; ?>
+        	</h1>
 
 			<?php if (!empty($i18n->body)): ?>
 			<div class="well">

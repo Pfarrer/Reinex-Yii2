@@ -1,5 +1,7 @@
 <?php
 
+use \Yii;
+
 use app\helpers\Url;
 use app\widgets\Menu;
 use app\widgets\ImageWidget;
@@ -19,7 +21,16 @@ use app\widgets\ImageWidget;
 <div class="container">
     <div class="row">
     	<div class="col-md-10 col-md-offset-1">
-        	<h1><?= $meta->i18n->name ?></h1>
+        	<h1>
+        		<?= $meta->i18n->name ?>
+        		<?php if (!Yii::$app->user->isGuest): ?>
+        		<small>
+		    		<a href="<?= Url::to(['product/edit', 'id'=>$meta->id]) ?>">
+			    		<i class="glyphicon glyphicon-pencil"></i> Ändern
+		    		</a>
+        		</small>
+        		<?php endif; ?>
+        	</h1>
         </div>
     </div>
     
@@ -31,7 +42,9 @@ use app\widgets\ImageWidget;
 
 			<div class="images">
 				<?php foreach ($meta->images as $img): ?>
-				<a class="fancybox" rel="group" href="<?= ImageWidget::full($img) ?>"><img src="<?= ImageWidget::thumbnail($img) ?>" alt="" /></a>
+				<a class="fancybox" rel="group" href="<?= ImageWidget::full($img) ?>">
+					<img src="<?= ImageWidget::thumbnail($img) ?>" alt="" />
+				</a>
 				<?php endforeach; ?>
 			</div>
 
