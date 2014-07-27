@@ -18,26 +18,35 @@ use app\widgets\ImageWidget;
 	'items' => Menu::frontpage()
 ]) ?>
 
-<div class="container">
-    <div class="row">
+<div class="container" id="product">
+
+	<div class="row">
     	<div class="col-md-10 col-md-offset-1">
-        	<h1>
+    		<h1>
         		<?= $meta->i18n->name ?>
         		<?php if (!Yii::$app->user->isGuest): ?>
-        		<small>
+        		<small class="pull-right">
 		    		<a href="<?= Url::to(['product/edit', 'id'=>$meta->id]) ?>">
 			    		<i class="glyphicon glyphicon-pencil"></i> Ändern
 		    		</a>
         		</small>
         		<?php endif; ?>
         	</h1>
-        </div>
-    </div>
-    
-	<div class="row">
-    	<div class="col-md-<?= $meta->tags ? 8 : 10 ?> col-md-offset-1">
-			<div class="well">
+    	
+			<div class="well body">
 				<?= $this->textile($meta->i18n->body) ?>
+				
+				<?php if ($meta->tags): ?>
+				<div class="categories">
+					<hr />
+					<?= Yii::t('tag', 'Categories') ?>:
+					<?php foreach ($meta->tags as $tag): ?>
+					<a href="<?= Url::to(['tag/view', 'id'=>$tag->id]) ?>" class="badge">
+						<?= $tag->i18n->name ?>
+					</a>
+					<?php endforeach; ?>
+				</div>
+				<?php endif; ?>
 			</div>
 
 			<div class="images">
@@ -63,20 +72,6 @@ use app\widgets\ImageWidget;
 				});
 			</script>
 		</div>
-		
-		<?php if ($meta->tags): ?>
-		<div class="col-md-2">
-			<div class="list-group">
-				<?php foreach ($meta->tags as $tag): ?>
-				<a href="<?= Url::to(['tag/view', 'id'=>$tag->id]) ?>" class="list-group-item">
-					<?= $tag->i18n->name ?>
-					<span class="badge"><?= $tag->count ?></span>
-				</a>
-				<?php endforeach; ?>
-			</div>
-		</div>
-		<?php endif; ?>
-		
     </div>
     
     <div class="row">
@@ -84,7 +79,16 @@ use app\widgets\ImageWidget;
     		<?php foreach ($meta->children as $child): ?>
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title"><?= $child->i18n->name ?></h3>
+					<h3 class="panel-title">
+						<i><?= $meta->i18n->name ?></i>
+						<?= $child->i18n->name ?>
+						
+						<?php if (!Yii::$app->user->isGuest): ?>
+						<a href="<?= Url::to(['product/edit', 'id'=>$child->id]) ?>" class="pull-right">
+							<i class="glyphicon glyphicon-pencil"></i> Ändern
+						</a>
+						<?php endif; ?>
+					</h3>
 				</div>
 				<div class="panel-body">
 					<?= $this->textile($child->i18n->body) ?>

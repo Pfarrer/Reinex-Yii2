@@ -31,7 +31,7 @@ class ProductController extends CrudController {
 		
 		return $this->render('index', ['products' => $products]);
 	}
-	
+
 	public function actionCreate($parent=NULL) {
 		if (!$parent) return parent::actionCreate();
 		
@@ -54,7 +54,7 @@ class ProductController extends CrudController {
 		if (isset($post['tags']) && is_array($post['tags'])) {
 			$tags = MetaTag::findAll($post['tags']);
 			foreach ($tags as $tag) {
-				$a = $meta->link('tags', $tag);
+				$meta->link('tags', $tag);
 			}
 		}
 		

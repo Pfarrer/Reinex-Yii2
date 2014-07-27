@@ -89,7 +89,6 @@ abstract class CrudController extends Controller {
 		
 		$transaction->commit();
 		return $this->redirect(['view', 'id'=>$meta->id]);
-
 	}
 	
 	protected function afterSave(MetaModel &$meta, I18nModel &$i18n) {}

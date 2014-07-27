@@ -24,8 +24,8 @@ $tags = ArrayHelper::map($tags, 'id', 'i18n.name');
 
 $sortableImageItems = array_map(function ($img) {
 	return [
-		'content' => '<img src="'.app\widgets\ImageWidget::thumbnail($img).'" />'.
-			'<input type="hidden" name="image_sort[]" value="'.$img->id.'" />'
+		'content' => '<img src="'.app\widgets\ImageWidget::thumbnail($img).'" />'
+				.'<input type="hidden" name="image_sort[]" value="'.$img->id.'" />',
 	];
 }, $meta->images);
 ?>
@@ -51,8 +51,10 @@ $sortableImageItems = array_map(function ($img) {
 				'type' => ActiveForm::TYPE_HORIZONTAL,
 			]) ?>
 
-				<?= $form->field($i18n, 'name') ?>
+				<?= $form->field($i18n, 'name', $meta->parent ? ['addon' => ['prepend' => ['content'=>$meta->parent->i18n->name]]] : []) ?>
+				<?php if (!$meta->parent): // Unterprodukte können keinen Shortcut haben, da sie auch keine eigene Seite haben ?>
 				<?= $form->field($i18n, 'shortcut_active') ?>
+				<?php endif; ?>
 				<?= $form->field($i18n, 'body')->textarea(['rows'=>20]) ?>
 
 				<?= $form->field($meta, 'tags')->checkboxList($tags) ?>

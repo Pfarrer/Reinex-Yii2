@@ -62,38 +62,17 @@ ul.navbar-right #language_flag {
 .well {
 	background-color: white;
 }
+.well p:first-child,
+.panel-body p:first-child {
+	margin-top: 0;
+}
+.well p:last-child,
+.panel-body p:last-child {
+	margin-bottom: 0;
+}
 
-#fullimage_container {
-	height: 100%;
-	min-height: 100%;
-	width: 100%;
-	top: 0;
-	left: 0;
-	height: auto;
-	position: fixed;
-	
-	background-repeat: no-repeat;
-	background-position: center bottom;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
+#fullpage #frontimage {
 	background-size: cover;
-	background-image: url(http://oceanramsey.com/wp-content/themes/oceanramsey/images/gallery/pic1.jpg);
-}
-#fullimage_container #fullimage {
-	z-index: 999;
-  min-height: 100%;
-  min-width: 1024px;
-  width: 100%;
-  height: auto;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
-#fullpage #fullimage {
-	
-	width: 100%;
 }
 
 #fullpage #products .product{
@@ -106,17 +85,24 @@ ul.navbar-right #language_flag {
 }
 
 /** Product **/
-ul.products-list > li > ul.products-list {
-	margin-bottom: 0;
+#product .images {
+	margin-bottom: 20px;
+	padding: 0 2px;
+}
+#product .images img {
+	padding: 2px 0;
+}
+#product .images a:hover {
+	text-decoration: none;
 }
 
-.product-images {
-	margin-bottom: 2em;
-}
-.product-images .image {
-	padding-left: 0;
-	padding-right: 4px;
-}
-.product-images .image > img {
-	width: 100%;
+/** Product Text **/
+#product .body h1,
+#product .body h2,
+#product .body h3,
+#product .body h4,
+#product .body h5 {
+	margin-top: 2em;
+	margin-bottom: 0;
+	text-decoration: underline;
 }
