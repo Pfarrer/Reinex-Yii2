@@ -17,7 +17,7 @@ class SiteController extends Controller {
 			->where('parent_id IS NULL')
 			->orderBy('sort')
 			->all();
-			
+
 		// Kategorien mit dieser Sprache finden
 		$tags = MetaTag::find()
 			->joinWith('i18n')
@@ -26,7 +26,7 @@ class SiteController extends Controller {
 		
 		// Contacts mit dieser Sprache finden
 		$contacts = MetaContact::find()
-			->joinWith('i18n')
+			->with('i18n') // Kein joinWith
 			->orderBy('sort')
 			->all();
 		

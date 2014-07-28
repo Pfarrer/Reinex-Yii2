@@ -77,19 +77,19 @@ CREATE TABLE shortcut (
 CREATE TABLE contact_meta (
   id INT NOT NULL AUTO_INCREMENT,
   sort INT NOT NULL DEFAULT 1000000,
+  name VARCHAR(100) NOT NULL,
+  tel CHAR(20) NOT NULL,
+  mobile CHAR(20) DEFAULT NULL,
+  mail CHAR(30) DEFAULT NULL,
+  skype CHAR(20) DEFAULT NULL,
+  image_id INT DEFAULT NULL,
 
   PRIMARY KEY (id)
 );
 CREATE TABLE contact_i18n (
   id INT NOT NULL,
   lang CHAR(2) NOT NULL,
-  name VARCHAR(100) NOT NULL,
   department VARCHAR(50) NOT NULL,
-  tel CHAR(20) NOT NULL,
-  mobile CHAR(20) DEFAULT NULL,
-  mail CHAR(30) DEFAULT NULL,
-  skype CHAR(20) DEFAULT NULL,
-  image_id INT DEFAULT NULL,
 
   PRIMARY KEY (id, lang)
 );

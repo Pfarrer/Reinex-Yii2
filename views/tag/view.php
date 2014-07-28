@@ -34,14 +34,11 @@ use app\widgets\ProductList;
 				<?= $this->textile($i18n->body) ?>
 			</div>
 			<?php endif; ?>
-			
-			<div class="row">
-				<?= ProductList::widget([
-					'products' => $meta->products,
-					'cols' => 4,
-				]) ?>
-			</div>
-			
+
+			<?= ProductList::widget([
+				'products' => $meta->products,
+				'cols' => 4,
+			]) ?>
         </div>
 
     </div>

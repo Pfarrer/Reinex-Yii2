@@ -1,14 +1,14 @@
 <?php
-
 use app\helpers\Url;
 use app\widgets\Menu;
 use app\widgets\ProductList;
-
-app\assets\FullpageAsset::register($this);
+use app\widgets\ContactList;
 
 /**
  * @var app\components\View $this
  */
+
+app\assets\FullpageAsset::register($this);
 ?>
 
 <?= Menu::widget([
@@ -29,12 +29,11 @@ app\assets\FullpageAsset::register($this);
 					<div class="row">
 						<div class="col-md-9">
 							<h1><?= Yii::t('menu', 'Products') ?></h1>
-							<div class="row">
-								<?= ProductList::widget([
-									'products' => $products,
-									'cols' => 3,
-								]) ?>
-							</div>
+
+							<?= ProductList::widget([
+								'products' => $products,
+								'cols' => 3,
+							]) ?>
 						</div>
 
 						<div class="col-md-3">
@@ -68,12 +67,26 @@ app\assets\FullpageAsset::register($this);
 			</div>
 		</div>
 	</div>
+	
+	<div class="section row" data-anchor="contact">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-10 col-md-offset-1">
+					<h1><?= Yii::t('menu', 'Contact') ?></h1>
+
+					<?= ContactList::widget([
+						'contacts' => $contacts,
+					]) ?>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<div class="section row" data-anchor="partners">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1">
-					<h1 class="text-center" style="margin-bottom: 2em"><?= Yii::t('menu', 'Partner') ?></h1>
+					<h1 class="text-center"><?= Yii::t('menu', 'Partner') ?></h1>
 
 					<div class="centered" style="margin-bottom: 2em;">
 						<img src="<?= Url::base() ?>/img/leistikow.gif" />
@@ -110,32 +123,6 @@ app\assets\FullpageAsset::register($this);
 
 					</div>
 
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<div class="section row" data-anchor="contact">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-10 col-md-offset-1">
-					<h1><?= Yii::t('menu', 'Contact') ?></h1>
-					
-					<div class="row" id="contacts">
-						<?php foreach ($contacts as $contact): ?>
-						<div class="contact col-md-6">
-							<div class="department"><?= $contact->i18n->department ?></div>
-							<div class="clearfix">
-								<div class="pull-left">
-									<div class="profileimage" style="background-image: url(<?= Url::to('img/profile-image.png') ?>)"></div>
-								</div>
-								<div class="pull-left">
-									<strong><?= $contact->i18n->name ?></strong>
-								</div>
-							</div>
-						</div>
-						<?php endforeach; ?>
-					</div>
 				</div>
 			</div>
 		</div>

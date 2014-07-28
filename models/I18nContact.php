@@ -7,8 +7,8 @@ class I18nContact extends I18nModel {
 
     public function rules() {
         return [
-            [['name', 'department'], 'required'],
-            [['name', 'department', 'tel', 'mobile', 'mail', 'skype'], 'filter', 'filter' => 'trim'],
+            ['department', 'required'],
+            ['department', 'filter', 'filter' => 'trim'],
         ];
     }
     

@@ -1,4 +1,5 @@
 Angaben gemäß § 5 TMG:
+!{width:230px}logo.gif!
 *Reinex Hochdrucktechnik GmbH*
 Gewerbegebiet Geraer Straße 7
 D-07973 Greiz
@@ -7,8 +8,8 @@ Vertreten durch:
 Winfried Pfretzschner, Sascha Lindner
 
 Kontakt:
-Telefon: +49 (0) 3661-6285-0
-Telefax: +49 (0) 3661-6285-19
+Telefon: 03661-6285-0
+Telefax: 03661-6285-19
 E-Mail:	info@reinex.de
 
 Registereintrag:

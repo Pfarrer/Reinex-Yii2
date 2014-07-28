@@ -7,8 +7,8 @@ return [
 		Gewerbegebiet Geraer Straße 7<br />
 		D-07973 Greiz
 
-		Telefon: +49 (0) 3661-6285-0<br />
-		Telefax: +49 (0) 3661-6285-19
+		Telefon: 0049 3661-6285-0<br />
+		Telefax: 0049 3661-6285-19
 	',
 
 	'col2' => '
