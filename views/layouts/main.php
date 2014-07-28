@@ -1,6 +1,7 @@
 <?php
 
 use app\helpers\Url;
+use yii\helpers\Html;
 
 $textile = new \Netcarver\Textile\Parser();
 
@@ -34,6 +35,7 @@ $textile = new \Netcarver\Textile\Parser();
 	<script src="<?= Url::base() ?>/js/bootstrap.min.js"></script>
 	<script src="<?= Url::base() ?>/js/modernizr-2.6.2.min.js"></script>
 
+	<?= Html::csrfMetaTags() ?>
 	<?= $this->head() ?>
 </head>
 <body>

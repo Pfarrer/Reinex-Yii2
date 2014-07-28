@@ -3,8 +3,6 @@
 $params = require(__DIR__ . '/params.php');
 $db = require(__DIR__ . '/db.php');
 
-use yii\web\Response;
-
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
@@ -19,11 +17,11 @@ $config = [
     	'urlManager' => [
             'class' => 'app\components\UrlManager',
             'enablePrettyUrl' => true,
-            'showScriptName' => true,
+            'showScriptName' => false,
         ],
         'request' => [
 			'enableCookieValidation' => true,
-			'enableCsrfValidation' => true,
+			'enableCsrfValidation' => false,
 			'cookieValidationKey' => ' ma23k3"_ lörm,2äop i90raSUdf oa kä3r-käsdFkpoa 0ipdfPq3',
 		],
         'cache' => [
