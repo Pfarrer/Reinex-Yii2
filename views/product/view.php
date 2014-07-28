@@ -87,23 +87,45 @@ use app\widgets\ImageWidget;
     <div class="row">
     	<div class="col-md-10 col-md-offset-1">
     		<?php foreach ($meta->children as $child): ?>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">
-						<i><?= $meta->i18n->name ?></i>
-						<?= $child->i18n->name ?>
-						
-						<?php if (!Yii::$app->user->isGuest): ?>
-						<a href="<?= Url::to(['product/edit', 'id'=>$child->id]) ?>" class="pull-right">
-							<i class="glyphicon glyphicon-pencil"></i> Ändern
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">
+							<i><?= $meta->i18n->name ?></i>
+							<?= $child->i18n->name ?>
+
+							<?php if (!Yii::$app->user->isGuest): ?>
+								<a href="<?= Url::to(['product/edit', 'id'=>$child->id]) ?>" class="pull-right">
+									<i class="glyphicon glyphicon-pencil"></i> Ändern
+								</a>
+							<?php endif; ?>
+						</h3>
+					</div>
+					<div class="panel-body">
+						<?= $this->textile($child->i18n->body) ?>
+					</div>
+				</div>
+
+				<div class="images">
+					<?php foreach ($child->images as $img): ?>
+						<a class="fancybox" rel="group" href="<?= ImageWidget::full($img) ?>">
+							<img src="<?= ImageWidget::thumbnail($img) ?>" alt="" />
 						</a>
-						<?php endif; ?>
-					</h3>
+					<?php endforeach; ?>
 				</div>
-				<div class="panel-body">
-					<?= $this->textile($child->i18n->body) ?>
-				</div>
-			</div>
+
+				<?php if ($child->medias): ?>
+					<div class="medias">
+						<script src="http://www.youtube.com/player_api"></script>
+
+						<?php foreach ($child->medias as $media): ?>
+							<a class="fancybox fancybox.iframe" rel="group" href="<?= $media->url ?>">
+								<img src="<?= ImageWidget::thumbnail($media->image) ?>" />
+							</a>
+						<?php endforeach; ?>
+					</div>
+				<?php endif; ?>
+
 			<?php endforeach; ?>
     	</div>
     </div>
