@@ -1,9 +1,10 @@
 <?php
 namespace app\models;
 
+use yii\db\ActiveRecord;
 use yii\web\UploadedFile;
 
-class MetaImage extends \yii\db\ActiveRecord {
+class MetaImage extends ActiveRecord {
 
 	public static function create(UploadedFile $file) {
 		$img = new MetaImage();
@@ -33,7 +34,7 @@ class MetaImage extends \yii\db\ActiveRecord {
     }
 
 	public static function tableName() {
-		return 'image_meta';
+		return '{{%image_meta}}';
 	}
 
 }

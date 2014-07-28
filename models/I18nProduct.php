@@ -34,7 +34,7 @@ class I18nProduct extends I18nModel {
     }
 
 	public static function tableName() {
-		return 'product_i18n';
+		return '{{%product_i18n}}';
 	}
 	
 }

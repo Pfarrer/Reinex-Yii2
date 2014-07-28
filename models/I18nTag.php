@@ -30,7 +30,7 @@ class I18nTag extends I18nModel {
 	}
 
 	public static function tableName() {
-		return 'tag_i18n';
+		return '{{%tag_i18n}}';
 	}
 
 }

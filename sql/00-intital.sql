@@ -1,4 +1,4 @@
-CREATE TABLE user (
+CREATE TABLE yii2_user (
   id INT NOT NULL AUTO_INCREMENT,
   username CHAR(10) NOT NULL,
   password CHAR(32) NOT NULL,
@@ -8,17 +8,14 @@ CREATE TABLE user (
   PRIMARY KEY (id)
 );
 
-INSERT INTO user (username, password, accessToken)
-  VALUES ('brian', MD5('abc123'), 'jf9)J§P*8s');
-
-CREATE TABLE product_meta (
+CREATE TABLE yii2_product_meta (
   id INT NOT NULL AUTO_INCREMENT,
   sort INT NOT NULL DEFAULT 1000000,
   parent_id INT NULL,
 
   PRIMARY KEY (id)
 );
-CREATE TABLE product_i18n (
+CREATE TABLE yii2_product_i18n (
   id INT NOT NULL,
   lang CHAR(2) NOT NULL,
   name VARCHAR(200) NOT NULL,
@@ -28,12 +25,12 @@ CREATE TABLE product_i18n (
   PRIMARY KEY (id, lang)
 );
 
-CREATE TABLE tag_meta (
+CREATE TABLE yii2_tag_meta (
   id INT NOT NULL AUTO_INCREMENT,
   
   PRIMARY KEY (id)
 );
-CREATE TABLE tag_i18n (
+CREATE TABLE yii2_tag_i18n (
   id INT NOT NULL,
   lang CHAR(2) NOT NULL,
   name VARCHAR(200) NOT NULL,
@@ -43,14 +40,24 @@ CREATE TABLE tag_i18n (
   PRIMARY KEY (id, lang)
 );
 
-CREATE TABLE product_tag (
+CREATE TABLE yii2_product_tag (
   product_id INT NOT NULL,
   tag_id INT NOT NULL,
-  
+
   PRIMARY KEY (product_id, tag_id)
 );
+CREATE TABLE yii2_product_media (
+  id INT NOT NULL AUTO_INCREMENT,
+  product_id INT NOT NULL,
+  sort INT NOT NULL DEFAULT 1000000,
+  url VARCHAR(100) NOT NULL,
+  name VARCHAR(200) NOT NULL,
 
-CREATE TABLE image_meta (
+  PRIMARY KEY (id),
+  KEY (product_id, sort)
+);
+
+CREATE TABLE yii2_image_meta (
   id INT NOT NULL AUTO_INCREMENT,
   fid INT NOT NULL,
   fmodel CHAR(30) NOT NULL,
@@ -64,7 +71,7 @@ CREATE TABLE image_meta (
   KEY (hash)
 );
 
-CREATE TABLE shortcut (
+CREATE TABLE yii2_shortcut (
   shortcut CHAR(30),
   action CHAR(30) NOT NULL,
   fid INT NOT NULL,
@@ -74,7 +81,7 @@ CREATE TABLE shortcut (
   KEY (fid, fmodel)
 );
 
-CREATE TABLE contact_meta (
+CREATE TABLE yii2_contact_meta (
   id INT NOT NULL AUTO_INCREMENT,
   sort INT NOT NULL DEFAULT 1000000,
   name VARCHAR(100) NOT NULL,
@@ -86,7 +93,7 @@ CREATE TABLE contact_meta (
 
   PRIMARY KEY (id)
 );
-CREATE TABLE contact_i18n (
+CREATE TABLE yii2_contact_i18n (
   id INT NOT NULL,
   lang CHAR(2) NOT NULL,
   department VARCHAR(50) NOT NULL,

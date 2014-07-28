@@ -10,7 +10,7 @@ class ProductTag extends \yii\db\ActiveRecord {
     }
 
 	public static function tableName() {
-		return 'product_tag';
+		return '{{%product_tag}}';
 	}
 	
 	public static function primaryKey() {

@@ -1,5 +1,4 @@
 <?php
-
 use \Yii;
 
 use app\helpers\Url;
@@ -11,7 +10,6 @@ use app\widgets\ImageWidget;
  */
 
 \app\assets\FancyboxAsset::register($this);
-
 ?>
 
 <?= Menu::widget([
@@ -56,6 +54,18 @@ use app\widgets\ImageWidget;
 				</a>
 				<?php endforeach; ?>
 			</div>
+
+			<?php if ($meta->medias): ?>
+			<div class="medias">
+				<script src="http://www.youtube.com/player_api"></script>
+
+				<?php foreach ($meta->medias as $media): ?>
+					<a class="fancybox fancybox.iframe" rel="group" href="<?= $media->url ?>">
+						<img src="<?= ImageWidget::thumbnail($media->image) ?>" />
+					</a>
+				<?php endforeach; ?>
+			</div>
+			<?php endif; ?>
 
 			<script>
 				$(function () {

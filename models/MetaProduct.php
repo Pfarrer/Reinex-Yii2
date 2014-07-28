@@ -15,6 +15,11 @@ class MetaProduct extends MetaModel {
 			->where('fmodel=:model', [':model' => $this::className()])
 			->orderby('sort');
 	}
+
+	public function getMedias() {
+		return $this->hasMany(ProductMedia::className(), ['product_id'=>'id'])
+			->orderby('sort');
+	}
 	
 	public function getParent() {
 		return $this->hasOne(MetaProduct::className(), ['id'=>'parent_id']);
@@ -27,7 +32,7 @@ class MetaProduct extends MetaModel {
 	
 	public function getTags() {
 		return $this->hasMany(MetaTag::className(), ['id' => 'tag_id'])
-			->viaTable('product_tag', ['product_id'=>'id'])
+			->viaTable('{{%product_tag}}', ['product_id'=>'id'])
 			->joinWith('i18n')
 			->orderby('name');
 	}
@@ -48,7 +53,7 @@ class MetaProduct extends MetaModel {
 	}
 	
 	public static function tableName() {
-		return 'product_meta';
+		return '{{%product_meta}}';
 	}
 	
 }

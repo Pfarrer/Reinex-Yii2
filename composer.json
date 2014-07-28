@@ -21,7 +21,9 @@
 		"kartik-v/yii2-field-range": "dev-master",
 		"kartik-v/yii2-widgets": "dev-master",
 		"smottt/wideimage": "dev-master",
-		"kartik-v/yii2-sortable": "dev-master"
+		"kartik-v/yii2-sortable": "dev-master",
+		"embed/embed": "dev-master",
+		"cics/yii2-video-embed-widget": "dev-master"
 	},
 	"require-dev": {
 		"yiisoft/yii2-codeception": "*",

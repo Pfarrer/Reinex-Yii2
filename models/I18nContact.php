@@ -25,7 +25,7 @@ class I18nContact extends I18nModel {
     }
 
 	public static function tableName() {
-		return 'contact_i18n';
+		return '{{%contact_i18n}}';
 	}
 	
 }

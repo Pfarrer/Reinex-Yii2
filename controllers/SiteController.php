@@ -21,7 +21,7 @@ class SiteController extends Controller {
 		// Kategorien mit dieser Sprache finden
 		$tags = MetaTag::find()
 			->joinWith('i18n')
-			->orderBy('tag_i18n.name')
+			->orderBy('{{%tag_i18n}}.name')
 			->all();
 		
 		// Contacts mit dieser Sprache finden

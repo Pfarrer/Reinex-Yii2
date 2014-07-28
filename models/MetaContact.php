@@ -28,7 +28,7 @@ class MetaContact extends MetaModel {
 	}
 	
 	public static function tableName() {
-		return 'contact_meta';
+		return '{{%contact_meta}}';
 	}
 	
 }

@@ -4,6 +4,7 @@ use yii\helpers\ArrayHelper;
 
 use kartik\widgets\ActiveForm;
 use kartik\widgets\FileInput;
+use kartik\widgets\InputWidget;
 use kartik\sortable\Sortable;
 
 use app\widgets\Menu;
@@ -28,6 +29,13 @@ $sortableImageItems = array_map(function ($img) {
 				.'<input type="hidden" name="image_sort[]" value="'.$img->id.'" />',
 	];
 }, $meta->images);
+
+$sortableMediaItems = array_map(function ($media) {
+	return [
+		'content' => $media->name.' (<a href="'.$media->url.'" target="_blank">'.$media->url.'</a>)'
+			.'<input type="hidden" name="medias_sort[]" value="'.$media->id.'" />',
+	];
+}, $meta->medias);
 ?>
 
 <?= Menu::widget([
@@ -87,6 +95,17 @@ $sortableImageItems = array_map(function ($img) {
 							'items' => $sortableImageItems,
 						]) ?>
 						
+					</div>
+				</div>
+
+				<div class="form-group field-medias">
+					<label class="col-md-2 control-label" for="medias">Media</label>
+					<div class="col-md-10">
+						<?= Sortable::widget([
+							//'type' => Sortable::TYPE_GRID,
+							'items' => $sortableMediaItems,
+						]) ?>
+						<input type="text" class="form-control" name="media_url" />
 					</div>
 				</div>
 

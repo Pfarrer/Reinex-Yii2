@@ -111,15 +111,21 @@ ul.navbar-right #language_flag {
 }
 
 /** Product **/
-#product .images {
+#product .images,
+#product .medias {
 	margin-bottom: 20px;
 	padding: 0 2px;
 }
-#product .images img {
+#product .images img,
+#product .medias img {
 	padding: 2px 0;
 }
-#product .images a:hover {
+#product .images a:hover,
+#product .medias a:hover {
 	text-decoration: none;
+}
+#product .medias img {
+	width: 120px;
 }
 
 /** Product Text **/

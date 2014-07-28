@@ -1,6 +1,7 @@
 <?php
 namespace app\controllers;
 
+use app\models\ProductMedia;
 use Yii;
 use yii\web\NotFoundHttpException;
 use yii\web\UploadedFile;
@@ -102,6 +103,29 @@ class ProductController extends CrudController {
 			$shortcut->action = 'product/view';
 			$shortcut->shortcut = $i18n->shortcut_active;
 			$shortcut->save();
+		}
+
+		$media_url = Yii::$app->request->post('media_url');
+		if ($media_url && !empty($media_url)) {
+			$media = new ProductMedia();
+			$media->url = str_replace('watch?v=', 'embed/', $media_url);
+			$media->name = $media->embed->title;
+			$meta->link('medias', $media);
+
+			// Download image
+			$imgraw = file_get_contents($media->embed->image);
+			$imghash = md5($imgraw);
+			$imgbasename = pathinfo($media->embed->image, PATHINFO_FILENAME);
+			$imgextension = strtolower(pathinfo($media->embed->image, PATHINFO_EXTENSION));
+			file_put_contents('img/uploaded/'.$imghash.'.'.$imgextension, $imgraw);
+
+			$img = new MetaImage();
+			$img->hash = $imghash;
+			$img->filename = $imgbasename;
+			$img->extension = $imgextension;
+			$img->fid = $media->id;
+			$img->fmodel = $media::className();
+			$img->save();
 		}
 	}
 
