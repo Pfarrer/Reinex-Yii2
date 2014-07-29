@@ -58,6 +58,13 @@ abstract class CrudController extends Controller {
 		return $this->updateOrRender($meta, $i18n);
 	}
 
+	public function actionDelete($id) {
+		$meta = call_user_func([$this->metaClassName, 'findOne'], [$id]);
+		if (!$meta) throw new NotFoundHttpException();
+		$meta->delete();
+		return $this->redirect(['index']);
+	}
+
 	protected function updateOrRender(MetaModel $meta, I18nModel $i18n) {
 		// Set new POST values if there are some
 		$loaded = $meta->load(Yii::$app->request->post());

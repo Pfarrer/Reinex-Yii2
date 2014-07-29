@@ -39,7 +39,14 @@ use app\widgets\Menu;
             				<i><?= Yii::t('common', 'Translation missing!') ?></i>
             			<?php endif; ?>
             		</a>
-            	</li>
+
+					<div class="pull-right">
+						<a class="danger" href="<?= Url::to(['tag/delete', 'id'=>$tag->id]) ?>" onclick="return confirm('Wirklich löschen?')">
+							<i class="glyphicon glyphicon-trash"></i>
+						</a>
+					</div>
+
+				</li>
             	<?php endforeach; ?>
             </ul>
             
