@@ -101,9 +101,11 @@ use app\widgets\ImageWidget;
 							<?php endif; ?>
 						</h3>
 					</div>
+					<?php if (!empty($child->i18n->body)): ?>
 					<div class="panel-body">
 						<?= $this->textile($child->i18n->body) ?>
 					</div>
+					<?php endif; ?>
 				</div>
 
 				<div class="images">

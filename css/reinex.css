@@ -70,6 +70,9 @@ ul.navbar-right #language_flag {
 .panel-body p:last-child {
 	margin-bottom: 0;
 }
+a.danger:hover {
+	color: red;
+}
 
 #fullpage .section h1 {
 	margin-bottom: 2em;

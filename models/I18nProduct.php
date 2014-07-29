@@ -7,8 +7,8 @@ class I18nProduct extends I18nModel {
 
     public function rules() {
         return [
-            [['name', 'body'], 'required'],
-            ['shortcut_active', 'filter', 'filter' => 'trim'],
+            [['name'], 'required'],
+            [['name', 'body', 'shortcut_active'], 'filter', 'filter' => 'trim'],
             ['shortcut_active', 'filter', 'filter' => 'strtolower'],
             ['shortcut_active', 'string', 'max' => 30],
         ];
