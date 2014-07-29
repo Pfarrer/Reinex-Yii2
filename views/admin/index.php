@@ -20,17 +20,19 @@ use app\widgets\Menu;
            	<h1>Admin Dashboard</h1>
 
 			<ul class="list-group">
+			
+				<li class="list-group-item">
+					<a href="<?= Url::to(['/frontimage']) ?>">Frontimages</a>
+				</li>
 				
 				<li class="list-group-item">
 					<a href="<?= Url::to(['/product']) ?>">
 						<?= \Yii::t('product', 'Products') ?>
 					</a>
-					<span class="badge">0</span>
 				</li>
 				
 				<li class="list-group-item">
 					<a href="<?= Url::to(['/tag']) ?>">Tags</a>
-					<span class="badge">0</span>
 				</li>
 				
 			</ul>
