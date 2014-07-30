@@ -1,12 +1,9 @@
-html, body, #header, #footer {
+html, body, #footer {
 	background-color: #454545;
 }
-
-#header, #footer {
+#footer {
 	color: white;
-}
-#header {
-	z-index: 1;
+	z-index: 0;
 }
 #body-content {
 	position: relative;
@@ -14,22 +11,8 @@ html, body, #header, #footer {
 	z-index: 2;
 	box-shadow: 0px -3px 40px #292929;
 }
-#footer {
-	z-index: 0;
-}
 
 @media (min-width: 995px) {
-	#header, #footer {
-		width: 100%;
-	}
-	#header {
-		position: relative;
-		top: 0;
-		padding-top: 70px;
-	}
-	#header + #body-content {
-		margin-top: 100%;
-	}
 	#body-content {
 		margin-top: 50px;
 		padding-bottom: 2em;
@@ -37,6 +20,7 @@ html, body, #header, #footer {
 	}
 	#footer {
 		position: fixed;
+		width: 100%;
 		bottom: 0;
 		padding-bottom: 2em;
 	}
