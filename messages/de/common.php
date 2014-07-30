@@ -2,7 +2,7 @@
 
 return [
 
-	'Reinex high pressure systems' => 'Reinex Hochdrucktechnik',
+	'High pressure systems Ltd.' => 'Hochdrucktechnik GmbH',
 
 	'Translation missing!' => 'Übersetztung fehlt!',
 	

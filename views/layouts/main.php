@@ -17,7 +17,7 @@ $textile = new \Netcarver\Textile\Parser();
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>
-		<?= Yii::t('common', 'Reinex high pressure systems') ?>
+		Reinex <?= Yii::t('common', 'High pressure systems Ltd.') ?>
 	</title>
 
 	<meta name="description" content="">

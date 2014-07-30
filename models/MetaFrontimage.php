@@ -7,8 +7,7 @@ class MetaFrontimage extends MetaModel {
 
 	public function rules() {
         return [
-            ['image_id', 'required'],
-			[['name', 'body'], 'safe'],
+            ['image_id', 'integer'],
         ];
     }
     

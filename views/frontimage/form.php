@@ -22,11 +22,18 @@ use app\widgets\Menu;
         
             <?php $form = ActiveForm::begin([
             	'type' => ActiveForm::TYPE_HORIZONTAL,
+				'options' => [
+					'enctype' => 'multipart/form-data',
+				],
             ]) ?>
+
+				<?= $form->errorSummary($meta) ?>
+				<?= $form->errorSummary($i18n) ?>
             
                 <?= $form->field($i18n, 'name') ?>
         		<?= $form->field($i18n, 'body')->textarea(['rows'=>10]) ?>
-        		
+
+				<?php if ($meta->isNewRecord): ?>
         		<div class="form-group field-images">
 					<label class="col-md-2 control-label" for="images">Bild</label>
 					<div class="col-md-10">
@@ -44,6 +51,7 @@ use app\widgets\Menu;
 						]) ?>
 					</div>
 				</div>
+				<?php endif; ?>
                 
 				<div class="form-group pull-right">
 					<?= Html::submitButton(Yii::t('common', 'Save'), ['class' => 'btn btn-primary']) ?>

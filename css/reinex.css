@@ -78,8 +78,49 @@ a.danger:hover {
 	margin-bottom: 2em;
 }
 
-#fullpage #frontimage {
+@media (max-width: 768px) {
+	#fullpage #frontimage {
+		display: none;
+	}
+}
+#fullpage #frontimage #logo {
+	position: absolute;
+	top: 9%;
+	left: 8%;
+	z-index: 10;
+	max-width: 400px;
+	width: 30%;
+}
+#fullpage #frontimage #logo img {
+	width: 100%;
+}
+#fullpage #frontimage #logo div {
+	text-align: center;
+	white-space: nowrap;
+	padding-right: 10%;
+}
+#fullpage #frontimage .slide {
 	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+#fullpage #frontimage .slide .tableCell {
+	vertical-align: bottom;
+}
+
+#fullpage #frontimage .slide .tableCell .text {
+	display: block;
+	background-color: rgba(231, 231, 231, 0.55);
+	padding: 1em;
+	color: black;
+	width: 35%;
+	float: right;
+	margin-right: 80px;
+	margin-bottom: 80px;
+}
+#fullpage #frontimage .slide .tableCell .text h1 {
+	margin: 0;
+	margin-bottom: 0.2em;
 }
 
 #fullpage #products .product {

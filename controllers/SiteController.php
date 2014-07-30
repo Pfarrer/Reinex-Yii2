@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\MetaFrontimage;
 use Yii;
 use yii\web\Controller;
 use app\models\MetaProduct;
@@ -11,6 +12,11 @@ use app\models\MetaContact;
 class SiteController extends Controller {
 
 	public function actionIndex() {
+		$frontimages = MetaFrontimage::find()
+			->joinWith('i18n')
+			->orderBy('sort')
+			->all();
+
 		// Produkte mit dieser Sprache finden
 		$products = MetaProduct::find()
 			->joinWith('i18n')
@@ -31,6 +37,7 @@ class SiteController extends Controller {
 			->all();
 		
 		return $this->render('index', [
+			'frontimages' => $frontimages,
 			'products' => $products,
 			'tags' => $tags,
 			'contacts' => $contacts,

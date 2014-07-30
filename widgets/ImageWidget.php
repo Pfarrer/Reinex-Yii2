@@ -24,22 +24,25 @@ class ImageWidget extends Widget {
 		return self::getImage($img, 1024, 768, true);
 	}
 
-	private static function getImage(MetaImage $img, $x, $y, $overlay) {
+	public static function frontimage(MetaImage $img) {
+		return self::getImage($img, 1280, 720 , false, 70);
+	}
+
+	private static function getImage(MetaImage $img, $x, $y, $overlay, $quality=95) {
 		$dirpath = self::$ROOT_DIR.'/'.$x.'x'.$y;
 		if (!is_dir($dirpath)) {
-			mkdir($dirpath, 0777, true) || die('ImageWidget::thumbnail(): mkdir failed');
+			mkdir($dirpath, 0777, true) || die('ImageWidget::getImage(): mkdir failed');
 		}
 
 		$filepath = $dirpath.'/'.$img->hash.'.'.$img->extension;
 		if (!is_file($filepath)) {
-			self::createImage($img, $filepath, $x, $y, $overlay);
+			self::createImage($img, $filepath, $x, $y, $overlay, $quality);
 		}
 
 		return Url::base().'/'.$filepath;
 	}
 	
-	private static function createImage(MetaImage $img, $targetpath, $x, $y, $overlay) {
-
+	private static function createImage(MetaImage $img, $targetpath, $x, $y, $overlay, $quality) {
 		$image = WideImage::load($img->fullPath());
 		$image = $image->resize($x, $y);
 
@@ -51,8 +54,7 @@ class ImageWidget extends Widget {
 			$image = $image->merge($lowerWatermark, 'right', 'bottom', 100);
 		}
 		
-		$image->saveToFile($targetpath, 95);
-	
+		$image->saveToFile($targetpath, $quality);
 	}
 
 	//public function run() {}

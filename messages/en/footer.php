@@ -3,7 +3,7 @@
 return [
 
 	'col1' => '
-		**Reinex - high pressure systems Ldt.**<br />
+		**Reinex - high pressure systems Ltd.**<br />
 		Gewerbegebiet Geraer Straße 7<br />
 		D-07973 Greiz
 

@@ -2,7 +2,7 @@
 namespace app\controllers;
 
 use Yii;
-use yii\web\NotFoundHttpException;
+use yii\web\HttpException;
 use yii\web\UploadedFile;
 
 use app\components\CrudController;
@@ -27,53 +27,26 @@ class FrontimageController extends CrudController {
 		
 		return $this->render('index', ['metas' => $metas]);
 	}
-	
+
+	public function actionView($id) {
+		return $this->redirect(['index']);
+	}
+
 	protected function afterSave(MetaModel &$meta, I18nModel &$i18n) {
-		// Neue Images verarbeiten
-		if ($_FILES && isset($_FILES['image'])) {
-			$upImages = UploadedFile::getInstancesByName('images');
-			foreach ($upImages as $img) {
-				if ($img->getHasError()) {
-					Yii::$app->session->setFlash('warning', 'Bild-Upload wegen internem Fehler übersprungen.');
-					continue;
-				}
+		if (!$meta->image) {
+			// Neue Images verarbeiten
+			if ($_FILES && isset($_FILES['image'])) {
+				$img = UploadedFile::getInstanceByName('image');
+				if (!$img) throw new HttpException(500, 'Es muss ein Bild ausgewählt werden!');
+				if ($img->getHasError()) throw new HttpException(500, 'Bild ist fehlerhaft!');
+
 				$metaImage = MetaImage::create($img);
 				$metaImage->fmodel = $meta::className();
-				$meta->link('images', $metaImage);
+				$metaImage->fid = $meta->id;
+				$metaImage->save();
+
+				$meta->link('image', $metaImage);
 			}
-		}
-		
-		// Shortcut prüfen
-		if (!$i18n->shortcut && !empty($i18n->shortcut_active)) {
-			$shortcut = new Shortcut();
-			$shortcut->fid = $i18n->id;
-			$shortcut->fmodel = $i18n::className();
-			$shortcut->action = 'product/view';
-			$shortcut->shortcut = $i18n->shortcut_active;
-			$shortcut->save();
-		}
-
-		$media_url = Yii::$app->request->post('media_url');
-		if ($media_url && !empty($media_url)) {
-			$media = new ProductMedia();
-			$media->url = str_replace('watch?v=', 'embed/', $media_url);
-			$media->name = $media->embed->title;
-			$meta->link('medias', $media);
-
-			// Download image
-			$imgraw = file_get_contents($media->embed->image);
-			$imghash = md5($imgraw);
-			$imgbasename = pathinfo($media->embed->image, PATHINFO_FILENAME);
-			$imgextension = strtolower(pathinfo($media->embed->image, PATHINFO_EXTENSION));
-			file_put_contents('img/uploaded/'.$imghash.'.'.$imgextension, $imgraw);
-
-			$img = new MetaImage();
-			$img->hash = $imghash;
-			$img->filename = $imgbasename;
-			$img->extension = $imgextension;
-			$img->fid = $media->id;
-			$img->fmodel = $media::className();
-			$img->save();
 		}
 	}
 

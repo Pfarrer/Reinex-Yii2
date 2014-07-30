@@ -3,12 +3,14 @@ use app\helpers\Url;
 use app\widgets\Menu;
 use app\widgets\ProductList;
 use app\widgets\ContactList;
+use app\widgets\ImageWidget;
 
 /**
  * @var app\components\View $this
  */
 
 app\assets\FullpageAsset::register($this);
+app\assets\FittextAsset::register($this);
 ?>
 
 <?= Menu::widget([
@@ -17,10 +19,28 @@ app\assets\FullpageAsset::register($this);
 
 <div id="fullpage">
 
+	<?php if ($frontimages): ?>
 	<div class="section" data-anchor="frontimage" id="frontimage">
-		<div class="slide" style="background-image: url(http://www.neyralaw.com/wp-content/uploads/2012/07/tokyo-blue-background-4547.jpg)"> Slide 1 </div>
-		<div class="slide" style="background-image: url(http://blog.lenycom.com/wp-content/uploads/2010/01/Apple-Vector-Desktop-Ful-HD-Background.jpg)"> Slide 2 </div>
+		<div id="logo">
+			<img src="<?= Url::to('img/logo.gif') ?>" />
+			<div><?= Yii::t('common', 'High pressure systems Ltd.') ?></div>
+			<script>
+				$(function () {
+					$("#logo div").fitText();
+				});
+			</script>
+		</div>
+
+		<?php foreach ($frontimages as $fimage): ?>
+		<div class="slide" style="background-image: url(<?= ImageWidget::frontimage($fimage->image) ?>)">
+			<div class="text">
+				<h1><?= $fimage->i18n->name ?></h1>
+				<div><?= $fimage->i18n->body ?></div>
+			</div>
+		</div>
+		<?php endforeach; ?>
 	</div>
+	<?php endif; ?>
 
 	<div class="section" data-anchor="products">
 		<div class="container">
