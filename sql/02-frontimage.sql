@@ -3,7 +3,8 @@ CREATE TABLE yii2_frontimage_meta (
   sort INT NOT NULL DEFAULT 1000000,
   image_id INT NULL,
 
-  PRIMARY KEY (id)
+  PRIMARY KEY (id),
+  FOREIGN KEY (image_id) REFERENCES yii2_image_meta(id) ON DELETE CASCADE
 );
 CREATE TABLE yii2_frontimage_i18n (
   id INT NOT NULL,
@@ -11,5 +12,6 @@ CREATE TABLE yii2_frontimage_i18n (
   name VARCHAR(200) NOT NULL,
   body TEXT NOT NULL,
   
-  PRIMARY KEY (id, lang)
+  PRIMARY KEY (id, lang),
+  FOREIGN KEY (id) REFERENCES yii2_frontimage_meta(id) ON DELETE CASCADE
 );

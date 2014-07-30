@@ -22,7 +22,8 @@ CREATE TABLE yii2_product_i18n (
   body TEXT NOT NULL,
   shortcut_active CHAR(30) DEFAULT NULL,
 
-  PRIMARY KEY (id, lang)
+  PRIMARY KEY (id, lang),
+  FOREIGN KEY (id) REFERENCES yii2_product_meta(id) ON DELETE CASCADE
 );
 
 CREATE TABLE yii2_tag_meta (
@@ -37,14 +38,17 @@ CREATE TABLE yii2_tag_i18n (
   body TEXT NOT NULL,
   shortcut_active CHAR(30) DEFAULT NULL,
 
-  PRIMARY KEY (id, lang)
+  PRIMARY KEY (id, lang),
+  FOREIGN KEY (id) REFERENCES yii2_tag_meta(id) ON DELETE CASCADE
 );
 
 CREATE TABLE yii2_product_tag (
   product_id INT NOT NULL,
   tag_id INT NOT NULL,
 
-  PRIMARY KEY (product_id, tag_id)
+  PRIMARY KEY (product_id, tag_id),
+  FOREIGN KEY (product_id) REFERENCES yii2_product_meta(id) ON DELETE CASCADE,
+  FOREIGN KEY (tag_id) REFERENCES yii2_tag_meta(id) ON DELETE CASCADE
 );
 CREATE TABLE yii2_product_media (
   id INT NOT NULL AUTO_INCREMENT,
@@ -54,7 +58,8 @@ CREATE TABLE yii2_product_media (
   name VARCHAR(200) NOT NULL,
 
   PRIMARY KEY (id),
-  KEY (product_id, sort)
+  KEY (product_id, sort),
+  FOREIGN KEY (product_id) REFERENCES yii2_product_meta(id) ON DELETE CASCADE
 );
 
 CREATE TABLE yii2_image_meta (
@@ -98,5 +103,6 @@ CREATE TABLE yii2_contact_i18n (
   lang CHAR(2) NOT NULL,
   department VARCHAR(50) NOT NULL,
 
-  PRIMARY KEY (id, lang)
+  PRIMARY KEY (id, lang),
+  FOREIGN KEY (id) REFERENCES yii2_contact_meta(id) ON DELETE CASCADE
 );

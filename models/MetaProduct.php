@@ -5,6 +5,11 @@ use app\components\MetaModel;
 
 class MetaProduct extends MetaModel {
 
+	public function init() {
+		parent::init();
+		$this->on(self::EVENT_BEFORE_DELETE, [$this, 'handleBeforeDelete']);
+	}
+
 	public function getFrontimage() {
 		return $this->hasOne(MetaImage::className(), ['fid'=>'id'])
 			->where('fmodel=:model', [':model' => $this::className()])
@@ -47,6 +52,13 @@ class MetaProduct extends MetaModel {
     	if ($this->parent_id === NULL) return TRUE;
     	return $this->getParent() !== NULL;
     }
+
+	public function handleBeforeDelete($event) {
+		foreach ($this->images as $img) {
+			/* @var $img \app\models\MetaImage */
+			$img->delete();
+		}
+	}
 	
 	protected function getI18nClassname() {
 		return I18nProduct::className();
