@@ -20,6 +20,7 @@ class Menu extends \yii\base\Widget {
 	public static function admin() {
 		return [
 			['label'=>'Dashboard', 'url'=>Url::to(['/admin'])],
+			['label'=>'Frontimage', 'url'=>Url::to(['/frontimage'])],
 			['label'=>'Products', 'url'=>Url::to(['/product'])],
 			['label'=>'Tags', 'url'=>Url::to(['/tag'])],
 			['label'=>'Logout', 'url'=>Url::to(['admin/logout']), 'icon'=>'log-out'],

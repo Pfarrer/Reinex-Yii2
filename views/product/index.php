@@ -1,12 +1,10 @@
 <?php
-
 use app\helpers\Url;
 use app\widgets\Menu;
 
 /**
  * @var app\components\View $this
  */
-
 ?>
 
 <?= Menu::widget([

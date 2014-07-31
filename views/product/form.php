@@ -15,8 +15,6 @@ use app\widgets\ShortcutsModal;
  * @var app\components\View $this
  */
 
-//app\assets\SortableAsset::register($this);
-
 $tags = MetaTag::find()
 	->asArray()
 	->with('i18n')

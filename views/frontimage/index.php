@@ -1,13 +1,12 @@
 <?php
-
 use app\helpers\Url;
 use app\widgets\Menu;
+use kartik\sortable\Sortable;
 
 /**
  * @var app\components\View $this
- * @var app\models\Metaproduct[] $products
+ * @var app\models\MetaFrontimage[] $metas
  */
-
 ?>
 
 <?= Menu::widget([
@@ -27,28 +26,23 @@ use app\widgets\Menu;
             		<?= Yii::t('tag', 'Create a Frontimage') ?>
             	</a>
             </div>
-
-            <ul class="list-group">
-				<?php foreach ($metas as $id=>$fimage): ?>
-            	<li class="list-group-item">
-            		<a href="<?= Url::to(['edit', 'id'=>$fimage->id]) ?>">
-            			<i class="glyphicon glyphicon-pencil"></i>
-            			<?php if ($fimage->i18n): ?>
-            				<?= $fimage->i18n->name ?>
-            			<?php else: ?>
-            				<i><?= Yii::t('common', 'Translation missing!') ?></i>
-            			<?php endif; ?>
-            		</a>
-
-					<div class="pull-right">
-						<a class="danger" href="<?= Url::to(['delete', 'id'=>$fimage->id]) ?>" onclick="return confirm('Wirklich löschen?')">
-							<i class="glyphicon glyphicon-trash"></i>
-						</a>
-					</div>
-
-				</li>
-            	<?php endforeach; ?>
-            </ul>
+            
+            <form id="frontimage_sort">
+	            <?= Sortable::widget([
+	            	'showHandle' => true,
+					
+	            	'items' => array_map(function ($meta) {
+						return [
+							'content' => $this->renderFile('@app/views/frontimage/_index_frontimage_item.php', ['meta'=>$meta]),
+						];
+					}, $metas),
+					
+					'pluginEvents' => [
+						'sortupdate' => 'function() { console.log($("#frontimage_sort").serialize()); }',
+					],
+	
+	            ]) ?>
+			</form>
             
         </div>
     </div>
