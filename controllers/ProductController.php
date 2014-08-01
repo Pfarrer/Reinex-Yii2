@@ -96,13 +96,21 @@ class ProductController extends CrudController {
 		}
 		
 		// Shortcut prüfen
-		if (!$i18n->shortcut && !empty($i18n->shortcut_active)) {
-			$shortcut = new Shortcut();
-			$shortcut->fid = $i18n->id;
-			$shortcut->fmodel = $i18n::className();
-			$shortcut->action = 'product/view';
-			$shortcut->shortcut = $i18n->shortcut_active;
-			$shortcut->save();
+		if (!empty($i18n->shortcut_active)) {
+			if (!$i18n->shortcut) {
+				$shortcut = new Shortcut();
+				$shortcut->fid = $i18n->id;
+				$shortcut->fmodel = $i18n::className();
+				$shortcut->action = 'product/view';
+				$shortcut->shortcut = $i18n->shortcut_active;
+				$shortcut->save();
+			}
+			else if ($i18n->shortcut->fmodel != $i18n::className()
+				|| $i18n->shortcut->fid != $i18n->id) {
+				Yii::$app->session->setFlash('warning', 'Shortcut konnte nicht gespeichert werden weil er schon benutzt wird!');
+				$i18n->shortcut_active = '';
+				$i18n->save();
+			}
 		}
 
 		$media_url = Yii::$app->request->post('media_url');
