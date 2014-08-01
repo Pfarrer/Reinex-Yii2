@@ -22,7 +22,7 @@ app\assets\FittextAsset::register($this);
 	<?php if ($frontimages): ?>
 	<div class="section" data-anchor="frontimage" id="frontimage">
 		<div id="logo">
-			<img src="<?= Url::to('img/logo.gif') ?>" />
+			<img src="<?= Url::to('img/logo_big.png') ?>" />
 			<div><?= Yii::t('common', 'High pressure systems Ltd.') ?></div>
 			<script>
 				$(function () {
