@@ -166,3 +166,9 @@ a.danger:hover {
 	margin-bottom: 0;
 	text-decoration: underline;
 }
+
+
+/** Sortable **/
+ul.sortable.list {
+	background-color: white;
+}
