@@ -50,7 +50,13 @@ class ProductController extends CrudController {
 	
 	protected function afterSave(MetaModel &$meta, I18nModel &$i18n) {
 		// Tags speichern
-		ProductTag::deleteAll('product_id=:pid', [':pid' => $meta->id]);
+		$translated_tag_ids = array_map(function ($meta) {
+			return $meta->id;
+		}, MetaTag::find()->joinWith('i18n')->all());
+		ProductTag::deleteAll([
+			'product_id' => $meta->id,
+			'tag_id' => $translated_tag_ids,
+		]);
 		$post = Yii::$app->request->post('MetaProduct');
 		if (isset($post['tags']) && is_array($post['tags'])) {
 			$tags = MetaTag::findAll($post['tags']);

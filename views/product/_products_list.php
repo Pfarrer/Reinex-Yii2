@@ -1,11 +1,9 @@
 <?php
-
 use app\helpers\Url;
 
 /**
  * @var app\components\View $this
  */
-
 ?>
 
 <ul class="list-group products-list">

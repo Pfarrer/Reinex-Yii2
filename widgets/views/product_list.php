@@ -9,7 +9,7 @@ use \yii\helpers\Url;
 <div class="row">
 	<?php foreach ($products as $product): ?>
 	<div class="col-md-<?= 12/$cols ?>">
-		<a href="<?= Url::to(['product/view', 'id'=>$product->id]) ?>">
+		<a href="<?= Url::to($product->i18n->shortcut_active ? ['/'.$product->i18n->shortcut_active] : ['product/view', 'id'=>$product->id]) ?>">
 			<div class="thumbnail">
 
 				<?php if ($product->frontimage): ?>

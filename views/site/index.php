@@ -62,7 +62,7 @@ app\assets\FittextAsset::register($this);
 							<div class="list-group">
 								<?php foreach ($tags as $tag): ?>
 								<?php if ($tag->count > 0): ?>
-								<a href="<?= Url::to(['tag/view', 'id'=>$tag->id]) ?>" class="list-group-item">
+								<a href="<?= Url::to($tag->i18n->shortcut_active ? ['/'.$tag->i18n->shortcut_active] : ['tag/view', 'id'=>$tag->id]) ?>" class="list-group-item">
 									<?= $tag->i18n->name ?>
 									<span class="badge"><?= $tag->count ?></span>
 								</a>

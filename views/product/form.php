@@ -17,7 +17,7 @@ use app\widgets\ShortcutsModal;
 
 $tags = MetaTag::find()
 	->asArray()
-	->with('i18n')
+	->joinWith('i18n')
 	->all();
 $tags = ArrayHelper::map($tags, 'id', 'i18n.name');
 
@@ -57,7 +57,7 @@ $sortableMediaItems = array_map(function ($media) {
 				'type' => ActiveForm::TYPE_HORIZONTAL,
 			]) ?>
 
-				<?= $form->field($i18n, 'name', $meta->parent ? ['addon' => ['prepend' => ['content'=>$meta->parent->i18n->name]]] : []) ?>
+				<?= $form->field($i18n, 'name', $meta->parent ? ['addon' => ['prepend' => ['content'=>($meta->parent->i18n ? $meta->parent->i18n->name : Yii::t('common', 'Translation missing!'))]]] : []) ?>
 				<?php if (!$meta->parent): // Unterprodukte können keinen Shortcut haben, da sie auch keine eigene Seite haben ?>
 				<?= $form->field($i18n, 'shortcut_active') ?>
 				<?php endif; ?>
