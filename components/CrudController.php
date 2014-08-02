@@ -45,6 +45,24 @@ abstract class CrudController extends Controller {
 		return $this->updateOrRender($meta, $i18n);
 	}
 
+	public function actionSort() {
+		if (!Yii::$app->request->isPost) {
+			throw new HttpException(500);
+		}
+		
+		$i = 1;
+		$sorted_ids = Yii::$app->request->post('sorted_ids');
+		$metas = call_user_func([$this->metaClassName, 'find'])
+			->andWhere(['id' => $sorted_ids])->all();
+		
+		foreach ($metas as $meta) {
+			$meta->sort = array_search($meta->id, $sorted_ids);
+			$meta->save();
+		}
+		
+		return $this->redirect(['index']);
+	}
+
 	public function actionEdit($id) {
 		$meta = call_user_func([$this->metaClassName, 'findOne'], [$id]);
 		if (!$meta) throw new NotFoundHttpException();

@@ -27,7 +27,7 @@ use kartik\sortable\Sortable;
             	</a>
             </div>
             
-            <form id="frontimage_sort">
+            <form id="frontimage_sort" action="<?= Url::to(['sort']) ?>" method="post">
 	            <?= Sortable::widget([
 	            	'showHandle' => true,
 					
@@ -38,7 +38,7 @@ use kartik\sortable\Sortable;
 					}, $metas),
 					
 					'pluginEvents' => [
-						'sortupdate' => 'function() { console.log($("#frontimage_sort").serialize()); }',
+						'sortupdate' => 'function() { $("#frontimage_sort").submit(); }',
 					],
 	
 	            ]) ?>

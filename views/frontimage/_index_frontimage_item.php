@@ -11,7 +11,7 @@ use app\helpers\Url;
     <?= $meta->i18n ? $meta->i18n->name : '<i>'.Yii::t('common', 'Translation missing!').'</i>' ?>
 </a>
 
-<input type="hidden" name="frontimages_sort[]" value="<?= $meta->id ?>" />
+<input type="hidden" name="sorted_ids[]" value="<?= $meta->id ?>" />
 
 <div class="pull-right">
 	<a class="danger" href="<?= Url::to(['delete', 'id'=>$meta->id]) ?>" onclick="return confirm('Wirklich löschen?')">
