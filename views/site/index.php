@@ -102,52 +102,6 @@ app\assets\FittextAsset::register($this);
 		</div>
 	</div>
 
-	<div class="section row" data-anchor="partners">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-10 col-md-offset-1">
-					<h1 class="text-center"><?= Yii::t('menu', 'Partner') ?></h1>
-
-					<div class="centered" style="margin-bottom: 2em;">
-						<img src="<?= Url::base() ?>/img/leistikow.gif" />
-					</div>
-
-					<div class="row">
-
-						<div class="col-md-6 centered">
-							<h3><strong>FRANKFURT / MAIN</strong></h3>
-
-							<p>
-								Joachim Leistikow GmbH<br />
-								Altkoenigstraße 2<br />
-								D-61138 Niederdorfelden
-							</p>
-
-							<p>
-								<a href="http://www.leistikow-gmbh.de" target="_blank">www.leistikow-gmbh.de</a>
-							</p>
-						</div>
-						<div class="col-md-6 centered">
-							<h3><strong>BERLIN</strong></h3>
-
-							<p>
-								LEISTIKOW-UTAG GmbH<br />
-								Rosenthaler Straße 29-36<br />
-								D-13127 Berlin-Buchholz
-							</p>
-
-							<p>
-								<a href="http://www.leistikow-utag.de" target="_blank">www.leistikow-utag.de</a>
-							</p>
-						</div>
-
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<?php if (Yii::$app->language==='de'): ?>
 	<div class="section row" data-anchor="legal_notice">
 		<div class="container">

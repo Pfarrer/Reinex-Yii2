@@ -2,7 +2,7 @@
 use \Yii;
 
 use app\helpers\Url;
-
+http://techblog.tilllate.com/2008/07/20/ten-methods-to-obfuscate-e-mail-addresses-compared/
 /**
  * @var app\components\View $this
  * @var app\models\MetaContact[] $contacts
@@ -33,6 +33,15 @@ use app\helpers\Url;
 							<?= Yii::t('contact', 'Mobile: 0049 {0}', $contact->mobile) ?>
 						</div>
 					<?php endif; ?>
+					
+					<?php if ($contact->mail): ?>
+						<div class="mail">
+							<?= pfarrer\yii2\email\Obfuscator::widget([
+								'email' => $contact->mail,
+							]) ?>
+						</div>
+					<?php endif; ?>
+					
 					<?php if ($contact->skype): ?>
 						<div class="skype">
 							Skype: <a href="skype:<?= $contact->skype ?>"><?= $contact->skype ?></a>
