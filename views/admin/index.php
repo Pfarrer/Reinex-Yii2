@@ -34,6 +34,10 @@ use app\widgets\Menu;
 				<li class="list-group-item">
 					<a href="<?= Url::to(['/tag']) ?>">Tags</a>
 				</li>
+
+				<li class="list-group-item">
+					<a href="<?= Url::to(['/download']) ?>">Downloads</a>
+				</li>
 				
 			</ul>
             
