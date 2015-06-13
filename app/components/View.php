@@ -1,6 +1,6 @@
 <?php namespace app\components;
 
-class View extends \yii\web\View
+class View extends \rmrevin\yii\minify\View
 {
 	public function textile($raw)
 	{

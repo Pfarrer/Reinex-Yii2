@@ -22,22 +22,12 @@ AppAsset::register($this);
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<link rel="shortcut icon" href="<?= Url::base() ?>/favicon.ico" type="image/x-icon">
-		<link rel="icon" href="<?= Url::base() ?>/favicon.ico" type="image/x-icon">
+		<link rel="icon" type="image/gif" href="<?= Url::base() ?>/images/powerman.gif" />
 
 		<title>
 			<?php if ($this->title) echo $this->title.' | ' ?>
 			Reinex <?= Yii::t('common', 'High pressure systems Ltd.') ?>
 		</title>
-
-		<link rel="stylesheet" href="<?= Url::base() ?>/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?= Url::base() ?>/css/normalize.css">
-		<link rel="stylesheet" href="<?= Url::base() ?>/css/reinex.css">
-
-		<script src="<?= Url::base() ?>/js/jquery-1.11.1.min.js"></script>
-		<script src="<?= Url::base() ?>/js/jquery-migrate-1.2.1.min.js"></script>
-		<script src="<?= Url::base() ?>/js/bootstrap.min.js"></script>
-		<script src="<?= Url::base() ?>/js/modernizr-2.6.2.min.js"></script>
 
 		<?= Html::csrfMetaTags() ?>
 		<?= $this->head() ?>

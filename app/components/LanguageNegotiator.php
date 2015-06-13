@@ -19,13 +19,13 @@ class LanguageNegotiator extends ContentNegotiator
 		}
 		else {
 			// Sprachen aus der Params-Config laden
-			$this->languages = \Yii::$app->params['languages'];
+			$this->languages = Yii::$app->params['languages'];
 		}
-
+		
 		parent::negotiate();
 
-		if (\Yii::$app->getRequest()->get($this->languageParam) !== null) {
-			$session['lang'] = \Yii::$app->language;
+		if (Yii::$app->getRequest()->get($this->languageParam) !== null) {
+			$session['lang'] = Yii::$app->language;
 		}
 
 		// Redirect auf die gleiche Seite aber ohne "lang" Parameter

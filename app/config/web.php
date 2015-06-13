@@ -46,6 +46,7 @@ $config = [
 		],
 		'view' => [
 			'class' => 'app\components\View',
+			'enableMinify' => !YII_DEBUG,
 		],
 		'db' => require(__DIR__.'/db.php'),
 	],
