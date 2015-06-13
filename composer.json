@@ -1,5 +1,5 @@
 {
-	"name": "reinex/website",
+	"name": "Reinex website",
 	"description": "Corporate website",
 	"license": "proprietary",
 	"type": "project",
@@ -10,18 +10,11 @@
 			"email": "brian.pfretzschner@gmail.com"
 		}
 	],
-	"minimum-stability": "beta",
-	"repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/Pfarrer/yii2-email-obfuscator"
-        }
-    ],
+	"minimum-stability": "dev",
 	"require": {
 		"php": ">=5.4.0",
-		"yiisoft/yii2": "dev-master",
-		"yiisoft/yii2-bootstrap": "*",
-		"yiisoft/yii2-swiftmailer": "*",
+		"yiisoft/yii2": "2.0.4",
+		"yiisoft/yii2-bootstrap": "2.0.4",
 		"netcarver/textile": "v3.5.5",
 		"kartik-v/dependent-dropdown": "dev-master",
 		"kartik-v/yii2-field-range": "dev-master",
@@ -33,26 +26,34 @@
 		"pfarrer/yii2-email-obfuscator": "dev-master"
 	},
 	"require-dev": {
-		"yiisoft/yii2-codeception": "*",
 		"yiisoft/yii2-debug": "*",
 		"raveren/kint": "dev-master"
+	},
+	"autoload": {
+		"psr-0": {
+			"app": ""
+		}
 	},
 	"scripts": {
 		"post-create-project-cmd": [
 			"yii\\composer\\Installer::setPermission"
 		]
 	},
-	"config": {
-		"process-timeout": 1800
-	},
 	"extra": {
+		"asset-installer-paths": {
+			"npm-asset-library": "vendor/npm",
+			"bower-asset-library": "vendor/bower"
+		},
 		"writable": [
 			"runtime",
 			"web/assets",
-			"img"
+			"web/uploads"
 		],
 		"executable": [
 			"yii"
 		]
+	},
+	"config": {
+		"process-timeout": 1800
 	}
 }

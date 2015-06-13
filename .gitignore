@@ -9,3 +9,4 @@ composer.lock
 /img/uploaded
 /vendor
 .project
+/nbproject

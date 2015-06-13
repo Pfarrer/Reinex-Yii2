@@ -1,0 +1,18 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Brian Pfretzschner -- Devoloper -- @brianderpfarrer
+
+# THANKS
+
+    HTML5 Boilerplate
+	Bootstrap
+	Yii2
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3
+	PHP, Yii2
+    Normalize.css, jQuery, Modernizr
