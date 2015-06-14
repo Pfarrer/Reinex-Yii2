@@ -6,14 +6,17 @@
 	background-color: rgba(239, 239, 239, 0.95);
 	box-shadow: 0 2px 6px -2px #454545;
 }
+#menu-container #mainmenu-items li.active a {
+	background-color: rgba(0, 0, 0, 0.1);
+}
 
 div.navbar-header .navbar-brand {
 	padding: 0;
+	padding-left: 1em;
 }
 div.navbar-header .navbar-brand img {
-	max-height: 80px;
-	padding-top: 2px;
-	padding-left: 1em;
+	max-height: 84px;
+	padding-top: 6px;
 }
 /** Add some spance on the top, otherwise would the first link
 	be overlaid by the powerman logo **/
