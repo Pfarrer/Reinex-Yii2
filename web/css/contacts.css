@@ -1,11 +1,22 @@
+@media (max-width: 399px) {
+	#contacts .profileimage {
+		margin-left: 0;
+		margin-right: 1em;
+	}
+}
+@media (min-width: 400px) {
+	#contacts .profileimage {
+		margin-left: 2em;
+		margin-right: 2em;
+	}
+}
+
 #contacts .contact {
-	padding-left: 1em;
 	margin-bottom: 1em;
 }
 #contacts .profileimage {
 	width: 100px;
 	height: 100px;
-	margin: 5px 2em;
 	
 	background-size: cover;
 	border: 1px solid gray;

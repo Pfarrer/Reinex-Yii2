@@ -3,7 +3,7 @@ use \Yii;
 use app\components\Url;
 ?>
 
-<div class="navbar navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
 	<div class="container">
 
 		<div class="navbar-header">
@@ -14,7 +14,7 @@ use app\components\Url;
 				<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="<?= Url::home() ?>">
-				<img src="<?= Url::base() ?>/images/powerman.gif" />
+				<img src="<?= Url::base() ?>/images/toplogo.gif" />
 			</a>
 		</div>
 
