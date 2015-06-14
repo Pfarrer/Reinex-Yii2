@@ -17,6 +17,7 @@
 		"yiisoft/yii2-bootstrap": "2.0.4",
 		"rmrevin/yii2-minify-view": "~1.8",
 		"netcarver/textile": "v3.5.5",
+		"xj/yii2-fullpage-widget": "*",
 		"kartik-v/dependent-dropdown": "dev-master",
 		"kartik-v/yii2-field-range": "dev-master",
 		"kartik-v/yii2-widgets": "dev-master",

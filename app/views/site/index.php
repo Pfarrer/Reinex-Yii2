@@ -1,27 +1,44 @@
 <?php
 /** @var $this yii\web\View */
+/** @var $company_profile string */
 /** @var $contacts app\models\MetaContact[] */
+
+\xj\js\fullpage\FullpageAsset::register($this);
+
+$js = <<<JS
+$("#fullpage").fullpage({
+	menu: "#mainmenu-items",
+	autoScrolling: false,
+	fitToSection: false,
+	keyboardScrolling: false
+});
+JS;
+$this->registerJs($js);
 ?>
 
-<div class="section row" data-anchor="company">
-	<div class="col-md-12">
-		<h2><?= Yii::t('menu', 'Company') ?></h2>
-		<p><?= $this->textile($company_profile) ?></p>
+<div id="fullpage">
+	
+	<div class="section row" data-anchor="company">
+		<div class="col-md-12">
+			<h2><?= Yii::t('menu', 'Company') ?></h2>
+			<p><?= $this->textile($company_profile) ?></p>
+		</div>
 	</div>
-</div>
 
-<div class="section row" data-anchor="contact">
-	<div class="col-md-12">
-		<h2><?= Yii::t('menu', 'Contact') ?></h2>
-		<?= \app\widgets\ContactList::widget(['contacts' => $contacts]) ?>
+	<div class="section row" data-anchor="contact">
+		<div class="col-md-12">
+			<h2><?= Yii::t('menu', 'Contact') ?></h2>
+			<?= \app\widgets\ContactList::widget(['contacts' => $contacts]) ?>
+		</div>
 	</div>
-</div>
 
-<?php if (Yii::$app->language === 'de'): ?>
-<div class="section row" data-anchor="legal_notice">
-	<div class="col-md-12">
-		<h2><?= Yii::t('menu', 'Legal Notice') ?></h2>
-		<?= $this->textile(file_get_contents('../app/static/legal_notice.'.Yii::$app->language.'.textile')) ?>
+	<?php if (Yii::$app->language === 'de'): ?>
+	<div class="section row" data-anchor="legal_notice">
+		<div class="col-md-12">
+			<h2><?= Yii::t('menu', 'Legal Notice') ?></h2>
+			<?= $this->textile(file_get_contents('../app/static/legal_notice.'.Yii::$app->language.'.textile')) ?>
+		</div>
 	</div>
+	<?php endif; ?>
+
 </div>
-<?php endif; ?>
