@@ -1,0 +1,132 @@
+.centered {
+	text-align: center;
+}
+.well {
+	background-color: white;
+}
+.well p:first-child,
+.panel-body p:first-child {
+	margin-top: 0;
+}
+.well p:last-child,
+.panel-body p:last-child {
+	margin-bottom: 0;
+}
+a.danger:hover {
+	color: red;
+}
+
+#fullpage .section h1 {
+	margin-bottom: 2em;
+}
+
+@media (max-width: 768px) {
+	#fullpage #frontimage {
+		display: none;
+	}
+}
+#fullpage #frontimage #logo {
+	position: absolute;
+	top: 9%;
+	left: 8%;
+	z-index: 10;
+	max-width: 400px;
+	width: 30%;
+}
+#fullpage #frontimage #logo img {
+	width: 100%;
+}
+#fullpage #frontimage #logo div {
+	text-align: center;
+	white-space: nowrap;
+	padding-right: 10%;
+}
+#fullpage #frontimage .slide {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+#fullpage #frontimage .slide .tableCell {
+	vertical-align: bottom;
+}
+
+#fullpage #frontimage .slide .tableCell .text {
+	display: block;
+	background-color: rgba(231, 231, 231, 0.55);
+	padding: 1em;
+	color: black;
+	width: 35%;
+	float: right;
+	margin-right: 80px;
+	margin-bottom: 80px;
+}
+#fullpage #frontimage .slide .tableCell .text h1 {
+	margin: 0;
+	margin-bottom: 0.2em;
+}
+
+#fullpage #products .product {
+	float: left;
+	padding: 0 10px;
+	margin: 4px 8px;
+	background-color: #f5f5f5;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+#fullpage #contacts .contact {
+	margin-bottom: 1em;
+}
+#fullpage #contacts .profileimage {
+	width: 100px;
+	height: 100px;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	-ms-border-radius: 50px;
+	-o-border-radius: 50px;
+	border-radius: 50px;
+	background-size: cover;
+	-webkit-box-shadow: 0px 0px 5px 4px rgba(204,204,204,1);
+	-moz-box-shadow: 0px 0px 5px 4px rgba(204,204,204,1);
+	box-shadow: 0px 0px 5px 4px rgba(204,204,204,1);
+	margin: 5px;
+	margin-right: 2em;
+	border: 1px solid gray;
+}
+#fullpage #contacts .department {
+	font-style: italic;
+}
+
+/** Product **/
+#product .images,
+#product .medias {
+	margin-bottom: 20px;
+	padding: 0 2px;
+}
+#product .images img,
+#product .medias img {
+	padding: 2px 0;
+}
+#product .images a:hover,
+#product .medias a:hover {
+	text-decoration: none;
+}
+#product .medias img {
+	width: 120px;
+}
+
+/** Product Text **/
+#product .body h1,
+#product .body h2,
+#product .body h3,
+#product .body h4,
+#product .body h5 {
+	margin-top: 2em;
+	margin-bottom: 0;
+	text-decoration: underline;
+}
+
+
+/** Sortable **/
+ul.sortable.list {
+	background-color: white;
+}
