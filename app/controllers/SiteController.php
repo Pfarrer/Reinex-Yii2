@@ -4,11 +4,10 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
 
 class SiteController extends Controller
 {
+
 	public function behaviors()
 	{
 		return [
@@ -31,6 +30,7 @@ class SiteController extends Controller
 			],
 		];
 	}
+
 	public function actions()
 	{
 		return [
@@ -43,11 +43,22 @@ class SiteController extends Controller
 			],
 		];
 	}
+
 	public function actionIndex()
 	{
 		$this->layout = 'html';
-		return $this->render('index');
+
+		// Contacts mit dieser Sprache finden
+		$contacts = \app\models\MetaContact::find()
+			->with('i18n') // Kein joinWith
+			->orderBy('sort')
+			->all();
+
+		return $this->render('index', [
+			'contacts' => $contacts,
+		]);
 	}
+
 	public function actionLogin()
 	{
 		if (!\Yii::$app->user->isGuest) {
@@ -62,12 +73,14 @@ class SiteController extends Controller
 					'model' => $model,
 		]);
 	}
+
 	public function actionLogout()
 	{
 		Yii::$app->user->logout();
 
 		return $this->goHome();
 	}
+
 	public function actionContact()
 	{
 		$model = new ContactForm();
@@ -80,6 +93,7 @@ class SiteController extends Controller
 					'model' => $model,
 		]);
 	}
+
 	public function actionAbout()
 	{
 		return $this->render('about');
