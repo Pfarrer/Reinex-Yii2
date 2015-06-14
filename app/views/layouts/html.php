@@ -39,20 +39,21 @@ AppAsset::register($this);
 		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 		<![endif]-->
 
-		<div id="body-content">
+		<div id="content-container" class="container">
 			<?= Breadcrumbs::widget([
 				'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
 			]) ?>
+			
+			<?php $this->beginContent('@app/views/layouts/flashmessages.php') ?><?php $this->endContent() ?>
+			
 			<?= $content ?>
 		</div>
 
-		<footer id="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4"><?= $this->textile(Yii::t('footer', 'col1')) ?></div>
-					<div class="col-md-4"><?= $this->textile(Yii::t('footer', 'col2')) ?></div>
-					<div class="col-md-4"><?= $this->textile(Yii::t('footer', 'col3')) ?></div>
-				</div>
+		<footer id="footer" class="container">
+			<div class="row">
+				<div class="col-md-4"><?= $this->textile(Yii::t('footer', 'col1')) ?></div>
+				<div class="col-md-4"><?= $this->textile(Yii::t('footer', 'col2')) ?></div>
+				<div class="col-md-4"><?= $this->textile(Yii::t('footer', 'col3')) ?></div>
 			</div>
 		</footer>
 

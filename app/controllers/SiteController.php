@@ -45,7 +45,7 @@ class SiteController extends Controller
 	}
 	public function actionIndex()
 	{
-		$this->layout = 'frontpage';
+		$this->layout = 'html';
 		return $this->render('index');
 	}
 	public function actionLogin()
