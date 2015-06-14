@@ -48,6 +48,9 @@ class SiteController extends Controller
 	{
 		$this->layout = 'html';
 
+		$lang = Yii::$app->language;
+		$company_profile = file_get_contents("../app/static/company_profile.$lang.textile");
+		
 		// Contacts mit dieser Sprache finden
 		$contacts = \app\models\MetaContact::find()
 			->with('i18n') // Kein joinWith
@@ -55,6 +58,7 @@ class SiteController extends Controller
 			->all();
 
 		return $this->render('index', [
+			'company_profile' => $company_profile,
 			'contacts' => $contacts,
 		]);
 	}
