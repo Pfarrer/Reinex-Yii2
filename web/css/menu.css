@@ -1,0 +1,15 @@
+div.navbar-header .navbar-brand {
+	padding: 0;
+}
+div.navbar-header .navbar-brand img {
+	height: 100%;
+	padding: 0 1em;
+}
+
+/** Language **/
+@media (min-width: 768px) {
+	.navbar .navbar-right a.dropdown-toggle {
+		padding-top: 13px;
+		padding-bottom: 13px;
+	}
+}

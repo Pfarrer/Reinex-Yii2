@@ -1,0 +1,32 @@
+html, body, footer {
+	background-color: #454545;
+}
+footer {
+	color: white;
+	z-index: 0;
+}
+
+#menu-container .container,
+#content-container {
+	background-color: #e7e7e7;
+}
+#content-container {
+	position: relative;
+	margin-top: 50px;
+	z-index: 2;
+	box-shadow: 0px -3px 40px #292929;
+}
+
+@media (min-width: 995px) {
+	#body-content {
+		margin-top: 50px;
+		padding-bottom: 2em;
+		margin-bottom: 17em;
+	}
+	footer {
+		position: fixed;
+		width: 100%;
+		bottom: 0;
+		padding-bottom: 2em;
+	}
+}

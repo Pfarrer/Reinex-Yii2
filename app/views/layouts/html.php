@@ -38,6 +38,10 @@ AppAsset::register($this);
 		<!--[if lt IE 7]>
 		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 		<![endif]-->
+		
+		<div id="menu-container">
+			<?= app\widgets\Menu::widget() ?>
+		</div>
 
 		<div id="content-container" class="container">
 			<?= Breadcrumbs::widget([
@@ -49,7 +53,7 @@ AppAsset::register($this);
 			<?= $content ?>
 		</div>
 
-		<footer id="footer" class="container">
+		<footer class="container">
 			<div class="row">
 				<div class="col-md-4"><?= $this->textile(Yii::t('footer', 'col1')) ?></div>
 				<div class="col-md-4"><?= $this->textile(Yii::t('footer', 'col2')) ?></div>

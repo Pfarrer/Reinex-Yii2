@@ -26,6 +26,6 @@ return [
 		Registergericht: Gera<br />
 		HRB 1579<br />
 		UST-ID: DE 150532670<br />
-		Steuernummer.: 161/117/02644
+		Steuernummer: 161/117/02644
 	',
 ];
