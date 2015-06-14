@@ -8,17 +8,17 @@ footer {
 
 #content-container {
 	background-color: #e7e7e7;
-}
-#content-container {
 	position: relative;
 	margin-bottom: 1em;
+	padding-left: 2em;
+	padding-right: 2em;
+	padding-bottom: 1em;
 	z-index: 2;
 	box-shadow: 0px -3px 40px #292929;
 }
 
 @media (min-width: 992px) {
 	#content-container {
-		padding-bottom: 1em;
 		margin-bottom: 20em;
 	}
 	footer {
@@ -27,6 +27,19 @@ footer {
 		bottom: 0;
 		padding-bottom: 2em;
 	}
+}
+
+/** Fullpage **/
+#fullpage .section h2 {
+	margin-top: 40px;
+	padding-top: 40px;
+	margin-bottom: 1em;
+}
+#fullpage .section:not(:last-child) {
+	border-bottom: 1px solid #454545;
+}
+#fullpage .fp-section.fp-table {
+	width: auto;
 }
 
 /** Common stuff **/
