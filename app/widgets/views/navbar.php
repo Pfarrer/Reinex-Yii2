@@ -44,6 +44,11 @@ use app\components\Url;
 							<i class="glyphicon glyphicon-wrench"></i>
 						</a>
 					</li>
+					<li>
+						<a href="<?= Url::to(['/site/logout']) ?>" title="Logout">
+							<i class="glyphicon glyphicon-log-out"></i>
+						</a>
+					</li>
 				<?php endif; ?>
 
 				<li class="dropdown">
