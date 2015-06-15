@@ -3,6 +3,11 @@ namespace app\models;
 
 use app\components\MetaModel;
 
+/**
+ * Class ProductMeta
+ *
+ * @property ProductI18n i18n
+ */
 class ProductMeta extends MetaModel
 {
 	public function init()
@@ -19,7 +24,7 @@ class ProductMeta extends MetaModel
 
 	public function getFrontimage()
 	{
-		return $this->getImages()->limit(1);
+		return $this->getImages()->limit(1)->one();
 	}
 
 	public function getMedias()
@@ -40,7 +45,7 @@ class ProductMeta extends MetaModel
 	public function getTags()
 	{
 		return $this->hasMany(MetaTag::className(), ['id' => 'tag_id'])
-		->viaTable('{{%product_tag}}', ['product_id' => 'id'])->joinWith('i18n')->orderby('name');
+			->viaTable('{{%product_tag}}', ['product_id' => 'id'])->joinWith('i18n')->orderby('name');
 	}
 
 	public function rules()
@@ -64,12 +69,6 @@ class ProductMeta extends MetaModel
 
 	protected function getI18nClassname()
 	{
-		return I18nProduct::className();
+		return ProductI18n::className();
 	}
-
-	public static function tableName()
-	{
-		return '{{%product_meta}}';
-	}
-
 }

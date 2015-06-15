@@ -3,7 +3,7 @@ use \Yii;
 use app\components\Url;
 
 /** @var $this yii\web\View */
-/** @var $contacts app\models\MetaContact[] */
+/** @var $contacts app\models\ContactMeta[] */
 ?>
 <div class="row" id="contacts">
 	<?php foreach ($contacts as $contact): ?>

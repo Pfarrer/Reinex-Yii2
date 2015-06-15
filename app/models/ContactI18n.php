@@ -2,9 +2,8 @@
 
 use app\components\I18nModel;
 
-class I18nContact extends I18nModel
+class ContactI18n extends I18nModel
 {
-
 	public function rules()
 	{
 		return [
@@ -24,11 +23,6 @@ class I18nContact extends I18nModel
 
 	protected function getMetaClassname()
 	{
-		return MetaContact::className();
-	}
-
-	public static function tableName()
-	{
-		return '{{%contact_i18n}}';
+		return ContactMeta::className();
 	}
 }

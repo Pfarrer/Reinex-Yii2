@@ -35,9 +35,4 @@ class ProductI18n extends I18nModel
 	{
 		return ProductMeta::className();
 	}
-
-	public static function tableName()
-	{
-		return '{{%product_i18n}}';
-	}
 }

@@ -2,7 +2,7 @@
 
 use app\components\MetaModel;
 
-class MetaContact extends MetaModel
+class ContactMeta extends MetaModel
 {
 
 	public function rules()
@@ -28,11 +28,6 @@ class MetaContact extends MetaModel
 
 	protected function getI18nClassname()
 	{
-		return I18nContact::className();
-	}
-
-	public static function tableName()
-	{
-		return '{{%contact_meta}}';
+		return ContactI18n::className();
 	}
 }

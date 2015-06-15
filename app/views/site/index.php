@@ -1,7 +1,7 @@
 <?php
 /** @var $this yii\web\View */
 /** @var $company_profile string */
-/** @var $contacts app\models\MetaContact[] */
+/** @var $contacts app\models\ContactMeta[] */
 
 \xj\js\fullpage\FullpageAsset::register($this);
 
@@ -18,6 +18,12 @@ $this->registerJs($js);
 ?>
 
 <div id="fullpage">
+
+	<div class="section row">
+		<div class="col-md-12">
+			Frontimages go here...
+		</div>
+	</div>
 
 	<div class="section row" data-anchor="products">
 		<div class="col-md-12">

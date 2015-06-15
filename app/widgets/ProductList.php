@@ -8,7 +8,7 @@ class ProductList extends \yii\base\Widget
 	{
 		$this->view->registerCssFile('css/products.css');
 
-		$products = ProductMeta::find()->orderby('sort');
+		$products = ProductMeta::find()->orderby('sort')->all();
 		return $this->render('product_list', [
 			'products' => $products,
 		]);

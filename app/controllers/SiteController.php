@@ -1,7 +1,7 @@
 <?php namespace app\controllers;
 
 use app\forms\LoginForm;
-use app\models\MetaContact;
+use app\models\ContactMeta;
 use yii\web\Controller;
 use Yii;
 
@@ -24,7 +24,7 @@ class SiteController extends Controller
 		$company_profile = file_get_contents("../app/static/company_profile.$lang.textile");
 		
 		// Contacts mit dieser Sprache finden
-		$contacts = MetaContact::find()
+		$contacts = ContactMeta::find()
 			->with('i18n') // Kein joinWith
 			->orderBy('sort')
 			->all();
