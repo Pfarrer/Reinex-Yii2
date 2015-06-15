@@ -10,7 +10,8 @@ $("#fullpage").fullpage({
 	menu: "#mainmenu-items",
 	autoScrolling: false,
 	fitToSection: false,
-	keyboardScrolling: false
+	keyboardScrolling: false,
+	paddingTop: '80px'
 });
 JS;
 $this->registerJs($js);
