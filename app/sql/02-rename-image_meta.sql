@@ -1,0 +1,1 @@
+RENAME TABLE yii2_image_meta TO yii2_image;

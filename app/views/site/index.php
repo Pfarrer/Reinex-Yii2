@@ -18,7 +18,14 @@ $this->registerJs($js);
 ?>
 
 <div id="fullpage">
-	
+
+	<div class="section row" data-anchor="products">
+		<div class="col-md-12">
+			<h2><?= Yii::t('menu', 'Products') ?></h2>
+			<?= \app\widgets\ProductList::widget() ?>
+		</div>
+	</div>
+
 	<div class="section row" data-anchor="company">
 		<div class="col-md-12">
 			<h2><?= Yii::t('menu', 'Company') ?></h2>
