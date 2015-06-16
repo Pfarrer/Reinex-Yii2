@@ -3,6 +3,7 @@ use app\components\Url;
 use app\models\ProductI18n;
 use app\models\ProductMeta;
 use app\widgets\GoBackButton;
+use app\widgets\ImageWidget;
 
 /** @var app\components\View $this */
 /** @var ProductMeta $meta */

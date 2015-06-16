@@ -10,7 +10,7 @@ use Yii;
 
 class ImageWidget extends Widget
 {
-	private static $ROOT_DIR = '../runtime/imgcache';
+	private static $ROOT_DIR = 'imgcache';
 
 	public static function thumbnail(Image $img)
 	{
@@ -53,10 +53,10 @@ class ImageWidget extends Widget
 		$image = $image->resize($x, $y);
 
 		if ($overlay) {
-			$upperWatermark = WideImage::load('img/watermark/top-left.png');
+			$upperWatermark = WideImage::load('images/watermark/top-left.png');
 			$image = $image->merge($upperWatermark, 'left', 'top', 100);
 
-			$lowerWatermark = WideImage::load('img/watermark/bottom-right.png');
+			$lowerWatermark = WideImage::load('images/watermark/bottom-right.png');
 			$image = $image->merge($lowerWatermark, 'right', 'bottom', 100);
 		}
 
