@@ -10,3 +10,4 @@ composer.lock
 /vendor
 .project
 /nbproject
+.idea
