@@ -12,6 +12,11 @@ $config = [
 		],
 	],
 	'components' => [
+		'urlManager' => [
+			'class' => 'app\components\UrlManager',
+			'enablePrettyUrl' => true,
+			'showScriptName' => false,
+		],
 		'request' => [
 			'enableCsrfValidation' => true,
 			'enableCookieValidation' => true,

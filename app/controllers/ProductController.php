@@ -53,8 +53,27 @@ class ProductController extends Controller
 			if (!$meta->i18n) $meta->populateRelation('i18n', new ProductI18n());
 		}
 
-		if ($meta->load(Yii::$app->request->post()) || $meta->i18n->load(Yii::$app->request->post())) {
-			d();
+		if (Yii::$app->request->isPost) {
+			$meta->load(Yii::$app->request->post());
+			$meta->i18n->load(Yii::$app->request->post());
+
+			if ($meta->validate() && $meta->i18n->validate()) {
+				$success = Yii::$app->db->transaction(function () use ($meta) {
+					if (!$meta->save()) return false;
+
+					// Update ids and lang
+					$meta->i18n->id = $meta->id;
+					$meta->i18n->lang = Yii::$app->language;
+					if (!$meta->i18n->save()) return false;
+
+					return true;
+				});
+
+				if ($success) return $this->redirect(Url::toProduct($meta));
+				else {
+					Yii::$app->session->addFlash('danger', 'Speichern aus unbekanntem Grund fehlgeschlagen!');
+				}
+			}
 		}
 
 		return $this->render('form', ['meta' => $meta, 'i18n' => $meta->i18n]);

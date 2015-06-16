@@ -7,5 +7,6 @@ return [
 	'Translation missing!' => 'Übersetztung fehlt!',
 	
 	'Save' => 'Speichern',
+	'Go back' => 'Zurück',
 
 ];

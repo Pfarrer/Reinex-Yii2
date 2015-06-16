@@ -1,8 +1,8 @@
 <?php
-use app\forms\ProductForm;
 use app\models\ProductI18n;
 use app\models\ProductMeta;
 use app\models\TagMeta;
+use app\widgets\GoBackButton;
 use kartik\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -44,6 +44,8 @@ $tags = ArrayHelper::map($tags, 'id', 'i18n.name');
 	<?php if ($meta->parent): ?>
 		<input type="hidden" name="parent_id" value="<?= $meta->parent_id ?>" />
 	<?php endif; ?>
+
+	<?= GoBackButton::widget() ?>
 
 	<div class="form-group pull-right">
 		<?= Html::submitButton(Yii::t('common', 'Save'), ['class' => 'btn btn-primary']) ?>

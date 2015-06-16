@@ -1,5 +1,7 @@
 <?php
 /** @var $this yii\web\View */
+use app\components\Url;
+
 /** @var $company_profile string */
 /** @var $contacts app\models\ContactMeta[] */
 
@@ -27,7 +29,16 @@ $this->registerJs($js);
 
 	<div class="section row" data-anchor="products">
 		<div class="col-md-12">
-			<h2><?= Yii::t('menu', 'Products') ?></h2>
+			<h2>
+				<?= Yii::t('menu', 'Products') ?>
+				<?php if (!Yii::$app->user->isGuest): ?>
+					<small>
+						<a href="<?= Url::to(['/product/create']) ?>">
+							<i class="glyphicon glyphicon-plus"></i> <?= Yii::t('product', 'Create a product') ?>
+						</a>
+					</small>
+				<?php endif; ?>
+			</h2>
 			<?= \app\widgets\ProductList::widget() ?>
 		</div>
 	</div>

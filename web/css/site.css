@@ -45,3 +45,6 @@ html:not(.fp-enabled) #content-container {
 img {
 	max-width: 80%;
 }
+#content-container small {
+	font-size: 50%;
+}

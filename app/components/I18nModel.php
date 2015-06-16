@@ -3,8 +3,10 @@
 use yii\db\ActiveRecord;
 
 /**
- * @property MetaModel $metaClassName
- * @property int $id
+ * @property int id
+ * @property string lang
+ *
+ * @property MetaModel metaClassName
  */
 abstract class I18nModel extends ActiveRecord
 {

@@ -23,7 +23,7 @@ class Menu extends \yii\base\Widget
 	public function run()
 	{
 		BootstrapPluginAsset::register($this->view);
-		$this->view->registerCssFile('css/menu.css');
+		$this->view->registerCssFile(Url::base().'/css/menu.css');
 		
 		echo $this->render('navbar', ['items' => $this->items]);
 	}

@@ -6,16 +6,6 @@ use app\models\ProductMeta;
 /** @var $products ProductMeta[] */
 ?>
 
-<?php if (!Yii::$app->user->isGuest): ?>
-<div class="row">
-	<div class="col-md-12">
-		<a href="<?= Url::to(['/product/create']) ?>">
-			<i class="glyphicon glyphicon-plus"></i> <?= Yii::t('product', 'Create a product') ?>
-		</a>
-	</div>
-</div>
-<?php endif; ?>
-
 <div class="row" id="products">
 	<?php foreach ($products as $product): ?>
 

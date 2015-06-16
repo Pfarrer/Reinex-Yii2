@@ -6,6 +6,8 @@ use app\components\MetaModel;
 /**
  * Class ProductMeta
  *
+ * @property int id
+ * @property int sort
  * @property int|null parent_id
  *
  * @property ProductI18n i18n
@@ -24,6 +26,7 @@ class ProductMeta extends MetaModel
 	public function rules()
 	{
 		return [
+			['sort', 'integer'],
 			['parent_id', 'validateParent'],
 		];
 	}

@@ -3,6 +3,15 @@ namespace app\models;
 
 use app\components\I18nModel;
 
+/**
+ * Class ProductI18n
+ *
+ * @package app\models
+ *
+ * @property string name
+ * @property string body
+ * @property string shortcut_active
+ */
 class ProductI18n extends I18nModel
 {
 	public function rules()

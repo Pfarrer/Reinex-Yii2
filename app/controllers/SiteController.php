@@ -18,8 +18,6 @@ class SiteController extends Controller
 
 	public function actionIndex()
 	{
-		$this->layout = 'html';
-
 		$lang = Yii::$app->language;
 		$company_profile = file_get_contents("../app/static/company_profile.$lang.textile");
 		
