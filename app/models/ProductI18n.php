@@ -17,7 +17,20 @@ class ProductI18n extends I18nModel
 
 	public function attributeLabels()
 	{
-		return ['body' => 'Text',];
+		return [
+			'body' => 'Text',
+			'shortcut_active' => 'Shortcut',
+		];
+	}
+
+	public function attributeHints()
+	{
+		return [
+			'body' => 'Text kann mit Textile strukturiert werden.'.file_get_contents('../app/static/textile-help.txt'),
+			'shortcut_active' => 'Der hier eingegebene Text kann benutzt werden um direkt auf die erstellte Seite zuzugreifen.
+				Wenn man z.B. eine Hochdruckanlage erstellt und hier "hda" eingibt, erreicht man die Seite über die
+				URL: reinex.de/hda',
+		];
 	}
 
 	public function getShortcut()

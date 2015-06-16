@@ -3,6 +3,7 @@ namespace app\controllers;
 
 use app\components\Url;
 use app\forms\ProductForm;
+use app\models\ProductI18n;
 use app\models\ProductMeta;
 use Yii;
 use yii\web\Controller;
@@ -39,13 +40,23 @@ class ProductController extends Controller
 		return $this->render('view', ['meta' => $meta, 'i18n' => $meta->i18n]);
 	}
 
-	public function actionCreate()
+	public function actionEdit($id=null)
 	{
-		$model = new ProductForm();
-		if ($model->load(Yii::$app->request->post()) && $model->save()) {
-			return $this->redirect(Url::toProduct($model->product_meta));
+		if ($id === null) {
+			$meta = new ProductMeta();
+			$meta->populateRelation('i18n', new ProductI18n());
+		}
+		else {
+			$meta = ProductMeta::findOne($id);
+			if (!$meta) throw new NotFoundHttpException();
+			/** @var $meta ProductMeta */
+			if (!$meta->i18n) $meta->populateRelation('i18n', new ProductI18n());
 		}
 
-		return $this->render('form', ['model' => $model]);
+		if ($meta->load(Yii::$app->request->post()) || $meta->i18n->load(Yii::$app->request->post())) {
+			d();
+		}
+
+		return $this->render('form', ['meta' => $meta, 'i18n' => $meta->i18n]);
 	}
 }

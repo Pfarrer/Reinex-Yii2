@@ -6,6 +6,8 @@ use app\components\MetaModel;
 /**
  * Class ProductMeta
  *
+ * @property int|null parent_id
+ *
  * @property ProductI18n i18n
  * @property ProductMeta parent
  * @property Image[] images
@@ -17,6 +19,25 @@ class ProductMeta extends MetaModel
 	{
 		parent::init();
 		$this->on(self::EVENT_BEFORE_DELETE, [$this, 'handleBeforeDelete']);
+	}
+
+	public function rules()
+	{
+		return [
+			['parent_id', 'validateParent'],
+		];
+	}
+
+	public function validateParent()
+	{
+		if ($this->parent_id === null) return true;
+		return $this->getParent() !== null;
+	}
+
+	public function attributeLabels()
+	{
+		return [
+		];
 	}
 
 	public function getImages()
@@ -49,17 +70,6 @@ class ProductMeta extends MetaModel
 	{
 		return $this->hasMany(TagMeta::className(), ['id' => 'tag_id'])
 			->viaTable('{{%product_tag}}', ['product_id' => 'id'])->joinWith('i18n')->orderby('name');
-	}
-
-	public function rules()
-	{
-		return [[['parent_id'], 'validateParent'],];
-	}
-
-	public function validateParent()
-	{
-		if ($this->parent_id === null) return true;
-		return $this->getParent() !== null;
 	}
 
 	public function handleBeforeDelete($event)

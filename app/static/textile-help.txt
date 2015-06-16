@@ -1,0 +1,31 @@
+<a class="btn btn-sm btn-default" data-toggle="collapse" href="#textile" aria-expanded="false">Hilfe</a>
+<pre class="collapse" id="textile">
+h1. Überschrift 1
+h2. Überschrift 2
+h3. Überschrift 3
+h4. Überschrift 4
+h5. Überschrift 5
+
+_Kursiver Text_
+*Fett*
+
+Das ist ein Link:http://warpedvisions.org.
+
+Bild einfügen:
+!/images/photo.jpeg(Beschreibung des Bildes)!
+
+bq. Zitat
+
+* Nicht-nummerierte Liste
+* Zeiter Punkt
+* Dritter Punkt
+
+# Nummerierte List1
+# Text von 2.
+# ...
+
+|_.Col 1|_.Col 2|_.Col 3|
+|a|table|row|
+|a|table|row|
+
+ABC(Abbreviation definition here)</pre>
