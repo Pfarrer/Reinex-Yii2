@@ -6,7 +6,7 @@ use app\models\ProductMeta;
 /** @var $products ProductMeta[] */
 ?>
 
-<div class="row" id="products">
+<div class="row" id="products-list">
 	<?php foreach ($products as $product): ?>
 
 		<div class="col-md-3 product clearfix">
