@@ -44,8 +44,8 @@ class ProductController extends Controller
 		$model = new ProductForm();
 		if ($model->load(Yii::$app->request->post()) && $model->save()) {
 			return $this->redirect(Url::toProduct($model->product_meta));
-		} else {
-			return $this->render('login', ['model' => $model]);
 		}
+
+		return $this->render('form', ['model' => $model]);
 	}
 }

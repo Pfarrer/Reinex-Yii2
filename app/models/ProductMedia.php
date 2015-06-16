@@ -4,6 +4,17 @@ namespace app\models;
 use Embed\Embed;
 use yii\db\ActiveRecord;
 
+/**
+ * Class ProductMedia
+ *
+ * @property int id
+ * @property int product_id
+ * @property int sort
+ * @property string url
+ * @property string name
+ *
+ * @property Image image
+ */
 class ProductMedia extends ActiveRecord
 {
 	private $_embed = null;

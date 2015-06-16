@@ -7,6 +7,9 @@ use app\components\MetaModel;
  * Class ProductMeta
  *
  * @property ProductI18n i18n
+ * @property ProductMeta parent
+ * @property Image[] images
+ * @property ProductMedia[] metias
  */
 class ProductMeta extends MetaModel
 {
@@ -34,17 +37,17 @@ class ProductMeta extends MetaModel
 
 	public function getParent()
 	{
-		return $this->hasOne(MetaProduct::className(), ['id' => 'parent_id']);
+		return $this->hasOne(ProductMeta::className(), ['id' => 'parent_id']);
 	}
 
 	public function getChildren()
 	{
-		return $this->hasMany(MetaProduct::className(), ['parent_id' => 'id'])->joinWith('i18n')->orderby('sort');
+		return $this->hasMany(ProductMeta::className(), ['parent_id' => 'id'])->joinWith('i18n')->orderby('sort');
 	}
 
 	public function getTags()
 	{
-		return $this->hasMany(MetaTag::className(), ['id' => 'tag_id'])
+		return $this->hasMany(TagMeta::className(), ['id' => 'tag_id'])
 			->viaTable('{{%product_tag}}', ['product_id' => 'id'])->joinWith('i18n')->orderby('name');
 	}
 
