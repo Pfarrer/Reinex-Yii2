@@ -33,7 +33,7 @@ $this->registerJs($js);
 				<?= Yii::t('menu', 'Products') ?>
 				<?php if (!Yii::$app->user->isGuest): ?>
 					<small>
-						<a href="<?= Url::to(['/product/create']) ?>">
+						<a href="<?= Url::to(['/product/edit']) ?>">
 							<i class="glyphicon glyphicon-plus"></i> <?= Yii::t('product', 'Create a product') ?>
 						</a>
 					</small>
