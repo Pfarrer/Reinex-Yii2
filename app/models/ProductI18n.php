@@ -11,6 +11,9 @@ use app\components\I18nModel;
  * @property string name
  * @property string body
  * @property string shortcut_active
+ * 
+ * @property Shortcut shortcut
+ * @property Shortcut[] shortcuts
  */
 class ProductI18n extends I18nModel
 {
@@ -39,8 +42,30 @@ class ProductI18n extends I18nModel
 			'body' => 'Text kann mit Textile strukturiert werden.'.file_get_contents('../app/static/textile-help.txt'),
 			'shortcut_active' => 'Der hier eingegebene Text kann benutzt werden um direkt auf die erstellte Seite zuzugreifen.
 				Wenn man z.B. eine Hochdruckanlage erstellt und hier "hda" eingibt, erreicht man die Seite über die
-				URL: reinex.de/hda',
+				URL: reinex.de/hda<br />
+				Produkt ist aktuell erreichbar mit diesen Shortcuts: '.
+					join(', ', \yii\helpers\ArrayHelper::getColumn($this->meta->shortcuts, 'shortcut', false)),
 		];
+	}
+	
+	public function getMeta()
+	{
+		return $this->hasOne(ProductMeta::className(), ['id' => 'id']);
+	}
+	
+	public function getShortcut()
+	{
+		return $this->hasOne(Shortcut::className(), ['shortcut' => 'shortcut_active'])
+			->andWhere([
+				'fmodel' => ProductMeta::className(),
+				'fid' => $this->id,
+			]);
+	}
+
+	public function getShortcuts()
+	{
+		return $this->hasMany(Shortcut::className(), ['fid' => 'id'])
+			->andWhere(['fmodel' => ProductMeta::className()]);
 	}
 	
 	public function validate($attributeNames = null, $clearErrors = true)
@@ -51,7 +76,7 @@ class ProductI18n extends I18nModel
 			// Check if shortcut is unique
 			$existing_srtct = Shortcut::findOne(['shortcut' => $this->shortcut_active]);
 			if ($existing_srtct) {
-				if ($existing_srtct->fmodel == static::className() && $existing_srtct->fid == $this->id) {
+				if ($existing_srtct->fmodel == ProductMeta::className() && $existing_srtct->fid == $this->id) {
 					// Continue
 				}
 				else {
@@ -62,17 +87,6 @@ class ProductI18n extends I18nModel
 		}
 		
 		return $valid;
-	}
-
-	public function getShortcut()
-	{
-		return $this->hasOne(Shortcut::className(), ['shortcut' => 'shortcut_active']);
-	}
-
-	public function getShortcuts()
-	{
-		return $this->hasMany(Shortcut::className(), ['fid' => 'id'])
-			->andWhere('fmodel=:model', [':model' => self::className()]);
 	}
 
 	protected function getMetaClassname()

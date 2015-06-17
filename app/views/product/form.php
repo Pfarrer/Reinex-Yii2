@@ -30,7 +30,7 @@ $tags = ArrayHelper::map($tags, 'id', 'i18n.name');
 			'content'=> ($meta->parent->i18n ? $meta->parent->i18n->name : Yii::t('common', 'Translation missing!'))
 		]]] : []
 	) ?>
-
+	
 	<?php if (!$meta->parent): // Unterprodukte können keinen Shortcut haben, da sie auch keine eigene Seite haben ?>
 		<?= $form->field($i18n, 'shortcut_active') ?>
 	<?php endif; ?>
