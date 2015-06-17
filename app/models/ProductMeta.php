@@ -12,7 +12,7 @@ use app\components\MetaModel;
  *
  * @property ProductI18n i18n
  * @property ProductMeta parent
- * @property Fr[] images
+ * @property Image frontimage
  * @property Image[] images
  * @property ProductMedia[] metias
  */

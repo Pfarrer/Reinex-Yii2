@@ -29,7 +29,7 @@ class ImageWidget extends Widget
 
 	public static function frontimage(Image $img)
 	{
-		return self::getImage($img, 1280, 720, false, 7);
+		return self::getImage($img, 1280, 720, false, 8);
 	}
 
 	private static function getImage(Image $img, $x, $y, $overlay, $quality = 9)

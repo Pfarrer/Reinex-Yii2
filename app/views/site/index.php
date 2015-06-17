@@ -1,13 +1,18 @@
 <?php
-/** @var $this yii\web\View */
 use app\components\Url;
+use app\models\FrontimageMeta;
 use app\models\ProductMeta;
+use app\widgets\ImageWidget;
+use xj\js\fullpage\FullpageAsset;
 
+/** @var $this yii\web\View */
+/** @var $frontimages FrontimageMeta[] */
 /** @var $products ProductMeta[] */
 /** @var $company_profile string */
 /** @var $contacts app\models\ContactMeta[] */
 
-\xj\js\fullpage\FullpageAsset::register($this);
+FullpageAsset::register($this);
+$this->registerCssFile('css/frontimage.css');
 
 $js = <<<JS
 $("#fullpage").fullpage({
@@ -23,10 +28,8 @@ $this->registerJs($js);
 
 <div id="fullpage">
 
-	<div class="section row">
-		<div class="col-md-12">
-			Frontimages go here...
-		</div>
+	<div class="section row" id="frontimage">
+
 	</div>
 
 	<div class="section row" data-anchor="products">

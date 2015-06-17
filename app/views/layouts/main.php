@@ -1,10 +1,11 @@
 <?php
+use app\components\View;
 use yii\widgets\Breadcrumbs;
 use yii\helpers\Html;
 use app\assets\AppAsset;
 use app\components\Url;
 
-/* @var $this \yii\web\View */
+/* @var $this View */
 /* @var $content string */
 
 AppAsset::register($this);
@@ -32,7 +33,7 @@ AppAsset::register($this);
 		<?= Html::csrfMetaTags() ?>
 		<?= $this->head() ?>
 	</head>
-	<body>
+	<body <?= $this->body_background_image_url ? 'style="background-image: url('.$this->body_background_image_url.')"' : '' ?>)>
 		<?= $this->beginBody() ?>
 
 		<!--[if lt IE 7]>
