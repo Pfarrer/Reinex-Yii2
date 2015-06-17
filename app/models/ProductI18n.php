@@ -20,6 +20,7 @@ class ProductI18n extends I18nModel
 			[['name'], 'required'],
 			[['name', 'body', 'shortcut_active'], 'filter', 'filter' => 'trim'],
 			['shortcut_active', 'filter', 'filter' => 'strtolower'],
+			['shortcut_active', 'trim'],
 			['shortcut_active', 'string', 'max' => 30],
 		];
 	}
@@ -40,6 +41,27 @@ class ProductI18n extends I18nModel
 				Wenn man z.B. eine Hochdruckanlage erstellt und hier "hda" eingibt, erreicht man die Seite über die
 				URL: reinex.de/hda',
 		];
+	}
+	
+	public function validate($attributeNames = null, $clearErrors = true)
+	{
+		$valid = parent::validate($attributeNames, $clearErrors);
+		
+		if (!empty($this->shortcut_active)) {
+			// Check if shortcut is unique
+			$existing_srtct = Shortcut::findOne(['shortcut' => $this->shortcut_active]);
+			if ($existing_srtct) {
+				if ($existing_srtct->fmodel == static::className() && $existing_srtct->fid == $this->id) {
+					// Continue
+				}
+				else {
+					$this->addError('shortcut_active', 'Shortcut wird bereits verwendet!');
+					return false;
+				}
+			}
+		}
+		
+		return $valid;
 	}
 
 	public function getShortcut()

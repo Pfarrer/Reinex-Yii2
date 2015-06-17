@@ -18,7 +18,7 @@ $tags = ArrayHelper::map($tags, 'id', 'i18n.name');
 <div class="row">
 <div class="col-md-12">
 
-	<h1><?= Yii::t('product', $meta->isNewRecord ? 'Edit product' : 'Create a product') ?></h1>
+	<h1><?= Yii::t('product', $meta->isNewRecord ? 'Create a product' : 'Edit product') ?></h1>
 
 	<?php $form = ActiveForm::begin([
 		'id' => 'login-form',
