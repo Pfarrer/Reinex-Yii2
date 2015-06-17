@@ -4,9 +4,12 @@ use app\models\ProductMeta;
 
 /** @var $this yii\web\View */
 /** @var $products ProductMeta[] */
+
+$this->registerJsFile('js/masonry.pkgd.min.js');
 ?>
 
-<div class="row" id="products-list">
+
+<div id="products-list" class="row js-masonry" data-masonry-options='{"itemSelector": ".product"}'>
 	<?php foreach ($products as $product): ?>
 
 		<div class="col-md-3 product clearfix">
