@@ -4,6 +4,7 @@ namespace app\controllers;
 use app\components\Url;
 use app\models\ProductI18n;
 use app\models\ProductMeta;
+use app\models\Shortcut;
 use Yii;
 use yii\web\Controller;
 use yii\web\HttpException;
@@ -71,7 +72,8 @@ class ProductController extends Controller
 					}
 					
 					if ($meta->i18n->shortcut_active) {
-						$scut = new \app\models\Shortcut();
+						$scut = Shortcut::findOne($meta->i18n->shortcut_active);
+						if (!$scut) $scut = new Shortcut();
 						$scut->shortcut = $meta->i18n->shortcut_active;
 						$scut->action = 'product/view';
 						$scut->fid = $meta->id;
