@@ -32,7 +32,7 @@ use app\widgets\ImageWidget;
 			<hr />
 			<?= Yii::t('tag', 'Categories') ?>:
 			<?php foreach ($meta->tags as $tag): ?>
-			<a href="<?= Url::to($tag->i18n->shortcut_active ? ['/'.$tag->i18n->shortcut_active] : ['tag/view', 'id'=>$tag->id]) ?>" class="badge">
+			<a href="<?= Url::toTag($tag) ?>" class="badge">
 				<?= $tag->i18n->name ?>
 			</a>
 			<?php endforeach; ?>

@@ -1,7 +1,9 @@
 <?php
 /** @var $this yii\web\View */
 use app\components\Url;
+use app\models\ProductMeta;
 
+/** @var $products ProductMeta[] */
 /** @var $company_profile string */
 /** @var $contacts app\models\ContactMeta[] */
 
@@ -28,7 +30,7 @@ $this->registerJs($js);
 	</div>
 
 	<div class="section row" data-anchor="products">
-		<div class="col-md-12">
+		<div class="col-md-9">
 			<h2>
 				<?= Yii::t('menu', 'Products') ?>
 				<?php if (!Yii::$app->user->isGuest): ?>
@@ -39,7 +41,32 @@ $this->registerJs($js);
 					</small>
 				<?php endif; ?>
 			</h2>
-			<?= \app\widgets\ProductList::widget() ?>
+			<?= \app\widgets\ProductList::widget([
+				'products' => $products,
+			]) ?>
+		</div>
+		<div class="col-md-3">
+			<h3>
+				<?= Yii::t('tag', 'Categories') ?>
+				<?php if (!Yii::$app->user->isGuest): ?>
+					<small>
+						<a href="<?= Url::to(['/tag/edit']) ?>">
+							<i class="glyphicon glyphicon-plus"></i> <?= Yii::t('tag', 'Create a category') ?>
+						</a>
+					</small>
+				<?php endif; ?>
+			</h3>
+
+			<div class="list-group">
+				<?php foreach ($tags as $tag): ?>
+					<?php if ($tag->count > 0): ?>
+						<a href="<?= Url::toTag($tag) ?>" class="list-group-item">
+							<?= $tag->i18n->name ?>
+							<span class="badge"><?= $tag->count ?></span>
+						</a>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			</div>
 		</div>
 	</div>
 

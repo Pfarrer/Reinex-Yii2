@@ -6,7 +6,8 @@ use yii\db\ActiveRecord;
  * @property int id
  * @property string lang
  *
- * @property MetaModel metaClassName
+ * @property string metaClassName
+ * @property MetaModel meta
  */
 abstract class I18nModel extends ActiveRecord
 {

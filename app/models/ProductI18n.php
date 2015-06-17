@@ -2,6 +2,7 @@
 namespace app\models;
 
 use app\components\I18nModel;
+use yii\helpers\ArrayHelper;
 
 /**
  * Class ProductI18n
@@ -39,12 +40,12 @@ class ProductI18n extends I18nModel
 	public function attributeHints()
 	{
 		return [
-			'body' => 'Text kann mit Textile strukturiert werden.'.file_get_contents('../app/static/textile-help.txt'),
+			'body' => 'Text kann mit Textile strukturiert werden. '.file_get_contents('../app/static/textile-help.txt'),
 			'shortcut_active' => 'Der hier eingegebene Text kann benutzt werden um direkt auf die erstellte Seite zuzugreifen.
 				Wenn man z.B. eine Hochdruckanlage erstellt und hier "hda" eingibt, erreicht man die Seite über die
 				URL: reinex.de/hda<br />
 				Produkt ist aktuell erreichbar mit diesen Shortcuts: '.
-					join(', ', \yii\helpers\ArrayHelper::getColumn($this->meta->shortcuts, 'shortcut', false)),
+					join(', ', ArrayHelper::getColumn($this->meta->shortcuts, 'shortcut', false)),
 		];
 	}
 	

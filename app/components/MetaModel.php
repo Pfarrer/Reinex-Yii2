@@ -5,8 +5,12 @@ use yii\db\ActiveRecord;
 use app\models\Shortcut;
 
 /**
- * @property I18nModel $i18nClassname
- * @property int $id
+ * @property int id
+ *
+ * @property string i18nClassname
+ * @property I18nModel i18n
+ * @property I18nModel[] i18ns
+ * @property Shortcut[] shortcuts
  */
 abstract class MetaModel extends ActiveRecord
 {

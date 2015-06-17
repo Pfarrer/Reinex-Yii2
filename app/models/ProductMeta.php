@@ -37,12 +37,6 @@ class ProductMeta extends MetaModel
 		return $this->getParent() !== null;
 	}
 
-	public function attributeLabels()
-	{
-		return [
-		];
-	}
-
 	public function getImages()
 	{
 		return $this->hasMany(Image::className(), ['fid' => 'id'])

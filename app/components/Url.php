@@ -1,6 +1,7 @@
 <?php namespace app\components;
 
 use app\models\ProductMeta;
+use app\models\TagMeta;
 use yii\helpers\BaseUrl;
 
 class Url extends BaseUrl
@@ -22,5 +23,11 @@ class Url extends BaseUrl
 	{
 		if ($meta->i18n && $meta->i18n->shortcut_active) return Url::to(['/'.$meta->i18n->shortcut_active]);
 		else return Url::to(['/product/view', 'id'=>$meta->id]);
+	}
+
+	public static function toTag(TagMeta $meta)
+	{
+		if ($meta->i18n && $meta->i18n->shortcut_active) return Url::to(['/'.$meta->i18n->shortcut_active]);
+		else return Url::to(['tag/view', 'id'=>$meta->id]);
 	}
 }

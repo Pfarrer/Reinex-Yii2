@@ -2,18 +2,16 @@
 namespace app\controllers;
 
 use app\components\Url;
-use app\models\ProductI18n;
-use app\models\ProductMeta;
-use app\models\ProductTag;
-use app\models\Shortcut;
+use app\models\TagI18n;
 use app\models\TagMeta;
+use app\models\Shortcut;
 use Yii;
 use yii\web\Controller;
 use yii\web\HttpException;
 use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
 
-class ProductController extends Controller
+class TagController extends Controller
 {
 	public function behaviors()
 	{
@@ -36,7 +34,7 @@ class ProductController extends Controller
 
 	public function actionView($id)
 	{
-		$meta = ProductMeta::findOne($id);
+		$meta = TagMeta::findOne($id);
 		if (!$meta) throw new NotFoundHttpException();
 		if (!$meta->i18n) throw new NotFoundHttpException('This content is not available in your current language.');
 
@@ -46,14 +44,14 @@ class ProductController extends Controller
 	public function actionEdit($id=null)
 	{
 		if ($id === null) {
-			$meta = new ProductMeta();
-			$meta->populateRelation('i18n', new ProductI18n());
+			$meta = new TagMeta();
+			$meta->populateRelation('i18n', new TagI18n());
 		}
 		else {
-			$meta = ProductMeta::findOne($id);
+			$meta = TagMeta::findOne($id);
 			if (!$meta) throw new NotFoundHttpException();
-			/** @var $meta ProductMeta */
-			if (!$meta->i18n) $meta->populateRelation('i18n', new ProductI18n());
+			/** @var $meta TagMeta */
+			if (!$meta->i18n) $meta->populateRelation('i18n', new TagI18n());
 		}
 
 		if (Yii::$app->request->isPost) {
@@ -72,28 +70,12 @@ class ProductController extends Controller
 					if (!$meta->i18n->save()) {
 						throw new HttpException(400, 'i18n save failed!');
 					}
-
-					// Handle tags, first delete all associated tags
-					{
-						ProductTag::deleteAll(['product_id' => $meta->id]);
-						$post = Yii::$app->request->post($meta->formName());
-						if (isset($post['tags']) && is_array($post['tags'])) {
-							$tags = TagMeta::findAll($post['tags']);
-							foreach ($tags as $tag) {
-								(new ProductTag([
-									'product_id' => $meta->id,
-									'tag_id' => $tag->id,
-								]))->save();
-							}
-						}
-					}
-
-					// Handle shortcut
+					
 					if ($meta->i18n->shortcut_active) {
 						$scut = Shortcut::findOne($meta->i18n->shortcut_active);
 						if (!$scut) $scut = new Shortcut();
 						$scut->shortcut = $meta->i18n->shortcut_active;
-						$scut->action = 'product/view';
+						$scut->action = 'tag/view';
 						$scut->fid = $meta->id;
 						$scut->fmodel = $meta->className();
 						
@@ -103,7 +85,7 @@ class ProductController extends Controller
 					}
 				});
 
-				return $this->redirect(Url::toProduct($meta));
+				return $this->redirect(Url::toTag($meta));
 			}
 		}
 

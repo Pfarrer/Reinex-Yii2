@@ -3,6 +3,16 @@ namespace app\models;
 
 use app\components\MetaModel;
 
+/**
+ * Class TagMeta
+ *
+ * @package app\models
+ *
+ * @property int id
+ *
+ * @property ProductMeta[] products
+ * @property int count
+ */
 class TagMeta extends MetaModel
 {
 	public function getProducts()
