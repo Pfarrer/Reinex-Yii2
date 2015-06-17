@@ -12,7 +12,6 @@ use xj\js\fullpage\FullpageAsset;
 /** @var $contacts app\models\ContactMeta[] */
 
 FullpageAsset::register($this);
-$this->registerCssFile('css/frontimage.css');
 
 $js = <<<JS
 $("#fullpage").fullpage({

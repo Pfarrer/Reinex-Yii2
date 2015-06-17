@@ -58,8 +58,8 @@ AppAsset::register($this);
 			<div class="container">
 				<div class="row">
 					<div class="col-md-4"><?= $this->textile(Yii::t('footer', 'col1')) ?></div>
-					<div class="col-md-4"><?= $this->textile(Yii::t('footer', 'col2')) ?></div>
-					<div class="col-md-4"><?= $this->textile(Yii::t('footer', 'col3')) ?></div>
+					<div class="col-md-5"><?= $this->textile(Yii::t('footer', 'col2')) ?></div>
+					<div class="col-md-3"><?= $this->textile(Yii::t('footer', 'col3')) ?></div>
 				</div>
 			</div>
 		</footer>

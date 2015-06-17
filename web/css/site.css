@@ -1,15 +1,23 @@
+body {
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: center;
+}
 footer {
 	color: white;
+	text-shadow: 1px 1px black;
 	z-index: 0;
 }
 
 #content-container {
 	position: relative;
-	margin-bottom: 1em;
+	padding-bottom: 1em;
 	z-index: 2;
 }
-#content-container .section:not(#frontimage) {
-	background-color: rgba(240, 240, 240, 0.9);;
+html.fp-enabled .section:not(#frontimage),
+html:not(.fp-enabled) #content-container {
+	background-color: rgba(240, 240, 240, 0.9);
 }
 html:not(.fp-enabled) #content-container {
 	padding-top: 80px;
