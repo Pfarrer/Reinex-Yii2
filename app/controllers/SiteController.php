@@ -3,6 +3,7 @@
 use app\forms\LoginForm;
 use app\models\ContactMeta;
 use app\models\ProductMeta;
+use app\models\TagI18n;
 use app\models\TagMeta;
 use Yii;
 use yii\web\Controller;
@@ -24,8 +25,11 @@ class SiteController extends Controller
 		$company_profile = file_get_contents("../app/static/company_profile.$lang.textile");
 
 		// Produkte und Kategorien mit dieser Sprache finden
-		$products = ProductMeta::find()->andWhere(['parent_id' => null])->orderby('sort')->all();
-		$tags = TagMeta::find()->joinWith('i18n')->orderBy('{{%tag_i18n}}.name')->all();
+		$products = ProductMeta::find()->joinWith('i18n')
+			->andWhere(['parent_id' => null])
+			->orderby('sort')->all();
+		$tags = TagMeta::find()->joinWith('i18n')
+			->orderBy(TagI18n::tableName().'.name')->all();
 
 		// Contacts mit dieser Sprache finden
 		$contacts = ContactMeta::find()->with('i18n')->orderBy('sort')->all();

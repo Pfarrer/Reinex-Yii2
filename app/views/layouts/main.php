@@ -33,7 +33,10 @@ AppAsset::register($this);
 		<?= Html::csrfMetaTags() ?>
 		<?= $this->head() ?>
 	</head>
-	<body <?= $this->body_background_image_url ? 'style="background-image: url('.$this->body_background_image_url.')"' : '' ?>)>
+	<body style="background-<?= $this->body_background_image_url
+			? 'image: url('.$this->body_background_image_url.')'
+			: 'color: #454545' ?>">
+
 		<?= $this->beginBody() ?>
 
 		<!--[if lt IE 7]>

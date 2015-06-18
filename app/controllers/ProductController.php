@@ -2,16 +2,19 @@
 namespace app\controllers;
 
 use app\components\Url;
+use app\models\Image;
 use app\models\ProductI18n;
 use app\models\ProductMeta;
 use app\models\ProductTag;
 use app\models\Shortcut;
 use app\models\TagMeta;
+use app\widgets\ImageWidget;
 use Yii;
 use yii\web\Controller;
 use yii\web\HttpException;
 use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
 
 class ProductController extends Controller
 {
@@ -108,5 +111,88 @@ class ProductController extends Controller
 		}
 
 		return $this->render('form', ['meta' => $meta, 'i18n' => $meta->i18n]);
+	}
+
+	public function actionUpload($id)
+	{
+		$meta = ProductMeta::findOne($id);
+		if (!$meta) throw new NotFoundHttpException();
+		/** @var $meta ProductMeta */
+
+		if (Yii::$app->request->isPost && isset($_FILES)) {
+			$reponse = [];
+
+			foreach (UploadedFile::getInstancesByName('images') as $file) {
+				// Check extension
+				if (!in_array(strtolower($file->extension), ['jpg', 'jpeg'])) {
+					$reponse[] = [
+						'name' => $file->name,
+						'error' => 'Invalid file type!',
+					];
+					continue;
+				}
+
+				// Check if file exists
+				$hash = md5_file($file->tempName);
+				$image = Image::findOne(['hash' => $hash]);
+				if ($image) {
+					// Image exists already on the server
+					// Check if it already linked to this product
+					$product_image = Image::findOne([
+						'hash' => $hash,
+						'fid' => $meta->id,
+						'fmodel' => $meta->className(),
+					]);
+					if ($product_image) {
+						$reponse[] = [
+							'name' => $file->name,
+							'error' => 'Image already attached to this product!',
+						];
+						continue;
+					}
+					else {
+						// Image is new for this product
+						$product_image = new Image([
+							'hash' => $hash,
+							'fid' => $meta->id,
+							'fmodel' => $meta->className(),
+							'filename' => $file->name,
+							'extension' => strtolower($file->extension),
+						]);
+						$product_image->save();
+					}
+				}
+				else {
+					if (!$file->saveAs("uploads/images/$hash.".strtolower($file->extension))) {
+						$reponse[] = [
+							'name' => $file->name,
+							'error' => 'Move failed!',
+						];
+						continue;
+					}
+
+					// Image does not exist yet
+					$product_image = new Image([
+						'hash' => $hash,
+						'fid' => $meta->id,
+						'fmodel' => $meta->className(),
+						'filename' => $file->name,
+						'extension' => strtolower($file->extension),
+					]);
+					$product_image->save();
+				}
+
+				$reponse[] = [
+					'name' => $file->name,
+					'thumbnail_url' => ImageWidget::thumbnail($product_image),
+					'size' => $file->size,
+				];
+			}
+
+			echo json_encode(['files' => $reponse]);
+		}
+		else {
+			echo 'Error';
+		}
 	}
 }

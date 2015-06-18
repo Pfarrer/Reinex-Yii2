@@ -3,78 +3,95 @@ use app\components\Url;
 use app\models\ProductI18n;
 use app\models\ProductMeta;
 use app\widgets\GoBackButton;
+use app\widgets\ImageUpload;
 use app\widgets\ImageWidget;
 
 /** @var app\components\View $this */
 /** @var ProductMeta $meta */
 /** @var ProductI18n $i18n */
+
+
+$js = <<<JS
+$(function () {
+	$(".fancybox").fancybox({
+		padding: 2,
+
+		beforeShow: function () {
+			/* Disable right click */
+			$.fancybox.wrap.bind("contextmenu", function (e) {
+				return false;
+			});
+		}
+	});
+});
+JS;
+$this->registerJs($js);
 ?>
 
-<div class="row">
-<div class="col-md-12">
+<div class="row clearfix">
 
-	<h1>
+	<h1 class="col-md-9">
 		<?= $i18n->name ?>
 		<?php if (!Yii::$app->user->isGuest): ?>
-		<small>
-			<a href="<?= Url::to(['product/edit', 'id'=>$meta->id]) ?>">
-				<i class="glyphicon glyphicon-pencil"></i> <?= Yii::t('product', 'Edit product') ?>
-			</a>
-		</small>
+			<small>
+				<a href="<?= Url::to(['product/edit', 'id'=>$meta->id]) ?>">
+					<i class="glyphicon glyphicon-pencil"></i> <?= Yii::t('product', 'Edit product') ?>
+				</a>
+			</small>
 		<?php endif; ?>
 	</h1>
 
-	<div class="well body">
-		<?= $this->textile($i18n->body) ?>
+	<?php if ($meta->tags): ?>
+		<h3 class="col-md-3"><?= Yii::t('tag', 'Categories') ?></h3>
+	<?php endif; ?>
 
-		<?php if ($meta->tags): ?>
-		<div class="categories">
-			<hr />
-			<?= Yii::t('tag', 'Categories') ?>:
-			<?php foreach ($meta->tags as $tag): ?>
-			<a href="<?= Url::toTag($tag) ?>" class="badge">
-				<?= $tag->i18n->name ?>
-			</a>
-			<?php endforeach; ?>
+	<div class="col-md-<?= $meta->tags ? 9 : 12 ?> body">
+		<?= $this->textile($i18n->body) ?>
+	</div>
+
+	<?php if ($meta->tags): ?>
+		<div class="categories col-md-3">
+			<div class="list-group">
+				<?php foreach ($meta->tags as $tag): ?>
+					<?php if ($tag->count > 0): ?>
+						<a href="<?= Url::toTag($tag) ?>" class="list-group-item">
+							<?= $tag->i18n->name ?>
+							<span class="badge"><?= $tag->count ?></span>
+						</a>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			</div>
 		</div>
+	<?php endif; ?>
+
+	<div class="images col-md-12">
+		<?php if (!Yii::$app->user->isGuest): ?>
+			<?= ImageUpload::widget([
+				'url' => ['product/upload', 'id'=>$meta->id],
+			]) ?>
 		<?php endif; ?>
 	</div>
 
-	<div class="images">
+	<div class="images col-md-12">
 		<?php foreach ($meta->images as $img): ?>
-		<a class="fancybox" rel="group" href="<?= ImageWidget::full($img) ?>">
-			<img src="<?= ImageWidget::thumbnail($img) ?>" alt="" />
-		</a>
+			<a class="fancybox" rel="group" href="<?= ImageWidget::full($img) ?>">
+				<img src="<?= ImageWidget::thumbnail($img) ?>" alt="" />
+			</a>
 		<?php endforeach; ?>
 	</div>
 
 	<?php if ($meta->medias): ?>
-	<div class="medias">
-		<script src="http://www.youtube.com/player_api"></script>
+		<div class="medias">
+			<script src="http://www.youtube.com/player_api"></script>
 
-		<?php foreach ($meta->medias as $media): ?>
-			<a class="fancybox fancybox.iframe" rel="group" href="<?= $media->url ?>">
-				<img src="<?= ImageWidget::thumbnail($media->image) ?>" />
-			</a>
-		<?php endforeach; ?>
-	</div>
+			<?php foreach ($meta->medias as $media): ?>
+				<a class="fancybox fancybox.iframe" rel="group" href="<?= $media->url ?>">
+					<img src="<?= ImageWidget::thumbnail($media->image) ?>" />
+				</a>
+			<?php endforeach; ?>
+		</div>
 	<?php endif; ?>
 
-	<script>
-		$(function () {
-			$(".fancybox").fancybox({
-				padding: 2,
-
-				beforeShow: function () {
-					/* Disable right click */
-					$.fancybox.wrap.bind("contextmenu", function (e) {
-						return false;
-					});
-				}
-			});
-		});
-	</script>
-</div>
 </div>
 
 <div class="row">
@@ -96,9 +113,9 @@ use app\widgets\ImageWidget;
 				</h3>
 			</div>
 			<?php if (!empty($child->i18n->body)): ?>
-			<div class="panel-body">
-				<?= $this->textile($child->i18n->body) ?>
-			</div>
+				<div class="panel-body">
+					<?= $this->textile($child->i18n->body) ?>
+				</div>
 			<?php endif; ?>
 		</div>
 

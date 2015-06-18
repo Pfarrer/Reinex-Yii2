@@ -8,5 +8,6 @@ return [
 	
 	'Save' => 'Speichern',
 	'Go back' => 'Zurück',
+	'Upload images' => 'Bilder hochladen',
 
 ];
