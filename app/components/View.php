@@ -12,10 +12,12 @@ class View extends \rmrevin\yii\minify\View
 	{
 		parent::init();
 
-		// Pick Frontimage
-		$frontimage = FrontimageMeta::find()->joinWith('i18n')->orderBy(new Expression('RAND()'))->one();
-		if ($frontimage) {
-			$this->body_background_image_url = ImageWidget::frontimage($frontimage->image);
+		if (!$this->body_background_image_url) {
+			// Pick a random background image
+			$frontimage = FrontimageMeta::find()->joinWith('i18n')->orderBy(new Expression('RAND()'))->one();
+			if ($frontimage) {
+				$this->body_background_image_url = ImageWidget::frontimage($frontimage->image);
+			}
 		}
 	}
 

@@ -15,7 +15,7 @@ $this->registerCssFile('css/modal.css');
 	}
 </style>
 
-<button type="button" class="btn btn-default" data-toggle="modal" data-target="#image-upload">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#image-upload">
 	<i class="glyphicon glyphicon-upload"></i>
 	<?= Yii::t('common', 'Upload images') ?>
 </button>

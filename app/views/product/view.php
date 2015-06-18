@@ -12,6 +12,7 @@ use app\widgets\ImageWidget;
 /** @var ProductI18n $i18n */
 
 FancyboxAsset::register($this);
+$this->registerCssFile('css/product.css');
 
 $js = <<<JS
 $(function () {
@@ -66,7 +67,7 @@ $this->registerJs($js);
 		</div>
 	<?php endif; ?>
 
-	<div class="images col-md-12">
+	<div class="col-md-12">
 		<?php if (!Yii::$app->user->isGuest): ?>
 			<?= ImageUpload::widget([
 				'url' => ['product/upload', 'id'=>$meta->id],

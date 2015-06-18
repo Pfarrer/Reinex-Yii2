@@ -43,6 +43,10 @@ class ProductController extends Controller
 		if (!$meta) throw new NotFoundHttpException();
 		if (!$meta->i18n) throw new NotFoundHttpException('This content is not available in your current language.');
 
+		if ($meta->frontimage) {
+			$this->view->body_background_image_url = ImageWidget::frontimage($meta->frontimage);
+		}
+
 		return $this->render('view', ['meta' => $meta, 'i18n' => $meta->i18n]);
 	}
 

@@ -49,6 +49,17 @@ html:not(.fp-enabled) #content-container {
 	width: auto;
 }
 
+#fullpage #products-list .product {
+	float: left;
+	padding: 0 10px;
+	margin: 4px 8px;
+	border-radius: 4px;
+	text-align: center;
+}
+#fullpage #products-list .product .thumbnail {
+  max-width: 200px;
+}
+
 /** Common stuff **/
 img {
 	max-width: 80%;
