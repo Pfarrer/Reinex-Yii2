@@ -16,6 +16,7 @@
 		"yiisoft/yii2": "2.0.4",
 		"yiisoft/yii2-bootstrap": "2.0.4",
 		"rmrevin/yii2-minify-view": "~1.8",
+		"kartik-v/yii2-widgets": "dev-master",
 		"netcarver/textile": "v3.5.5",
 		"xj/yii2-fullpage-widget": "*",
 		"smottt/wideimage": "*",

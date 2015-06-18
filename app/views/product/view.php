@@ -1,11 +1,13 @@
 <?php
 use app\assets\FancyboxAsset;
 use app\components\Url;
+use app\models\Image;
 use app\models\ProductI18n;
 use app\models\ProductMeta;
 use app\widgets\GoBackButton;
 use app\widgets\ImageUpload;
 use app\widgets\ImageWidget;
+use kartik\sortable\Sortable;
 
 /** @var app\components\View $this */
 /** @var ProductMeta $meta */
@@ -75,7 +77,7 @@ $this->registerJs($js);
 		<?php endif; ?>
 	</div>
 
-	<div class="images col-md-12">
+	<div class="images col-md-9">
 		<?php foreach ($meta->images as $img): ?>
 			<a class="fancybox" rel="group" href="<?= ImageWidget::full($img) ?>">
 				<img src="<?= ImageWidget::thumbnail($img) ?>" alt="" />
@@ -123,11 +125,31 @@ $this->registerJs($js);
 		</div>
 
 		<div class="images">
-			<?php foreach ($child->images as $img): ?>
-				<a class="fancybox" rel="group" href="<?= ImageWidget::full($img) ?>">
-					<img src="<?= ImageWidget::thumbnail($img) ?>" alt="" />
-				</a>
-			<?php endforeach; ?>
+			<?php if (Yii::$app->user->isGuest): ?>
+
+				<?php foreach ($child->images as $img): ?>
+					<a class="fancybox" rel="group" href="<?= ImageWidget::full($img) ?>">
+						<img src="<?= ImageWidget::thumbnail($img) ?>" alt="" />
+					</a>
+				<?php endforeach; ?>
+
+			<?php else: ?>
+
+				<?php
+					$sortableImageItems = array_map(function (Image $img) {
+						return [
+							'content' => '<img src="'.ImageWidget::thumbnail($img).'" />'
+									.'<input type="hidden" name="image_sort[]" value="'.$img->id.'" />',
+						];
+					}, $meta->images);
+					echo Sortable::widget([
+						'type' => Sortable::TYPE_GRID,
+						'items' => $sortableImageItems,
+					]);
+				?>
+
+
+			<?php endif; ?>
 		</div>
 
 		<?php if ($child->medias): ?>

@@ -1,3 +1,28 @@
-.images {
+.images,
+.medias {
 	margin: 1em 0;
+	margin-bottom: 20px;
+	padding: 0 2px;
+}
+.images img,
+.medias img {
+	padding: 2px 0;
+}
+.images a:hover,
+.medias a:hover {
+	text-decoration: none;
+}
+.medias img {
+	width: 120px;
+}
+
+/** Product Text **/
+.body h1,
+.body h2,
+.body h3,
+.body h4,
+.body h5 {
+	margin-top: 1em;
+	margin-bottom: 0.5em;
+	text-decoration: underline;
 }
