@@ -1,4 +1,5 @@
 <?php
+use app\assets\FancyboxAsset;
 use app\components\Url;
 use app\models\ProductI18n;
 use app\models\ProductMeta;
@@ -10,6 +11,7 @@ use app\widgets\ImageWidget;
 /** @var ProductMeta $meta */
 /** @var ProductI18n $i18n */
 
+FancyboxAsset::register($this);
 
 $js = <<<JS
 $(function () {
