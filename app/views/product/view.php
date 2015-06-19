@@ -100,7 +100,7 @@ $this->registerJs($js);
 				]);
 			?>
 
-			<button type="submit" class="btn btn-primary pull-right" name="action" value="order">
+			<button type="submit" class="btn btn-primary pull-right" name="action" value="sort">
 				<i class="glyphicon glyphicon-retweet"></i>
 				Save order
 			</button>
