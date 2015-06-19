@@ -1,10 +1,11 @@
 <?php
+use app\components\Url;
 use dosamigos\fileupload\FileUploadUI;
 
 /** @var $this yii\web\View */
 /** @var $url array */
 
-$this->registerCssFile('css/modal.css');
+$this->registerCssFile(Url::base().'/css/modal.css');
 ?>
 
 <style>
@@ -42,7 +43,7 @@ $this->registerCssFile('css/modal.css');
 
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.location=window.location">
-						Done
+						Clone & Reload
 					</button>
 				</div>
 

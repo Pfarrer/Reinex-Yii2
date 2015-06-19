@@ -15,7 +15,7 @@ use yii\widgets\ActiveForm;
 /** @var ProductI18n $i18n */
 
 FancyboxAsset::register($this);
-$this->registerCssFile('css/product.css');
+$this->registerCssFile(Url::base().'/css/product.css');
 
 $js = <<<JS
 $(function () {

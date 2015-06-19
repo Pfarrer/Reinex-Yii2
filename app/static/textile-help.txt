@@ -1,10 +1,8 @@
 <a class="btn btn-sm btn-default" data-toggle="collapse" href="#textile" aria-expanded="false">Hilfe</a>
 <pre class="collapse" id="textile">
-h1. Überschrift 1
-h2. Überschrift 2
-h3. Überschrift 3
-h4. Überschrift 4
-h5. Überschrift 5
+h3. Überschrift 1
+h4. Überschrift 2
+h5. Überschrift 3
 
 _Kursiver Text_
 *Fett*

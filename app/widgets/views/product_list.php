@@ -5,7 +5,7 @@ use app\models\ProductMeta;
 /** @var $this yii\web\View */
 /** @var $products ProductMeta[] */
 
-$this->registerJsFile('js/masonry.pkgd.min.js');
+$this->registerJsFile(Url::base().'/js/masonry.pkgd.min.js');
 ?>
 
 
