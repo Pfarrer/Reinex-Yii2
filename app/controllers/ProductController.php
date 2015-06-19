@@ -122,7 +122,7 @@ class ProductController extends Controller
 		return $this->render('form', ['meta' => $meta, 'i18n' => $meta->i18n]);
 	}
 
-	public function actionSort_images($id)
+	public function actionEdit_images($id)
 	{
 		$meta = ProductMeta::findOne($id);
 		if (!$meta) throw new NotFoundHttpException();
@@ -130,11 +130,28 @@ class ProductController extends Controller
 
 		if (!Yii::$app->request->isPost) throw new HttpException(404);
 
-		foreach (Yii::$app->request->post('image_sort') as $i=>$image_id) {
-			Image::updateAll(['sort' => $i], ['id' => $image_id]);
+		$action = Yii::$app->request->post('action');
+		$image_sort = Yii::$app->request->post('image_sort', []);
+		$image_selected = Yii::$app->request->post('image_selected', []);
+
+		if ($action === 'sort') {
+			foreach ($image_sort as $i=>$image_id) {
+				Image::updateAll(['sort' => $i], ['id' => $image_id, 'fid' => $meta->id, 'fmodel' => $meta->className()]);
+			}
+			Yii::$app->session->addFlash('success', 'Image order was succefully saved!');
+		}
+		else if ($action === 'delete') {
+			// Delete the selected images
+			foreach ($image_selected as $image_id) {
+				$image = Image::findOne(['id' => $image_id, 'fid' => $meta->id, 'fmodel' => $meta->className()]);
+				if ($image) $image->delete();
+			}
+			Yii::$app->session->addFlash('success', 'Image(s) removed!');
+		}
+		else if ($action === 'move') {
+
 		}
 
-		Yii::$app->session->addFlash('success', 'Image order was succefully saved!');
 		return $this->redirect(Url::toProduct($meta));
 	}
 

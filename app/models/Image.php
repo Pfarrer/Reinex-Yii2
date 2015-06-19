@@ -27,19 +27,9 @@ class Image extends ActiveRecord
 	public function handleBeforeDelete()
 	{
 		// Falls das Image nur einmal benutzt wird -> Bild löschen
-		if (Image::find()->where(['hash' => $this->hash])->count() === 1) {
+		if (Image::find()->where(['hash' => $this->hash])->count() == 1) {
 			// Bild wird nirgends wo sonst benutzt
-			@unlink($this->fullPath());
+			unlink($this->fullPath());
 		}
 	}
-
-//	public static function create(UploadedFile $file)
-//	{
-//		$img = new MetaImage();
-//		$img->hash = md5_file($file->tempName);
-//		$img->filename = $file->getBaseName();
-//		$img->extension = $file->getExtension();
-//		if ($file->saveAs('img/uploaded/' . $img->hash . '.' . $img->extension)) return $img;
-//		return null;
-//	}
 }

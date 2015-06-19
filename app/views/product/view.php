@@ -83,14 +83,15 @@ $this->registerJs($js);
 
 			<?php $form = ActiveForm::begin([
 				'id' => 'image-sort',
-				'action' => Url::to(['sort_images', 'id'=>$meta->id]),
+				'action' => Url::to(['edit_images', 'id'=>$meta->id]),
 			]) ?>
 
 			<?php
 				$sortableImageItems = array_map(function (Image $img) {
 					return [
 						'content' => '<img src="'.ImageWidget::thumbnail($img).'" />'
-								.'<input type="hidden" name="image_sort[]" value="'.$img->id.'" />',
+							.'<input type="checkbox" name="image_selected[]" value="'.$img->id.'" />'
+							.'<input type="hidden" name="image_sort[]" value="'.$img->id.'" />',
 					];
 				}, $meta->images);
 				echo Sortable::widget([
@@ -99,12 +100,24 @@ $this->registerJs($js);
 				]);
 			?>
 
-			<input type="submit" class="btn btn-primary pull-right" value="Save">
-			<?php if (!Yii::$app->user->isGuest): ?>
-				<?= ImageUpload::widget([
-					'url' => ['product/upload', 'id'=>$meta->id],
-				]) ?>
-			<?php endif; ?>
+			<button type="submit" class="btn btn-primary pull-right" name="action" value="order">
+				<i class="glyphicon glyphicon-retweet"></i>
+				Save order
+			</button>
+
+			<button type="submit" class="btn btn-warning pull-right" name="action" value="move">
+				<i class="glyphicon glyphicon-share-alt"></i>
+				Move selected
+			</button>
+
+			<button type="submit" class="btn btn-warning pull-right" name="action" value="delete">
+				<i class="glyphicon glyphicon-trash"></i>
+				Delete selected
+			</button>
+
+			<?= ImageUpload::widget([
+				'url' => ['product/upload', 'id'=>$meta->id],
+			]) ?>
 
 			<?php ActiveForm::end() ?>
 
