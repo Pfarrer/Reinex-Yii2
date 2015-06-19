@@ -8,6 +8,7 @@ use app\widgets\GoBackButton;
 use app\widgets\ImageUpload;
 use app\widgets\ImageWidget;
 use kartik\sortable\Sortable;
+use yii\widgets\ActiveForm;
 
 /** @var app\components\View $this */
 /** @var ProductMeta $meta */
@@ -69,20 +70,45 @@ $this->registerJs($js);
 		</div>
 	<?php endif; ?>
 
-	<div class="col-md-12">
-		<?php if (!Yii::$app->user->isGuest): ?>
-			<?= ImageUpload::widget([
-				'url' => ['product/upload', 'id'=>$meta->id],
-			]) ?>
-		<?php endif; ?>
-	</div>
-
 	<div class="images col-md-9">
-		<?php foreach ($meta->images as $img): ?>
-			<a class="fancybox" rel="group" href="<?= ImageWidget::full($img) ?>">
-				<img src="<?= ImageWidget::thumbnail($img) ?>" alt="" />
-			</a>
-		<?php endforeach; ?>
+		<?php if (Yii::$app->user->isGuest): ?>
+
+			<?php foreach ($meta->images as $img): ?>
+				<a class="fancybox" rel="group" href="<?= ImageWidget::full($img) ?>">
+					<img src="<?= ImageWidget::thumbnail($img) ?>" alt="" />
+				</a>
+			<?php endforeach; ?>
+
+		<?php else: ?>
+
+			<?php $form = ActiveForm::begin([
+				'id' => 'image-sort',
+				'action' => Url::to(['sort_images', 'id'=>$meta->id]),
+			]) ?>
+
+			<?php
+				$sortableImageItems = array_map(function (Image $img) {
+					return [
+						'content' => '<img src="'.ImageWidget::thumbnail($img).'" />'
+								.'<input type="hidden" name="image_sort[]" value="'.$img->id.'" />',
+					];
+				}, $meta->images);
+				echo Sortable::widget([
+					'type' => Sortable::TYPE_GRID,
+					'items' => $sortableImageItems,
+				]);
+			?>
+
+			<input type="submit" class="btn btn-primary pull-right" value="Save">
+			<?php if (!Yii::$app->user->isGuest): ?>
+				<?= ImageUpload::widget([
+					'url' => ['product/upload', 'id'=>$meta->id],
+				]) ?>
+			<?php endif; ?>
+
+			<?php ActiveForm::end() ?>
+
+		<?php endif; ?>
 	</div>
 
 	<?php if ($meta->medias): ?>

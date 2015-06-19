@@ -37,6 +37,11 @@ class ProductController extends Controller
 		];
 	}
 
+	public function actionIndex()
+	{
+		return $this->redirect(['/#products']);
+	}
+
 	public function actionView($id)
 	{
 		$meta = ProductMeta::findOne($id);
@@ -115,6 +120,22 @@ class ProductController extends Controller
 		}
 
 		return $this->render('form', ['meta' => $meta, 'i18n' => $meta->i18n]);
+	}
+
+	public function actionSort_images($id)
+	{
+		$meta = ProductMeta::findOne($id);
+		if (!$meta) throw new NotFoundHttpException();
+		/** @var $meta ProductMeta */
+
+		if (!Yii::$app->request->isPost) throw new HttpException(404);
+
+		foreach (Yii::$app->request->post('image_sort') as $i=>$image_id) {
+			Image::updateAll(['sort' => $i], ['id' => $image_id]);
+		}
+
+		Yii::$app->session->addFlash('success', 'Image order was succefully saved!');
+		return $this->redirect(Url::toProduct($meta));
 	}
 
 	public function actionUpload($id)
