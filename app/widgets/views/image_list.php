@@ -50,7 +50,8 @@ use yii\bootstrap\ActiveForm;
 		Move selected
 	</button>
 
-	<button type="submit" class="btn btn-warning pull-right" name="action" value="delete">
+	<button type="submit" class="btn btn-warning pull-right" name="action" value="delete"
+			onclick="return confirm('Sure?')">
 		<i class="glyphicon glyphicon-trash"></i>
 		Delete selected
 	</button>

@@ -134,6 +134,7 @@ class ProductController extends Controller
 		$action = Yii::$app->request->post('action');
 		$image_sort = Yii::$app->request->post('image_sort', []);
 		$image_selected = Yii::$app->request->post('image_selected', []);
+		$target_id = Yii::$app->request->post('target_id', null);
 
 		if ($action === 'sort') {
 			foreach ($image_sort as $i=>$image_id) {
@@ -150,7 +151,19 @@ class ProductController extends Controller
 			Yii::$app->session->addFlash('success', 'Image(s) removed!');
 		}
 		else if ($action === 'move') {
-
+			if (!$target_id) {
+				// Show target selection list
+				return $this->render('move_target_select', [
+					'id' => $id,
+					'image_selected' => $image_selected,
+					'products' => ProductMeta::find()->andWhere(['parent_id' => null])->orderBy('sort')->all(),
+				]);
+			}
+			else {
+				// Move
+				Image::updateAll(['fid' => $target_id], ['id' => $image_selected]);
+				Yii::$app->session->addFlash('success', 'Image(s) moved!');
+			}
 		}
 
 		return $this->redirect(Url::toProduct($meta));
