@@ -40,11 +40,6 @@ use app\components\Url;
 			<ul class="nav navbar-nav navbar-right">
 				<?php if (!Yii::$app->user->isGuest): ?>
 					<li>
-						<a href="<?= Url::to(['/admin']) ?>">
-							<i class="glyphicon glyphicon-wrench"></i>
-						</a>
-					</li>
-					<li>
 						<a href="<?= Url::to(['/site/logout']) ?>" title="Logout">
 							<i class="glyphicon glyphicon-log-out"></i>
 						</a>

@@ -74,7 +74,7 @@ class ProductMeta extends MetaModel
 
 	public function getChildren()
 	{
-		return $this->hasMany(ProductMeta::className(), ['parent_id' => 'id'])->joinWith('i18n')->orderby('sort');
+		return $this->hasMany(ProductMeta::className(), ['parent_id' => 'id'])->orderby('sort');
 	}
 
 	public function getTags()

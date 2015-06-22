@@ -100,7 +100,12 @@ $this->registerJs($js);
 			<div class="variant panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">
-						<?= $child->i18n->name ?>
+						<?php if ($child->i18n): ?>
+							<?= $child->i18n->name ?>
+						<?php else: ?>
+							<img src="<?= Url::base().'/images/flags/'.$child->i18n_any->lang.'.png' ?>">
+							<?= $child->i18n_any->name ?>
+						<?php endif; ?>
 
 						<?php if (!Yii::$app->user->isGuest): ?>
 							<a href="<?= Url::to(['product/edit', 'id'=>$child->id]) ?>" class="pull-right">
@@ -109,17 +114,17 @@ $this->registerJs($js);
 						<?php endif; ?>
 					</h3>
 				</div>
-				<?php if (!empty($child->i18n->body)): ?>
-					<div class="panel-body">
-						<?= $this->textile($child->i18n->body) ?>
-					</div>
-				<?php endif; ?>
-			</div>
+				<div class="panel-body">
+					<?php if ($child->i18n && !empty($child->i18n->body) || (!$child->i18n && $child->i18n_any && !empty($child->i18n_any->body))): ?>
+						<?= $this->textile($child->i18n ? $child->i18n->body : $child->i18n_any->body) ?>
+					<?php endif; ?>
 
-			<div class="images">
-				<?= ImageList::widget([
-					'meta' => $child,
-				]) ?>
+					<div class="images">
+						<?= ImageList::widget([
+							'meta' => $child,
+						]) ?>
+					</div>
+				</div>
 			</div>
 
 		<?php endforeach; ?>

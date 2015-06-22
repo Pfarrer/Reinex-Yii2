@@ -8,12 +8,11 @@
 .medias img {
 	padding: 2px 0;
 }
-.images a:hover,
-.medias a:hover {
+.images a:hover {
 	text-decoration: none;
 }
-.medias img {
-	width: 120px;
+.images img {
+	height: 94px;
 }
 
 /** Product Text **/
