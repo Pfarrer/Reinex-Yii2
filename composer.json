@@ -22,8 +22,6 @@
 		"smottt/wideimage": "*",
 		"2amigos/yii2-file-upload-widget": "~1.0",
 		"kartik-v/yii2-sortable": "dev-master",
-		"embed/embed": "dev-master",
-		"cics/yii2-video-embed-widget": "dev-master",
 		"pfarrer/yii2-email-obfuscator": "dev-master"
 	},
 	"require-dev": {
