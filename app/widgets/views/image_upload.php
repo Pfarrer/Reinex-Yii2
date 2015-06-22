@@ -43,7 +43,7 @@ $this->registerCssFile(Url::base().'/css/modal.css');
 
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal" onclick="window.location=window.location">
-						Clone & Reload
+						Close & Reload
 					</button>
 				</div>
 

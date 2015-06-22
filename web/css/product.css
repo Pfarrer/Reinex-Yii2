@@ -26,6 +26,17 @@
 	margin-bottom: 0.5em;
 }
 
+/** Youtube player **/
+iframe {
+	display: block;
+	margin: 0 auto;
+}
+
+/** Variants **/
+.variant {
+	margin-top: 4em;
+}
+
 /** Admin Mode **/
 ul.sortable li {
 	position: relative;

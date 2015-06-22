@@ -18,7 +18,13 @@ $tags = ArrayHelper::map($tags, 'id', 'i18n.name');
 <div class="row">
 <div class="col-md-12">
 
-	<h1><?= Yii::t('product', $meta->isNewRecord ? 'Create a product' : 'Edit product') ?></h1>
+	<h1>
+		<?php if ($meta->parent_id === null): ?>
+			<?= Yii::t('product', $meta->isNewRecord ? 'Create a product' : 'Edit product') ?>
+		<?php else: ?>
+			<?= Yii::t('product', $meta->isNewRecord ? 'Create a product variant' : 'Edit product variant') ?>
+		<?php endif; ?>
+	</h1>
 
 	<?php $form = ActiveForm::begin([
 		'id' => 'login-form',
@@ -39,6 +45,8 @@ $tags = ArrayHelper::map($tags, 'id', 'i18n.name');
 
 	<?php if (!$meta->parent): // Unterprodukte haben keine Tags ?>
 		<?= $form->field($meta, 'tags')->checkboxList($tags) ?>
+
+		<?= $form->field($meta, 'youtube_playlist_id') ?>
 	<?php endif; ?>
 
 	<?php if ($meta->parent): ?>

@@ -9,12 +9,12 @@ use app\components\MetaModel;
  * @property int id
  * @property int sort
  * @property int|null parent_id
+ * @property string|null youtube_playlist_id
  *
  * @property ProductI18n i18n
  * @property ProductMeta parent
  * @property Image frontimage
  * @property Image[] images
- * @property ProductMedia[] metias
  */
 class ProductMeta extends MetaModel
 {
@@ -29,6 +29,7 @@ class ProductMeta extends MetaModel
 		return [
 			['sort', 'integer'],
 			['parent_id', 'validateParent'],
+			['youtube_playlist_id', 'string'],
 		];
 	}
 
@@ -36,6 +37,22 @@ class ProductMeta extends MetaModel
 	{
 		if ($this->parent_id === null) return true;
 		return $this->getParent() !== null;
+	}
+
+	public function attributeLabels()
+	{
+		return [
+			'youtube_playlist_id' => 'YouTube Playlist ID',
+		];
+	}
+
+	public function attributeHints()
+	{
+		return [
+			'youtube_playlist_id' => 'Die URL einer Playlist sieht in etwa so aus:
+				<pre>https://www.youtube.com/playlist?list=PLqDM5nubkCia5fmO-D913NrmFNxKPNpBZ</pre>,
+				die ID ist der letzte Teil nach dem Istgleich: <pre>PLqDM5nubkCia5fmO-D913NrmFNxKPNpBZ</pre>.',
+		];
 	}
 
 	public function getImages()
@@ -47,11 +64,6 @@ class ProductMeta extends MetaModel
 	public function getFrontimage()
 	{
 		return $this->getImages()->limit(1)->one();
-	}
-
-	public function getMedias()
-	{
-		return $this->hasMany(ProductMedia::className(), ['product_id' => 'id'])->orderby('sort');
 	}
 
 	public function getParent()
@@ -73,7 +85,7 @@ class ProductMeta extends MetaModel
 	public function handleBeforeDelete($event)
 	{
 		foreach ($this->images as $img) {
-			/* @var $img \app\models\MetaImage */
+			/* @var $img Image */
 			$img->delete();
 		}
 	}

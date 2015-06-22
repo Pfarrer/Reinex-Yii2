@@ -61,7 +61,10 @@ html:not(.fp-enabled) #content-container {
 	text-align: center;
 }
 #fullpage #products-list .product .thumbnail {
-  max-width: 200px;
+	max-width: 200px;
+}
+#fullpage #products-list .product .thumbnail img {
+	max-height: 150px;
 }
 
 /** Common stuff **/
@@ -70,4 +73,8 @@ img {
 }
 #content-container small {
 	font-size: 50%;
+}
+pre {
+	display: inline;
+	padding: 1px;
 }

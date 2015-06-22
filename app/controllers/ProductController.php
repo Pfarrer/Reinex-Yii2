@@ -55,10 +55,11 @@ class ProductController extends Controller
 		return $this->render('view', ['meta' => $meta, 'i18n' => $meta->i18n]);
 	}
 
-	public function actionEdit($id=null)
+	public function actionEdit($id=null, $parent_id=null)
 	{
 		if ($id === null) {
 			$meta = new ProductMeta();
+			$meta->parent_id = $parent_id;
 			$meta->populateRelation('i18n', new ProductI18n());
 		}
 		else {
