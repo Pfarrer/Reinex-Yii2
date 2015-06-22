@@ -1,5 +1,7 @@
 <?php
 use app\components\Url;
+use app\components\Util;
+use app\models\DownloadMeta;
 use app\models\FrontimageMeta;
 use app\models\ProductMeta;
 use app\widgets\ImageWidget;
@@ -9,6 +11,7 @@ use yii\web\View;
 /** @var $this yii\web\View */
 /** @var $frontimages FrontimageMeta[] */
 /** @var $products ProductMeta[] */
+/** @var $downloads DownloadMeta[] */
 /** @var $company_profile string */
 /** @var $contacts app\models\ContactMeta[] */
 
@@ -79,6 +82,44 @@ $this->registerJs($js, View::POS_END);
 		</div>
 	</div>
 
+	<div class="section row" data-anchor="downloads">
+		<div class="col-md-12">
+			<h2>
+				Downloads
+				<?php if (!Yii::$app->user->isGuest): ?>
+					<small>
+						<a href="<?= Url::to(['/download/edit']) ?>">
+							<i class="glyphicon glyphicon-plus"></i> <?= Yii::t('download', 'Create a download') ?>
+						</a>
+					</small>
+				<?php endif; ?>
+			</h2>
+
+			<div class="list-group">
+				<?php foreach ($downloads as $dl): ?>
+					<a href="<?= Url::to(['download/dl', 'id'=>$dl->id]) ?>" class="list-group-item" download target="_blank">
+						<i class="glyphicon glyphicon-download-alt"></i>
+
+						<?php if ($dl->i18n): ?>
+							<?= $dl->i18n->name ?>
+						<?php else: ?>
+							<img src="<?= Url::base().'/images/flags/'.$dl->i18n_any->lang.'.png' ?>">
+							<?= $dl->i18n_any->name ?>
+						<?php endif; ?>
+
+						(<?= $dl->filename.', '.Util::formatBytes($dl->filesize, 0) ?>)
+					</a>
+
+					<?php if (!Yii::$app->user->isGuest): ?>
+						<a href="<?= Url::to(['/download/edit', 'id'=>$dl->id]) ?>" class="pull-right">
+							<i class="glyphicon glyphicon-pencil"></i> <?= Yii::t('download', 'Edit download') ?>
+						</a>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</div>
+
 	<div class="section row" data-anchor="company">
 		<div class="col-md-12">
 			<h2><?= Yii::t('menu', 'Company') ?></h2>
@@ -94,12 +135,12 @@ $this->registerJs($js, View::POS_END);
 	</div>
 
 	<?php if (Yii::$app->language === 'de'): ?>
-	<div class="section row" data-anchor="legal_notice">
-		<div class="col-md-12">
-			<h2><?= Yii::t('menu', 'Legal Notice') ?></h2>
-			<?= $this->textile(file_get_contents('../app/static/legal_notice.'.Yii::$app->language.'.textile')) ?>
+		<div class="section row" data-anchor="legal_notice">
+			<div class="col-md-12">
+				<h2><?= Yii::t('menu', 'Legal Notice') ?></h2>
+				<?= $this->textile(file_get_contents('../app/static/legal_notice.'.Yii::$app->language.'.textile')) ?>
+			</div>
 		</div>
-	</div>
 	<?php endif; ?>
 
 </div>

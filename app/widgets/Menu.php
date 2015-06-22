@@ -14,6 +14,7 @@ class Menu extends \yii\base\Widget
 		
 		$this->items = [
 			['label' => 'Products', 'url' => Url::home().'#products'],
+			['label' => 'Downloads', 'url' => Url::home().'#downloads'],
 			['label' => 'Company', 'url' => Url::home().'#company'],
 			['label' => 'Contact', 'url' => Url::home().'#contact'],
 			['label' => 'Legal Notice', 'url' => Url::home().'#legal_notice', 'if' => Yii::$app->language === 'de'],
