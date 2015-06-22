@@ -4,6 +4,7 @@ use app\models\FrontimageMeta;
 use app\models\ProductMeta;
 use app\widgets\ImageWidget;
 use xj\js\fullpage\FullpageAsset;
+use yii\web\View;
 
 /** @var $this yii\web\View */
 /** @var $frontimages FrontimageMeta[] */
@@ -22,7 +23,7 @@ $("#fullpage").fullpage({
 	paddingTop: '80px'
 });
 JS;
-$this->registerJs($js);
+$this->registerJs($js, View::POS_END);
 ?>
 
 <div id="fullpage">
