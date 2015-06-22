@@ -1,15 +1,27 @@
 <?php
 use app\components\Url;
 use app\models\ProductMeta;
+use yii\web\View;
 
 /** @var $this yii\web\View */
 /** @var $products ProductMeta[] */
 
-$this->registerJsFile(Url::base().'/js/masonry.pkgd.min.js');
+$this->registerJsFile(Url::base().'/js/masonry.pkgd.min.js', [
+	'depends' => ['yii\web\YiiAsset'],
+]);
+$js = <<<JS
+var grid = $("#products-list").masonry({
+	itemSelector: ".product"
+});
+grid.imagesLoaded(function () {
+	grid.masonry();
+});
+JS;
+$this->registerJs($js, View::POS_READY);
 ?>
 
 
-<div id="products-list" class="row js-masonry" data-masonry-options='{"itemSelector": ".product"}'>
+<div id="products-list" class="row">
 	<?php foreach ($products as $product): ?>
 
 		<div class="col-md-3 product clearfix">
