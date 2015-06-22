@@ -28,9 +28,9 @@ $this->registerJs($js, View::POS_END);
 
 <div id="fullpage">
 
-	<div class="section row" id="frontimage">
-
-	</div>
+	<?php if ($this->body_background_image_url): ?>
+		<div class="section row" id="frontimage"></div>
+	<?php endif; ?>
 
 	<div class="section row" data-anchor="products">
 		<div class="col-md-9">
@@ -62,9 +62,15 @@ $this->registerJs($js, View::POS_END);
 
 			<div class="list-group">
 				<?php foreach ($tags as $tag): ?>
-					<?php if ($tag->count > 0): ?>
+					<?php if ($tag->count > 0 || !Yii::$app->user->isGuest): ?>
 						<a href="<?= Url::toTag($tag) ?>" class="list-group-item">
-							<?= $tag->i18n->name ?>
+							<?php if ($tag->i18n): ?>
+								<?= $tag->i18n->name ?>
+							<?php else: ?>
+								<img src="<?= Url::base().'/images/flags/'.$tag->i18n_any->lang.'.png' ?>">
+								<?= $tag->i18n_any->name ?>
+							<?php endif; ?>
+
 							<span class="badge"><?= $tag->count ?></span>
 						</a>
 					<?php endif; ?>

@@ -28,8 +28,7 @@ class SiteController extends Controller
 		$products = ProductMeta::find()
 			->andWhere(['parent_id' => null])
 			->orderby('sort')->all();
-		$tags = TagMeta::find()->joinWith('i18n')
-			->orderBy(TagI18n::tableName().'.name')->all();
+		$tags = TagMeta::find()->orderBy('sort')->all();
 
 		// Contacts mit dieser Sprache finden
 		$contacts = ContactMeta::find()->with('i18n')->orderBy('sort')->all();
