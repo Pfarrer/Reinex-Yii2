@@ -3,12 +3,14 @@
 use \Yii;
 use yii\db\ActiveRecord;
 use app\models\Shortcut;
+use yii\db\Expression;
 
 /**
  * @property int id
  *
  * @property string i18nClassname
  * @property I18nModel i18n
+ * @property I18nModel i18n_any
  * @property I18nModel[] i18ns
  * @property Shortcut[] shortcuts
  */
@@ -24,6 +26,11 @@ abstract class MetaModel extends ActiveRecord
 	{
 		return $this->hasOne($this->i18nClassname, ['id' => 'id'])
 			->where('lang=:lang', [':lang' => Yii::$app->language]);
+	}
+
+	public function getI18n_any()
+	{
+		return $this->hasOne($this->i18nClassname, ['id' => 'id']);
 	}
 
 	public function getShortcuts()

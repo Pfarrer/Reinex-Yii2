@@ -12,6 +12,7 @@ use app\components\MetaModel;
  * @property string|null youtube_playlist_id
  *
  * @property ProductI18n i18n
+ * @property ProductI18n i18n_any
  * @property ProductMeta parent
  * @property Image frontimage
  * @property Image[] images

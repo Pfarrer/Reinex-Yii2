@@ -19,7 +19,14 @@ $this->registerJsFile(Url::base().'/js/masonry.pkgd.min.js');
 					<?php if ($product->frontimage): ?>
 						<img src="<?= \app\widgets\ImageWidget::medium($product->frontimage) ?>"/>
 					<?php endif; ?>
-					<div class="caption"><?= $product->i18n->name ?></div>
+					<div class="caption">
+						<?php if ($product->i18n): ?>
+							<?= $product->i18n->name ?>
+						<?php else: ?>
+							<img src="<?= Url::base().'/images/flags/'.$product->i18n_any->lang.'.png' ?>">
+							<?= $product->i18n_any->name ?>
+						<?php endif; ?>
+					</div>
 
 				</div>
 			</a>

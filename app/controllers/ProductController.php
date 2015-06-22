@@ -46,13 +46,20 @@ class ProductController extends Controller
 	{
 		$meta = ProductMeta::findOne($id);
 		if (!$meta) throw new NotFoundHttpException();
-		if (!$meta->i18n) throw new NotFoundHttpException('This content is not available in your current language.');
+		if ($meta->i18n) {
+			$i18n = $meta->i18n;
+		}
+		else {
+			$i18n = $meta->i18n_any;
+			Yii::$app->session->addFlash('warning', 'Unfortunately, this content is not available in your selected language.
+				You see the <img src="'.Url::base().'/images/flags/'.$i18n->lang.'.png"> '.Yii::t('language', $i18n->lang).' version.');
+		}
 
 		if ($meta->frontimage) {
 			$this->view->body_background_image_url = ImageWidget::frontimage($meta->frontimage);
 		}
 
-		return $this->render('view', ['meta' => $meta, 'i18n' => $meta->i18n]);
+		return $this->render('view', ['meta' => $meta, 'i18n' => $i18n]);
 	}
 
 	public function actionEdit($id=null, $parent_id=null)

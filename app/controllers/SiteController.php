@@ -25,7 +25,7 @@ class SiteController extends Controller
 		$company_profile = file_get_contents("../app/static/company_profile.$lang.textile");
 
 		// Produkte und Kategorien mit dieser Sprache finden
-		$products = ProductMeta::find()->joinWith('i18n')
+		$products = ProductMeta::find()
 			->andWhere(['parent_id' => null])
 			->orderby('sort')->all();
 		$tags = TagMeta::find()->joinWith('i18n')
