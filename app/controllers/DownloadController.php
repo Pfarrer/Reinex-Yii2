@@ -117,4 +117,20 @@ class DownloadController extends Controller
 
 		return $this->render('form', ['meta' => $meta, 'i18n' => $meta->i18n]);
 	}
+
+	public function actionDelete($id)
+	{
+		$meta = DownloadMeta::findOne($id);
+		if (!$meta) throw new NotFoundHttpException();
+		/** @var $meta DownloadMeta */
+
+		Yii::$app->db->transaction(function () use ($meta) {
+			foreach ($meta->i18ns as $i18n) {
+				if (!$i18n->delete()) throw new HttpException(400, 'i18n delete failed!');
+			}
+			if (!$meta->delete()) throw new HttpException(400, 'meta delete failed!');
+		});
+
+		return $this->redirect(['/#downloads']);
+	}
 }

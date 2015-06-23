@@ -111,7 +111,7 @@ $this->registerJs($js, View::POS_END);
 					</a>
 
 					<?php if (!Yii::$app->user->isGuest): ?>
-						<a href="<?= Url::to(['/download/edit', 'id'=>$dl->id]) ?>" class="pull-right">
+						<a href="<?= Url::to(['/download/edit', 'id'=>$dl->id]) ?>">
 							<i class="glyphicon glyphicon-pencil"></i> <?= Yii::t('download', 'Edit download') ?>
 						</a>
 					<?php endif; ?>

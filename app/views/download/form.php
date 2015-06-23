@@ -4,6 +4,7 @@ use app\models\DownloadMeta;
 use app\widgets\GoBackButton;
 use kartik\widgets\ActiveForm;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /** @var app\components\View $this */
 /** @var DownloadMeta $meta */
@@ -39,6 +40,10 @@ use yii\helpers\Html;
 	<?php endif; ?>
 
 	<?= GoBackButton::widget() ?>
+	<a class="btn btn-danger" href="<?= Url::to(['download/delete', 'id'=>$meta->id]) ?>" onclick="return confirm('Sure?')">
+		<i class="glyphicon glyphicon-trash"></i>
+		Delete Download
+	</a>
 
 	<div class="form-group pull-right">
 		<?= Html::submitButton(Yii::t('common', 'Save'), ['class' => 'btn btn-primary']) ?>
