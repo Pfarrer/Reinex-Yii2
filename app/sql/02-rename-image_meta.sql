@@ -4,3 +4,4 @@ UPDATE yii2_image SET fmodel='app\\models\\FrontimageMeta' WHERE fmodel='app\\mo
 UPDATE yii2_image SET fmodel='app\\models\\ProductMeta' WHERE fmodel='app\\models\\MetaProduct';
 UPDATE yii2_shortcut SET fmodel='app\\models\\FrontimageMeta' WHERE fmodel='app\\models\\MetaFrontimage';
 UPDATE yii2_shortcut SET fmodel='app\\models\\ProductMeta' WHERE fmodel='app\\models\\MetaProduct';
+UPDATE yii2_shortcut SET fmodel='app\\models\\ProductMeta' WHERE fmodel='app\\models\\I18nProduct';
