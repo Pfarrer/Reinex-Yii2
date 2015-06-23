@@ -124,6 +124,13 @@ $this->registerJs($js);
 							'meta' => $child,
 						]) ?>
 					</div>
+
+					<?php if ($child->youtube_playlist_id): ?>
+						<iframe width="640" height="360"
+								src="https://www.youtube-nocookie.com/embed/videoseries?list=<?= $child->youtube_playlist_id ?>"
+								frameborder="0" allowfullscreen>
+						</iframe>
+					<?php endif; ?>
 				</div>
 			</div>
 

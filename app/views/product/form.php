@@ -45,9 +45,9 @@ $tags = ArrayHelper::map($tags, 'id', 'i18n.name');
 
 	<?php if (!$meta->parent): // Unterprodukte haben keine Tags ?>
 		<?= $form->field($meta, 'tags')->checkboxList($tags) ?>
-
-		<?= $form->field($meta, 'youtube_playlist_id') ?>
 	<?php endif; ?>
+
+	<?= $form->field($meta, 'youtube_playlist_id') ?>
 
 	<?php if ($meta->parent): ?>
 		<input type="hidden" name="parent_id" value="<?= $meta->parent_id ?>" />
