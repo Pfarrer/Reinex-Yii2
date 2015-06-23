@@ -3,6 +3,7 @@ use app\components\Url;
 use dosamigos\fileupload\FileUploadUI;
 
 /** @var $this yii\web\View */
+/** @var $id string */
 /** @var $url array */
 
 $this->registerCssFile(Url::base().'/css/modal.css');
@@ -16,12 +17,12 @@ $this->registerCssFile(Url::base().'/css/modal.css');
 	}
 </style>
 
-<button type="button" class="btn btn-default" data-toggle="modal" data-target="#image-upload">
+<button type="button" class="btn btn-default" data-toggle="modal" data-target="#image-upload-<?= $id ?>">
 	<i class="glyphicon glyphicon-upload"></i>
 	<?= Yii::t('common', 'Upload images') ?>
 </button>
 
-<div id="image-upload" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="image-upload" data-backdrop="false">
+<div id="image-upload-<?= $id ?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="image-upload-<?= $id ?>" data-backdrop="false">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<form method="post" action="" enctype="multipart/form-data">

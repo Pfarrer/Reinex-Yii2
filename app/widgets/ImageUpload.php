@@ -18,6 +18,7 @@ class ImageUpload extends Widget
 	public function run()
 	{
 		return $this->render('image_upload', [
+			'id' => $this->getId(),
 			'url' => $this->url,
 		]);
 	}
