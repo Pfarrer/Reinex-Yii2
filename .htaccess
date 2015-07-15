@@ -2,8 +2,9 @@ Options -Indexes
 
 RewriteEngine on
 
+RewriteCond %{REQUEST_URI} !^/static
 RewriteCond %{REQUEST_URI} !^web
-RewriteRule ^(.*)$ web/$1 [L] 
+RewriteRule ^(.*)$ web/$1 [L]
 
 # Deny accessing below extensions
 <Files ~ "(.json|.lock|.git)">
