@@ -26,7 +26,7 @@ class DownloadController extends Controller
 				'rules' => [
 					[
 						'allow' => true,
-						'actions' => ['view'],
+						'actions' => ['dl'],
 					],
 					[
 						'roles' => ['@'],
