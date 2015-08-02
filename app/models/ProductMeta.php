@@ -64,7 +64,15 @@ class ProductMeta extends MetaModel
 
 	public function getFrontimage()
 	{
-		return $this->getImages()->limit(1)->one();
+		$image = $this->getImages()->limit(1)->one();
+		if (!$image) {
+			foreach ($this->children as $child) {
+				/** @var $child ProductMeta */
+				$image = $child->getFrontimage();
+				if ($image) break;
+			}
+		}
+		return $image;
 	}
 
 	public function getParent()
