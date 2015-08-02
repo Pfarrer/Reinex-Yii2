@@ -85,6 +85,16 @@ class ProductMeta extends MetaModel
 
 	public function handleBeforeDelete($event)
 	{
+		foreach ($this->i18ns as $i18n) {
+			/* @var $i18n ProductI18n */
+			$i18n->delete();
+		}
+
+		foreach ($this->children as $child) {
+			/* @var $child ProductMeta */
+			$child->delete();
+		}
+
 		foreach ($this->images as $img) {
 			/* @var $img Image */
 			$img->delete();

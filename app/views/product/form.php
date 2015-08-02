@@ -55,6 +55,15 @@ $tags = ArrayHelper::map($tags, 'id', 'i18n.name');
 
 	<?= GoBackButton::widget() ?>
 
+	<?php if (!$meta->isNewRecord): ?>
+		<?= Html::submitButton(Yii::t('common', 'Delete'), [
+			'class' => 'btn btn-danger',
+			'name' => 'action',
+			'value' => 'delete',
+			'onclick' => 'return confirm("Wirklich löschen?")',
+		]) ?>
+	<?php endif; ?>
+
 	<div class="form-group pull-right">
 		<?= Html::submitButton(Yii::t('common', 'Save'), ['class' => 'btn btn-primary']) ?>
 	</div>

@@ -77,6 +77,13 @@ class ProductController extends Controller
 		}
 
 		if (Yii::$app->request->isPost) {
+			if (Yii::$app->request->post('action') === 'delete') {
+				$meta->delete();
+
+				Yii::$app->session->addFlash('success', 'Produkt gelöscht!');
+				return $this->redirect(Url::home());
+			}
+
 			$meta->load(Yii::$app->request->post());
 			$meta->i18n->load(Yii::$app->request->post());
 			
