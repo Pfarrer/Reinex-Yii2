@@ -37,7 +37,11 @@ html:not(.fp-enabled) #content-container {
 
 /** Fullpage **/
 #fullpage {
-	margin-right: -30px;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+#fullpage .row {
+    margin-left: 0;
 }
 #fullpage .section {
 	padding: 0 2em;
