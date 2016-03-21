@@ -23,7 +23,7 @@ $("#fullpage").fullpage({
 	autoScrolling: false,
 	fitToSection: false,
 	keyboardScrolling: false,
-	paddingTop: '80px'
+	paddingTop: "80px"
 });
 JS;
 $this->registerJs($js, View::POS_END);
@@ -32,7 +32,7 @@ $this->registerJs($js, View::POS_END);
 <div id="fullpage">
 
 	<?php if ($this->body_background_image_url): ?>
-		<div class="section row" id="frontimage"></div>
+		<div class="section row" data-anchor="welcome" id="frontimage"></div>
 	<?php endif; ?>
 
 	<div class="section row" data-anchor="products">

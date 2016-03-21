@@ -1,5 +1,4 @@
 <?php
-use \Yii;
 use app\components\Url;
 ?>
 

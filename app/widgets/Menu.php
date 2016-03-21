@@ -11,8 +11,9 @@ class Menu extends \yii\base\Widget
 	public function init()
 	{
 		parent::init();
-		
+
 		$this->items = [
+			['label' => 'Welcome', 'url' => Url::home().'#welcome', 'if' => $this->getView()->body_background_image_url !== null],
 			['label' => 'Products', 'url' => Url::home().'#products'],
 			['label' => 'Downloads', 'url' => Url::home().'#downloads'],
 			['label' => 'Company', 'url' => Url::home().'#company'],
