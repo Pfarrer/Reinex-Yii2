@@ -1,4 +1,5 @@
 <?php
+use app\assets\MasonryAsset;
 use app\components\Url;
 use app\components\Util;
 use app\models\DownloadMeta;
@@ -27,6 +28,14 @@ $("#fullpage").fullpage({
 });
 JS;
 $this->registerJs($js, View::POS_END);
+
+
+MasonryAsset::register($this);
+
+$js = <<<JS
+var grid = $("#contacts").masonry();
+JS;
+$this->registerJs($js, View::POS_READY);
 ?>
 
 <div id="fullpage">
